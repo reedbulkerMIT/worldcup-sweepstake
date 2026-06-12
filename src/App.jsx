@@ -237,10 +237,10 @@ export default function App() {
       </header>
 
       {/* 分頁 */}
-      <nav className="max-w-3xl mx-auto px-4 flex gap-1 chalkline">
-        {[["board", "排行榜"], ["bracket", "樹狀圖"], ["schedule", "賽程"], ["teams", "各隊"], ["setup", "認領設定"]].map(([k, label]) => (
+      <nav className="max-w-3xl mx-auto px-4 flex gap-1 chalkline overflow-x-auto">
+        {[["board", "排行榜"], ["bracket", "樹狀圖"], ["schedule", "賽程"], ["finished", "已完賽"], ["teams", "各隊"], ["setup", "認領設定"]].map(([k, label]) => (
           <button key={k} onClick={() => setTab(k)}
-            className="display px-4 py-2 text-lg font-bold tracking-wide"
+            className="display px-4 py-2 text-lg font-bold tracking-wide shrink-0 whitespace-nowrap"
             style={{
               color: tab === k ? C.gold : C.chalkDim,
               borderBottom: tab === k ? `3px solid ${C.gold}` : "3px solid transparent",
@@ -444,49 +444,55 @@ export default function App() {
                 </div>
               </div>
             )}
+          </div>
+        )}
 
-            {/* 已完賽 */}
-            {playedByDate.length > 0 && (
-              <div className="mt-10">
-                <h2 className="display text-xl font-bold tracking-widest mb-3" style={{ color: C.gold }}>
-                  已完賽 <span className="text-sm font-normal" style={{ color: C.chalkDim }}>台灣時間 UTC+8</span>
-                </h2>
-                {playedByDate.map((grp) => (
-                  <div key={grp.date} className="mb-4">
-                    <div className="display text-sm font-bold tracking-widest mb-1" style={{ color: C.chalkDim }}>
-                      {grp.date}
-                    </div>
-                    {grp.list.map((p, idx) => {
-                      const ta = TEAM_BY_EN[p.a], tb = TEAM_BY_EN[p.b];
-                      const oa = owners[p.a], ob = owners[p.b];
-                      const aLost = p.sa < p.sb, bLost = p.sb < p.sa;
-                      return (
-                        <div key={idx} className="chalkline py-3 flex items-center gap-3">
-                          <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0"
-                            style={{ opacity: aLost ? 0.45 : 1 }}>
-                            <div className="min-w-0">
-                              <div className="text-sm font-medium truncate" style={{ textDecoration: aLost ? "line-through" : "none" }}>{ta.zh}</div>
-                              {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
-                            </div>
-                            <span className="text-xl shrink-0">{ta.flag}</span>
+        {/* ───── 已完賽 ───── */}
+        {tab === "finished" && (
+          <div>
+            <h2 className="display text-xl font-bold tracking-widest mb-3" style={{ color: C.gold }}>
+              已完賽 <span className="text-sm font-normal" style={{ color: C.chalkDim }}>台灣時間 UTC+8</span>
+            </h2>
+            {playedByDate.length === 0 ? (
+              <div className="text-center py-16" style={{ color: C.chalkDim }}>
+                還沒有已完賽的比賽。
+              </div>
+            ) : (
+              playedByDate.map((grp) => (
+                <div key={grp.date} className="mb-4">
+                  <div className="display text-sm font-bold tracking-widest mb-1" style={{ color: C.chalkDim }}>
+                    {grp.date}
+                  </div>
+                  {grp.list.map((p, idx) => {
+                    const ta = TEAM_BY_EN[p.a], tb = TEAM_BY_EN[p.b];
+                    const oa = owners[p.a], ob = owners[p.b];
+                    const aLost = p.sa < p.sb, bLost = p.sb < p.sa;
+                    return (
+                      <div key={idx} className="chalkline py-3 flex items-center gap-3">
+                        <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0"
+                          style={{ opacity: aLost ? 0.45 : 1 }}>
+                          <div className="min-w-0">
+                            <div className="text-sm font-medium truncate" style={{ textDecoration: aLost ? "line-through" : "none" }}>{ta.zh}</div>
+                            {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
                           </div>
-                          <span className="display text-lg font-extrabold shrink-0 w-16 text-center" style={{ color: C.gold }}>
-                            {p.sa} - {p.sb}
-                          </span>
-                          <div className="flex-1 flex items-center gap-2 min-w-0"
-                            style={{ opacity: bLost ? 0.45 : 1 }}>
-                            <span className="text-xl shrink-0">{tb.flag}</span>
-                            <div className="min-w-0">
-                              <div className="text-sm font-medium truncate" style={{ textDecoration: bLost ? "line-through" : "none" }}>{tb.zh}</div>
-                              {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
-                            </div>
+                          <span className="text-xl shrink-0">{ta.flag}</span>
+                        </div>
+                        <span className="display text-lg font-extrabold shrink-0 w-16 text-center" style={{ color: C.gold }}>
+                          {p.sa} - {p.sb}
+                        </span>
+                        <div className="flex-1 flex items-center gap-2 min-w-0"
+                          style={{ opacity: bLost ? 0.45 : 1 }}>
+                          <span className="text-xl shrink-0">{tb.flag}</span>
+                          <div className="min-w-0">
+                            <div className="text-sm font-medium truncate" style={{ textDecoration: bLost ? "line-through" : "none" }}>{tb.zh}</div>
+                            {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))
             )}
           </div>
         )}
