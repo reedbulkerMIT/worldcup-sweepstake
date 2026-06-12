@@ -95,6 +95,7 @@ export default function App() {
   const [results, setResults] = useState({}); // teamEn -> {group,w,d,l,reached,out}
   const [knockout, setKnockout] = useState([]); // [{round,a,b,winner}]
   const [matches, setMatches] = useState([]); // [{time,a,b}] 台灣時間
+  const [played, setPlayed] = useState([]); // ["MM-DD HH:mm|A|sa|sb|B"] 台灣時間
   const [updatedAt, setUpdatedAt] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -117,6 +118,7 @@ export default function App() {
       setResults(data.results || {});
       setKnockout(data.knockout || []);
       setMatches(data.matches || []);
+      setPlayed(data.played || []);
       setUpdatedAt(data.updatedAt || null);
       if (showMsg) setMsg("已載入最新資料");
     } catch (e) {
@@ -145,6 +147,26 @@ export default function App() {
     .sort((a, b) => b.total - a.total);
 
   const unassigned = TEAMS.filter((t) => !owners[t.en]);
+
+  // 已完賽:解析 "MM-DD HH:mm|A|sa|sb|B",依日期分組,最新日期(與場次)在最上面
+  const playedParsed = played
+    .map((row) => {
+      const [time, a, sa, sb, b] = String(row).split("|");
+      return { time, a, b, sa: parseInt(sa, 10), sb: parseInt(sb, 10), date: (time || "").slice(0, 5) };
+    })
+    .filter((p) => TEAM_BY_EN[p.a] && TEAM_BY_EN[p.b]);
+  const playedByDate = [];
+  {
+    const idx = {};
+    for (let i = playedParsed.length - 1; i >= 0; i--) { // 反向 = 最新在前
+      const p = playedParsed[i];
+      if (idx[p.date] == null) {
+        idx[p.date] = playedByDate.length;
+        playedByDate.push({ date: p.date, list: [] });
+      }
+      playedByDate[idx[p.date]].list.push(p);
+    }
+  }
 
   // 分組視圖:若已有分組資料就照 A–L,否則照洲別
   const hasGroups = Object.values(results).some((r) => r.group);
@@ -181,7 +203,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen pb-16" style={{
-      background: `repeating-linear-gradient(180deg, ${C.pitch} 0px, ${C.pitch} 90px, ${C.deep} 90px, ${C.deep} 180px)`,
+      background: C.pitch,
       color: C.chalk, fontFamily: "'Noto Sans TC', sans-serif",
     }}>
       <style>{`
@@ -420,6 +442,50 @@ export default function App() {
                 <div className="text-xs mt-3" style={{ color: C.chalkDim }}>
                   每次更新抓接下來 12 場;隊名下方為認領同事。
                 </div>
+              </div>
+            )}
+
+            {/* 已完賽 */}
+            {playedByDate.length > 0 && (
+              <div className="mt-10">
+                <h2 className="display text-xl font-bold tracking-widest mb-3" style={{ color: C.gold }}>
+                  已完賽 <span className="text-sm font-normal" style={{ color: C.chalkDim }}>台灣時間 UTC+8</span>
+                </h2>
+                {playedByDate.map((grp) => (
+                  <div key={grp.date} className="mb-4">
+                    <div className="display text-sm font-bold tracking-widest mb-1" style={{ color: C.chalkDim }}>
+                      {grp.date}
+                    </div>
+                    {grp.list.map((p, idx) => {
+                      const ta = TEAM_BY_EN[p.a], tb = TEAM_BY_EN[p.b];
+                      const oa = owners[p.a], ob = owners[p.b];
+                      const aLost = p.sa < p.sb, bLost = p.sb < p.sa;
+                      return (
+                        <div key={idx} className="chalkline py-3 flex items-center gap-3">
+                          <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0"
+                            style={{ opacity: aLost ? 0.45 : 1 }}>
+                            <div className="min-w-0">
+                              <div className="text-sm font-medium truncate" style={{ textDecoration: aLost ? "line-through" : "none" }}>{ta.zh}</div>
+                              {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
+                            </div>
+                            <span className="text-xl shrink-0">{ta.flag}</span>
+                          </div>
+                          <span className="display text-lg font-extrabold shrink-0 w-16 text-center" style={{ color: C.gold }}>
+                            {p.sa} - {p.sb}
+                          </span>
+                          <div className="flex-1 flex items-center gap-2 min-w-0"
+                            style={{ opacity: bLost ? 0.45 : 1 }}>
+                            <span className="text-xl shrink-0">{tb.flag}</span>
+                            <div className="min-w-0">
+                              <div className="text-sm font-medium truncate" style={{ textDecoration: bLost ? "line-through" : "none" }}>{tb.zh}</div>
+                              {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
               </div>
             )}
           </div>

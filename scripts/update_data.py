@@ -207,6 +207,31 @@ def build_knockout_and_progress(matches, results):
     return knockout
 
 
+def build_played(matches):
+    """所有 FINISHED 比賽 → "MM-DD HH:mm|TeamA|scoreA|scoreB|TeamB"(台灣時間)。"""
+    played = []
+    finished = [
+        m for m in matches.get("matches", [])
+        if m.get("status") == "FINISHED"
+    ]
+    finished.sort(key=lambda m: (m.get("utcDate") or "", m.get("id") or 0))
+    for m in finished:
+        a = resolve(m.get("homeTeam", {}))
+        b = resolve(m.get("awayTeam", {}))
+        if not a or not b:
+            continue
+        utc = m.get("utcDate")
+        if not utc:
+            continue
+        ft = (m.get("score", {}) or {}).get("fullTime", {}) or {}
+        sa, sb = ft.get("home"), ft.get("away")
+        if sa is None or sb is None:
+            continue
+        dt = datetime.fromisoformat(utc.replace("Z", "+00:00")).astimezone(TAIPEI)
+        played.append(f"{dt.strftime('%m-%d %H:%M')}|{a}|{sa}|{sb}|{b}")
+    return played
+
+
 def build_upcoming(matches, limit=12):
     upcoming = []
     pending = [
@@ -236,11 +261,13 @@ def main():
     results = build_results(standings)
     knockout = build_knockout_and_progress(matches, results)
     upcoming = build_upcoming(matches)
+    played = build_played(matches)
 
     payload = {
         "results": results,
         "knockout": knockout,
         "matches": upcoming,
+        "played": played,
         "updatedAt": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -257,10 +284,14 @@ def main():
         all_names.update([m["a"], m["b"]])
     for m in upcoming:
         all_names.update([m["a"], m["b"]])
+    for row in played:
+        parts = row.split("|")
+        all_names.update([parts[1], parts[4]])
     bad = sorted(n for n in all_names if n not in VALID_EN)
 
     print(f"✓ 寫入 {out_path}")
-    print(f"  results: {len(results)} 隊 | knockout: {len(knockout)} 場 | matches: {len(upcoming)} 場")
+    print(f"  results: {len(results)} 隊 | knockout: {len(knockout)} 場 | "
+          f"matches: {len(upcoming)} 場 | played: {len(played)} 場")
     print(f"  updatedAt: {payload['updatedAt']}")
     if UNMATCHED:
         print("⚠ 以下 API 隊伍對不上對照表(已略過,請補進 TLA_TO_EN / NAME_FIX):")

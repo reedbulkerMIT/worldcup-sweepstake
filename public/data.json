@@ -448,5 +448,9 @@
       "b": "Egypt"
     }
   ],
-  "updatedAt": "2026-06-12T07:01:07.356268+00:00"
+  "played": [
+    "06-12 03:00|Mexico|2|0|South Africa",
+    "06-12 10:00|South Korea|2|1|Czechia"
+  ],
+  "updatedAt": "2026-06-12T07:06:23.893247+00:00"
 }
