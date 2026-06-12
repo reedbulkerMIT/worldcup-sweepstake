@@ -7,9 +7,11 @@ on:
   # 讓你能從 GitHub Actions 頁(手機也可)手動觸發
   workflow_dispatch:
 
-# 需要 write 才能 commit + push 更新後的 data.json
+# contents: write → commit + push 更新後的 data.json
+# actions: write  → 用 gh workflow run 觸發 deploy.yml(workflow_dispatch)
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update:
