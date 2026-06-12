@@ -263,19 +263,41 @@ def main():
     upcoming = build_upcoming(matches)
     played = build_played(matches)
 
-    payload = {
+    # 內容(不含 updatedAt)。只有內容真的有變,才蓋新的更新時間。
+    content = {
         "results": results,
         "knockout": knockout,
         "matches": upcoming,
         "played": played,
-        "updatedAt": datetime.now(timezone.utc).isoformat(),
     }
 
     out_path = os.path.join(os.path.dirname(__file__), "..", "public", "data.json")
     out_path = os.path.abspath(out_path)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+    # 讀舊檔,比對內容
+    old = None
+    if os.path.exists(out_path):
+        try:
+            with open(out_path, "r", encoding="utf-8") as f:
+                old = json.load(f)
+        except Exception:  # noqa: BLE001
+            old = None
+    old_content = {k: old.get(k) for k in content} if old else None
+    unchanged = old_content == content and old and old.get("updatedAt")
+
+    if unchanged:
+        # 內容沒變 → 保留上次更新時間,檔案維持不變(workflow 就不會 commit/重新部署)
+        updated_at = old["updatedAt"]
+    else:
+        updated_at = datetime.now(timezone.utc).isoformat()
+
+    payload = {**content, "updatedAt": updated_at}
+
+    # sort_keys=True → 同樣的內容永遠產生同樣的位元組,避免 API 改變回傳順序時
+    # 被誤判成「有變動」。輸出順序不影響前端(前端都是用 key 取值)。
     with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2, sort_keys=True)
         f.write("\n")
 
     # ── 統計 + 驗證輸出 ─────────────────────────────
@@ -292,7 +314,10 @@ def main():
     print(f"✓ 寫入 {out_path}")
     print(f"  results: {len(results)} 隊 | knockout: {len(knockout)} 場 | "
           f"matches: {len(upcoming)} 場 | played: {len(played)} 場")
-    print(f"  updatedAt: {payload['updatedAt']}")
+    if unchanged:
+        print(f"  內容無變動 → 保留上次更新時間 {payload['updatedAt']}(不會 commit/重新部署)")
+    else:
+        print(f"  偵測到變動 → 更新時間為 {payload['updatedAt']}")
     if UNMATCHED:
         print("⚠ 以下 API 隊伍對不上對照表(已略過,請補進 TLA_TO_EN / NAME_FIX):")
         for u in UNMATCHED:

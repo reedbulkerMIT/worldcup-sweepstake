@@ -1,456 +1,456 @@
 {
-  "results": {
-    "Mexico": {
-      "group": "A",
-      "w": 1,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "South Korea": {
-      "group": "A",
-      "w": 1,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Czechia": {
-      "group": "A",
-      "w": 0,
-      "d": 0,
-      "l": 1,
-      "reached": "group",
-      "out": false
-    },
-    "South Africa": {
-      "group": "A",
-      "w": 0,
-      "d": 0,
-      "l": 1,
-      "reached": "group",
-      "out": false
-    },
-    "Bosnia and Herzegovina": {
-      "group": "B",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Canada": {
-      "group": "B",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Qatar": {
-      "group": "B",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Switzerland": {
-      "group": "B",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Brazil": {
-      "group": "C",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Haiti": {
-      "group": "C",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Morocco": {
-      "group": "C",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Scotland": {
-      "group": "C",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Australia": {
-      "group": "D",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Paraguay": {
-      "group": "D",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Turkiye": {
-      "group": "D",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "United States": {
-      "group": "D",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Curacao": {
-      "group": "E",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Germany": {
-      "group": "E",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Ecuador": {
-      "group": "E",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Cote d'Ivoire": {
-      "group": "E",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Japan": {
-      "group": "F",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Netherlands": {
-      "group": "F",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Sweden": {
-      "group": "F",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Tunisia": {
-      "group": "F",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Egypt": {
-      "group": "G",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Belgium": {
-      "group": "G",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Iran": {
-      "group": "G",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "New Zealand": {
-      "group": "G",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Cabo Verde": {
-      "group": "H",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Saudi Arabia": {
-      "group": "H",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Spain": {
-      "group": "H",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Uruguay": {
-      "group": "H",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "France": {
-      "group": "I",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Iraq": {
-      "group": "I",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Norway": {
-      "group": "I",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Senegal": {
-      "group": "I",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Algeria": {
-      "group": "J",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Argentina": {
-      "group": "J",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Jordan": {
-      "group": "J",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Austria": {
-      "group": "J",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "DR Congo": {
-      "group": "K",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Colombia": {
-      "group": "K",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Portugal": {
-      "group": "K",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Uzbekistan": {
-      "group": "K",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "England": {
-      "group": "L",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Ghana": {
-      "group": "L",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Croatia": {
-      "group": "L",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    },
-    "Panama": {
-      "group": "L",
-      "w": 0,
-      "d": 0,
-      "l": 0,
-      "reached": "group",
-      "out": false
-    }
-  },
   "knockout": [],
   "matches": [
     {
-      "time": "06-13 03:00",
       "a": "Canada",
-      "b": "Bosnia and Herzegovina"
+      "b": "Bosnia and Herzegovina",
+      "time": "06-13 03:00"
     },
     {
-      "time": "06-13 09:00",
       "a": "United States",
-      "b": "Paraguay"
+      "b": "Paraguay",
+      "time": "06-13 09:00"
     },
     {
-      "time": "06-14 03:00",
       "a": "Qatar",
-      "b": "Switzerland"
+      "b": "Switzerland",
+      "time": "06-14 03:00"
     },
     {
-      "time": "06-14 06:00",
       "a": "Brazil",
-      "b": "Morocco"
+      "b": "Morocco",
+      "time": "06-14 06:00"
     },
     {
-      "time": "06-14 09:00",
       "a": "Haiti",
-      "b": "Scotland"
+      "b": "Scotland",
+      "time": "06-14 09:00"
     },
     {
-      "time": "06-14 12:00",
       "a": "Australia",
-      "b": "Turkiye"
+      "b": "Turkiye",
+      "time": "06-14 12:00"
     },
     {
-      "time": "06-15 01:00",
       "a": "Germany",
-      "b": "Curacao"
+      "b": "Curacao",
+      "time": "06-15 01:00"
     },
     {
-      "time": "06-15 04:00",
       "a": "Netherlands",
-      "b": "Japan"
+      "b": "Japan",
+      "time": "06-15 04:00"
     },
     {
-      "time": "06-15 07:00",
       "a": "Cote d'Ivoire",
-      "b": "Ecuador"
+      "b": "Ecuador",
+      "time": "06-15 07:00"
     },
     {
-      "time": "06-15 10:00",
       "a": "Sweden",
-      "b": "Tunisia"
+      "b": "Tunisia",
+      "time": "06-15 10:00"
     },
     {
-      "time": "06-16 00:00",
       "a": "Spain",
-      "b": "Cabo Verde"
+      "b": "Cabo Verde",
+      "time": "06-16 00:00"
     },
     {
-      "time": "06-16 03:00",
       "a": "Belgium",
-      "b": "Egypt"
+      "b": "Egypt",
+      "time": "06-16 03:00"
     }
   ],
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia"
   ],
+  "results": {
+    "Algeria": {
+      "d": 0,
+      "group": "J",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Argentina": {
+      "d": 0,
+      "group": "J",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Australia": {
+      "d": 0,
+      "group": "D",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Austria": {
+      "d": 0,
+      "group": "J",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Belgium": {
+      "d": 0,
+      "group": "G",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Bosnia and Herzegovina": {
+      "d": 0,
+      "group": "B",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Brazil": {
+      "d": 0,
+      "group": "C",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Cabo Verde": {
+      "d": 0,
+      "group": "H",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Canada": {
+      "d": 0,
+      "group": "B",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Colombia": {
+      "d": 0,
+      "group": "K",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Cote d'Ivoire": {
+      "d": 0,
+      "group": "E",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Croatia": {
+      "d": 0,
+      "group": "L",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Curacao": {
+      "d": 0,
+      "group": "E",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Czechia": {
+      "d": 0,
+      "group": "A",
+      "l": 1,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "DR Congo": {
+      "d": 0,
+      "group": "K",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Ecuador": {
+      "d": 0,
+      "group": "E",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Egypt": {
+      "d": 0,
+      "group": "G",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "England": {
+      "d": 0,
+      "group": "L",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "France": {
+      "d": 0,
+      "group": "I",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Germany": {
+      "d": 0,
+      "group": "E",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Ghana": {
+      "d": 0,
+      "group": "L",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Haiti": {
+      "d": 0,
+      "group": "C",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Iran": {
+      "d": 0,
+      "group": "G",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Iraq": {
+      "d": 0,
+      "group": "I",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Japan": {
+      "d": 0,
+      "group": "F",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Jordan": {
+      "d": 0,
+      "group": "J",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Mexico": {
+      "d": 0,
+      "group": "A",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 1
+    },
+    "Morocco": {
+      "d": 0,
+      "group": "C",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Netherlands": {
+      "d": 0,
+      "group": "F",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "New Zealand": {
+      "d": 0,
+      "group": "G",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Norway": {
+      "d": 0,
+      "group": "I",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Panama": {
+      "d": 0,
+      "group": "L",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Paraguay": {
+      "d": 0,
+      "group": "D",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Portugal": {
+      "d": 0,
+      "group": "K",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Qatar": {
+      "d": 0,
+      "group": "B",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Saudi Arabia": {
+      "d": 0,
+      "group": "H",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Scotland": {
+      "d": 0,
+      "group": "C",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Senegal": {
+      "d": 0,
+      "group": "I",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "South Africa": {
+      "d": 0,
+      "group": "A",
+      "l": 1,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "South Korea": {
+      "d": 0,
+      "group": "A",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 1
+    },
+    "Spain": {
+      "d": 0,
+      "group": "H",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Sweden": {
+      "d": 0,
+      "group": "F",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Switzerland": {
+      "d": 0,
+      "group": "B",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Tunisia": {
+      "d": 0,
+      "group": "F",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Turkiye": {
+      "d": 0,
+      "group": "D",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "United States": {
+      "d": 0,
+      "group": "D",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Uruguay": {
+      "d": 0,
+      "group": "H",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    },
+    "Uzbekistan": {
+      "d": 0,
+      "group": "K",
+      "l": 0,
+      "out": false,
+      "reached": "group",
+      "w": 0
+    }
+  },
   "updatedAt": "2026-06-12T07:12:58.017407+00:00"
 }
