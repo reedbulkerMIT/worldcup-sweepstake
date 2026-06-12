@@ -1,0 +1,11 @@
+# 強制這些檔在 repo 內以 LF 儲存,避免 GitHub Actions(Linux)執行 shell/python 時
+# 因 CRLF 出現 $'\r' 錯誤。
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.py    text eol=lf
+*.sh    text eol=lf
+*.json  text eol=lf
+*.js    text eol=lf
+*.jsx   text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf

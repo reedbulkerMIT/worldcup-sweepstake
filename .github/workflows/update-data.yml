@@ -1,0 +1,51 @@
+name: Update data.json
+
+on:
+  # cron 為 UTC;23:00 UTC = 台北時間 07:00
+  schedule:
+    - cron: "0 23 * * *"
+  # 讓你能從 GitHub Actions 頁(手機也可)手動觸發
+  workflow_dispatch:
+
+# 需要 write 才能 commit + push 更新後的 data.json
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch latest results → public/data.json
+        env:
+          # token 只從 Secrets 經環境變數傳入,絕不寫進檔案
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: python scripts/update_data.py
+
+      - name: Commit data.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data.json
+          if git diff --cached --quiet; then
+            echo "data.json 無變更,跳過 commit。"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: update data.json [skip ci]"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+        id: commit
+
+      # GITHUB_TOKEN 造成的 push 不會自動觸發 deploy.yml(GitHub 防遞迴),
+      # 所以資料有變更時顯式 dispatch 一次部署(workflow_dispatch 是允許的例外)。
+      - name: Trigger Pages redeploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main
