@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, Fragment } from "react";
 import { OWNERS, COLLEAGUES } from "./draw";
 
 // ───────────────────────── 48 隊名單 ─────────────────────────
@@ -152,12 +152,26 @@ export default function App() {
   }, []);
 
   // ───────── 排行榜計算(按國家;只列已認領的隊,分數不跨隊加總) ─────────
-  const board = TEAMS
+  // 進入淘汰賽(knockout 有資料)後,改成上下兩段:上段「晉級中」、下段「已淘汰」,
+  // 兩段內都以「走到的輪次」愈深(愈接近冠軍)愈前,同輪再比分數。小組賽階段維持單一分數榜。
+  const koActive = knockout.length > 0;
+  const depthOf = (rec) => Math.max(0, STAGE_ORDER.indexOf((rec && rec.reached) || "group"));
+  const ranked = TEAMS
     .filter((t) => owners[t.en])
-    .map((t) => ({ ...t, owner: owners[t.en], rec: results[t.en], pts: teamPoints(results[t.en]) }))
-    .sort((a, b) => b.pts - a.pts)
-    // 標準競賽名次:同分共用名次,下一名次跳號(例 1、1、3)
-    .map((row, i, arr) => ({ ...row, rank: i > 0 && arr[i - 1].pts === row.pts ? null : i + 1 }));
+    .map((t) => {
+      const rec = results[t.en];
+      return { ...t, owner: owners[t.en], rec, pts: teamPoints(rec), alive: !(rec && rec.out), depth: depthOf(rec) };
+    })
+    .sort((a, b) => {
+      if (koActive && a.alive !== b.alive) return a.alive ? -1 : 1; // 還在的排上面
+      if (koActive && a.depth !== b.depth) return b.depth - a.depth; // 走得愈深愈前
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      return a.zh.localeCompare(b.zh);
+    });
+  // 標準競賽名次:排序鍵相同才並列同名次,下一名次跳號(例 1、1、3)
+  const sameRank = (x, y) =>
+    koActive ? x.alive === y.alive && x.depth === y.depth && x.pts === y.pts : x.pts === y.pts;
+  const board = ranked.map((row, i, arr) => ({ ...row, rank: i > 0 && sameRank(arr[i - 1], row) ? null : i + 1 }));
   for (let i = 1; i < board.length; i++) {
     if (board[i].rank == null) board[i].rank = board[i - 1].rank;
   }
@@ -307,25 +321,46 @@ export default function App() {
                 還沒有人認領球隊。
               </div>
             )}
-            {board.map((row) => {
+            {board.map((row, i) => {
               const top = row.rank <= 3;
+              const aliveHdr = koActive && row.alive && (i === 0 || !board[i - 1].alive);
+              const outHdr = koActive && !row.alive && (i === 0 || board[i - 1].alive);
               return (
-                <div key={row.en} className="chalkline py-3 flex items-center gap-3"
-                  style={{ opacity: row.rec?.out ? 0.6 : 1 }}>
-                  <span className="display text-3xl font-extrabold w-10 text-right shrink-0" style={{ color: top ? C.gold : C.chalkDim }}>
-                    {row.rank}
-                  </span>
-                  <span className="text-2xl shrink-0">{row.flag}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="display text-2xl font-bold" style={{ textDecoration: row.rec?.out ? "line-through" : "none" }}>
-                      {row.zh} {medal(row.rank - 1) && <span className="ml-1">{medal(row.rank - 1)}</span>}
+                <Fragment key={row.en}>
+                  {aliveHdr && (
+                    <div className="display text-sm font-bold tracking-widest mt-5 mb-1" style={{ color: C.gold }}>
+                      晉級中 <span className="text-xs font-normal" style={{ color: C.chalkDim }}>愈接近冠軍排愈前</span>
                     </div>
-                    <div className="text-xs" style={{ color: C.gold }}>{row.owner}</div>
+                  )}
+                  {outHdr && (
+                    <div className="display text-sm font-bold tracking-widest mt-6 mb-1" style={{ color: C.red }}>
+                      已淘汰
+                    </div>
+                  )}
+                  <div className="chalkline py-3 flex items-center gap-3"
+                    style={{ opacity: row.rec?.out ? 0.6 : 1 }}>
+                    <span className="display text-3xl font-extrabold w-10 text-right shrink-0" style={{ color: top ? C.gold : C.chalkDim }}>
+                      {row.rank}
+                    </span>
+                    <span className="text-2xl shrink-0">{row.flag}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="display text-2xl font-bold" style={{ textDecoration: row.rec?.out ? "line-through" : "none" }}>
+                        {row.zh} {medal(row.rank - 1) && <span className="ml-1">{medal(row.rank - 1)}</span>}
+                      </div>
+                      <div className="text-xs flex items-center gap-2">
+                        <span style={{ color: C.gold }}>{row.owner}</span>
+                        {koActive && row.rec && (
+                          <span style={{ color: row.rec.out ? C.red : C.chalkDim }}>
+                            {STAGE_ZH[row.rec.reached] || "小組賽"}{row.rec.out ? "止步" : ""}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <span className="display text-3xl font-extrabold shrink-0" style={{ color: top ? C.gold : C.chalk }}>
+                      {row.pts}<span className="text-base ml-1" style={{ color: C.chalkDim }}>分</span>
+                    </span>
                   </div>
-                  <span className="display text-3xl font-extrabold shrink-0" style={{ color: top ? C.gold : C.chalk }}>
-                    {row.pts}<span className="text-base ml-1" style={{ color: C.chalkDim }}>分</span>
-                  </span>
-                </div>
+                </Fragment>
               );
             })}
             {unassigned.length > 0 && board.length > 0 && (
