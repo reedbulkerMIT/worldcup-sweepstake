@@ -65,7 +65,8 @@
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
-    "06-13 03:00|Canada|1|1|Bosnia and Herzegovina"
+    "06-13 03:00|Canada|1|1|Bosnia and Herzegovina",
+    "06-13 09:00|United States|4|1|Paraguay"
   ],
   "results": {
     "Algeria": {
@@ -325,9 +326,9 @@
       "w": 0
     },
     "Paraguay": {
-      "d": 1,
+      "d": 0,
       "group": "D",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -429,12 +430,12 @@
       "w": 0
     },
     "United States": {
-      "d": 1,
+      "d": 0,
       "group": "D",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Uruguay": {
       "d": 0,
@@ -453,5 +454,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-13T01:12:08.823808+00:00"
+  "updatedAt": "2026-06-13T04:23:43.774283+00:00"
 }
