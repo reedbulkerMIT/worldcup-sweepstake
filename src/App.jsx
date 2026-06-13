@@ -151,14 +151,16 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
-  // ───────── 排行榜計算 ─────────
-  const board = colleagues
-    .map((c) => {
-      const teams = TEAMS.filter((t) => owners[t.en] === c);
-      const detail = teams.map((t) => ({ ...t, rec: results[t.en], pts: teamPoints(results[t.en]) }));
-      return { name: c, teams: detail, total: detail.reduce((s, x) => s + x.pts, 0) };
-    })
-    .sort((a, b) => b.total - a.total);
+  // ───────── 排行榜計算(按國家;只列已認領的隊,分數不跨隊加總) ─────────
+  const board = TEAMS
+    .filter((t) => owners[t.en])
+    .map((t) => ({ ...t, owner: owners[t.en], rec: results[t.en], pts: teamPoints(results[t.en]) }))
+    .sort((a, b) => b.pts - a.pts)
+    // 標準競賽名次:同分共用名次,下一名次跳號(例 1、1、3)
+    .map((row, i, arr) => ({ ...row, rank: i > 0 && arr[i - 1].pts === row.pts ? null : i + 1 }));
+  for (let i = 1; i < board.length; i++) {
+    if (board[i].rank == null) board[i].rank = board[i - 1].rank;
+  }
 
   const unassigned = TEAMS.filter((t) => !owners[t.en]);
 
@@ -207,6 +209,14 @@ export default function App() {
 
   const medal = (i) => (i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : null);
 
+  // 隊名 + 旗幟,後面標上認領同事(若有)
+  const TeamLabel = ({ en }) => (
+    <>
+      {TEAM_BY_EN[en]?.flag} {TEAM_BY_EN[en]?.zh}
+      {owners[en] && <span style={{ color: C.gold }}>（{owners[en]}）</span>}
+    </>
+  );
+
   const StageBadge = ({ rec }) => {
     if (!rec) return <span style={{ color: C.chalkDim }} className="text-xs">未開賽</span>;
     const label = rec.out ? STAGE_ZH.eliminated : STAGE_ZH[rec.reached] || "小組賽";
@@ -250,9 +260,9 @@ export default function App() {
             <div style={{ color: C.chalk }}>
               {nextMatch ? (
                 <>
-                  <span style={{ color: C.gold }}>下一場:</span>
-                  {TEAM_BY_EN[nextMatch.a]?.flag} {TEAM_BY_EN[nextMatch.a]?.zh} vs {TEAM_BY_EN[nextMatch.b]?.flag} {TEAM_BY_EN[nextMatch.b]?.zh}
-                  　開賽倒數 <b className="display" style={{ color: C.gold }}>{fmtCountdown(nextMatch.ms - now)}</b>
+                  <span style={{ color: C.gold }}>下一場：</span>
+                  <TeamLabel en={nextMatch.a} /> vs <TeamLabel en={nextMatch.b} />
+                  {" | "}開賽倒數 <b className="display" style={{ color: C.gold }}>{fmtCountdown(nextMatch.ms - now)}</b>
                 </>
               ) : (
                 <span style={{ color: C.chalkDim }}>賽程更新中</span>
@@ -261,10 +271,10 @@ export default function App() {
             <div style={{ color: C.chalkDim }}>
               {lastPlayed ? (
                 <>
-                  <span style={{ color: C.gold }}>上場:</span>
-                  {TEAM_BY_EN[lastPlayed.a]?.flag} {TEAM_BY_EN[lastPlayed.a]?.zh}
+                  <span style={{ color: C.gold }}>上一場：</span>
+                  <TeamLabel en={lastPlayed.a} />
                   {" "}<b style={{ color: C.chalk }}>{lastPlayed.sa} - {lastPlayed.sb}</b>{" "}
-                  {TEAM_BY_EN[lastPlayed.b]?.flag} {TEAM_BY_EN[lastPlayed.b]?.zh}({lastPlayed.time})
+                  <TeamLabel en={lastPlayed.b} />（{lastPlayed.time}）
                 </>
               ) : (
                 "尚無已完賽"
@@ -297,31 +307,27 @@ export default function App() {
                 還沒有人認領球隊。
               </div>
             )}
-            {board.map((row, i) => (
-              <div key={row.name} className="chalkline py-4">
-                <div className="flex items-baseline gap-3">
-                  <span className="display text-3xl font-extrabold w-10 text-right" style={{ color: i < 3 ? C.gold : C.chalkDim }}>
-                    {i + 1}
+            {board.map((row) => {
+              const top = row.rank <= 3;
+              return (
+                <div key={row.en} className="chalkline py-3 flex items-center gap-3"
+                  style={{ opacity: row.rec?.out ? 0.6 : 1 }}>
+                  <span className="display text-3xl font-extrabold w-10 text-right shrink-0" style={{ color: top ? C.gold : C.chalkDim }}>
+                    {row.rank}
                   </span>
-                  <span className="display text-2xl font-bold flex-1">
-                    {row.name} {medal(i) && <span className="ml-1">{medal(i)}</span>}
-                  </span>
-                  <span className="display text-3xl font-extrabold" style={{ color: i < 3 ? C.gold : C.chalk }}>
-                    {row.total}<span className="text-base ml-1" style={{ color: C.chalkDim }}>分</span>
+                  <span className="text-2xl shrink-0">{row.flag}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="display text-2xl font-bold" style={{ textDecoration: row.rec?.out ? "line-through" : "none" }}>
+                      {row.zh} {medal(row.rank - 1) && <span className="ml-1">{medal(row.rank - 1)}</span>}
+                    </div>
+                    <div className="text-xs" style={{ color: C.gold }}>{row.owner}</div>
+                  </div>
+                  <span className="display text-3xl font-extrabold shrink-0" style={{ color: top ? C.gold : C.chalk }}>
+                    {row.pts}<span className="text-base ml-1" style={{ color: C.chalkDim }}>分</span>
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-2 ml-13" style={{ marginLeft: 52 }}>
-                  {row.teams.length === 0 && <span className="text-sm" style={{ color: C.chalkDim }}>未認領任何球隊</span>}
-                  {row.teams.map((t) => (
-                    <span key={t.en} className="text-sm px-2 py-1 rounded flex items-center gap-1.5"
-                      style={{ background: "rgba(0,0,0,0.25)", textDecoration: t.rec?.out ? "line-through" : "none", opacity: t.rec?.out ? 0.6 : 1 }}>
-                      {t.flag} {t.zh}
-                      <b style={{ color: t.pts > 0 ? C.gold : C.chalkDim }}>{t.pts}</b>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
             {unassigned.length > 0 && board.length > 0 && (
               <div className="mt-4 text-xs" style={{ color: C.chalkDim }}>
                 尚有 {unassigned.length} 隊無人認領
@@ -344,7 +350,7 @@ export default function App() {
                     小組一覽 <span className="text-sm font-normal" style={{ color: C.chalkDim }}>32 強對戰產生後自動切換成樹狀圖</span>
                   </h2>
                   <div className="text-xs mb-4" style={{ color: C.chalkDim }}>
-                    虛線 = 前二直接晉級;各組第三另有 8 個最佳成績名額。
+                    虛線 = 前二直接晉級；各組第三另有 8 個最佳成績名額。
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[..."ABCDEFGHIJKL"].filter((g) => TEAMS.some((t) => results[t.en]?.group === g)).map((g) => {
@@ -433,7 +439,7 @@ export default function App() {
             )}
             {knockout.length > 0 && (
               <div className="text-xs mt-2" style={{ color: C.chalkDim }}>
-                金色邊框 = 勝方;隊名旁顯示認領的同事。手機可左右滑動。
+                金色邊框 = 勝方；隊名旁顯示認領的同事。手機可左右滑動。
               </div>
             )}
           </div>
@@ -478,7 +484,7 @@ export default function App() {
                   );
                 })}
                 <div className="text-xs mt-3" style={{ color: C.chalkDim }}>
-                  每次更新抓接下來 12 場;隊名下方為認領同事。
+                  每次更新抓接下來 12 場；隊名下方為認領同事。
                 </div>
               </div>
             )}
@@ -583,7 +589,7 @@ export default function App() {
             <section className="mb-6">
               <h2 className="display text-xl font-bold tracking-widest mb-2" style={{ color: C.gold }}>同事名單</h2>
               <div className="text-xs mb-3" style={{ color: C.chalkDim }}>
-                共 {colleagues.length} 人。名單為抽籤定案結果,唯讀展示。
+                共 {colleagues.length} 人。名單為抽籤定案結果，唯讀展示。
               </div>
               <div className="flex flex-wrap gap-2">
                 {colleagues.map((c) => (
@@ -616,9 +622,9 @@ export default function App() {
             <section className="rounded p-4" style={{ background: "rgba(0,0,0,0.25)" }}>
               <h2 className="display text-xl font-bold tracking-widest mb-2" style={{ color: C.gold }}>計分規則</h2>
               <div className="text-sm leading-relaxed" style={{ color: C.chalkDim }}>
-                小組賽每勝 +3、每和 +1;晉級獎勵採累計制:進 32 強 +3、16 強 +6、8 強 +10、4 強 +15、打進決賽 +20、奪冠 +30。
+                小組賽每勝 +3、每和 +1；晉級獎勵採累計制：進 32 強 +3、16 強 +6、8 強 +10、4 強 +15、打進決賽 +20、奪冠 +30。
                 被淘汰的隊伍保留已賺到的分數。同事總分 = 名下所有球隊分數加總。
-                戰績資料每 2 小時由系統自動更新,所有人看到同一份結果;認領名單為抽籤定案,唯讀。
+                戰績資料每 2 小時由系統自動更新，所有人看到同一份結果；認領名單為抽籤定案，唯讀。
               </div>
             </section>
           </div>
