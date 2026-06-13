@@ -209,11 +209,11 @@ export default function App() {
 
   const medal = (i) => (i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : null);
 
-  // 隊名 + 旗幟,後面標上認領同事(若有)
+  // 隊名 + 旗幟,後面以半形空格標上認領同事(若有)
   const TeamLabel = ({ en }) => (
     <>
       {TEAM_BY_EN[en]?.flag} {TEAM_BY_EN[en]?.zh}
-      {owners[en] && <span style={{ color: C.gold }}>（{owners[en]}）</span>}
+      {owners[en] && <span style={{ color: C.gold }}>{" "}{owners[en]}</span>}
     </>
   );
 
@@ -274,7 +274,7 @@ export default function App() {
                   <span style={{ color: C.gold }}>上一場：</span>
                   <TeamLabel en={lastPlayed.a} />
                   {" "}<b style={{ color: C.chalk }}>{lastPlayed.sa} - {lastPlayed.sb}</b>{" "}
-                  <TeamLabel en={lastPlayed.b} />（{lastPlayed.time}）
+                  <TeamLabel en={lastPlayed.b} />{" "}{lastPlayed.time}
                 </>
               ) : (
                 "尚無已完賽"
