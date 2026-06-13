@@ -623,7 +623,7 @@ export default function App() {
               <h2 className="display text-xl font-bold tracking-widest mb-2" style={{ color: C.gold }}>計分規則</h2>
               <div className="text-sm leading-relaxed" style={{ color: C.chalkDim }}>
                 小組賽每勝 +3、每和 +1；晉級獎勵採累計制：進 32 強 +3、16 強 +6、8 強 +10、4 強 +15、打進決賽 +20、奪冠 +30。
-                被淘汰的隊伍保留已賺到的分數。同事總分 = 名下所有球隊分數加總。
+                被淘汰的隊伍保留已賺到的分數。排行榜以「國家」為單位排名、同分並列同名次，最後依國家名次發獎金；認領兩隊的人，兩隊各自計分、不加總（等於有兩次機會）。
                 戰績資料每 2 小時由系統自動更新，所有人看到同一份結果；認領名單為抽籤定案，唯讀。
               </div>
             </section>
