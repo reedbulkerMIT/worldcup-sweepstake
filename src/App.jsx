@@ -87,6 +87,26 @@ function teamPoints(rec) {
 const ROUND_ZH = { r32: "32強", r16: "16強", qf: "8強", sf: "4強", final: "決賽" };
 const ROUND_SEQ = ["r32", "r16", "qf", "sf", "final"];
 
+// 把賽程 "MM-DD HH:mm"(台灣時間 UTC+8、無年份)轉成絕對毫秒,
+// 觀看者時區不影響結果。年份取當前年(世界盃集中年中,不跨年)。
+function twTimeToMs(time) {
+  const m = /^(\d{2})-(\d{2})\s+(\d{2}):(\d{2})$/.exec(String(time).trim());
+  if (!m) return null;
+  const [, mo, d, h, mi] = m;
+  const year = new Date().getFullYear();
+  const ms = Date.parse(`${year}-${mo}-${d}T${h}:${mi}:00+08:00`);
+  return Number.isNaN(ms) ? null : ms;
+}
+
+// 倒數格式:Xd Xh Xm Xs
+function fmtCountdown(ms) {
+  let s = Math.max(0, Math.floor(ms / 1000));
+  const d = Math.floor(s / 86400); s %= 86400;
+  const h = Math.floor(s / 3600); s %= 3600;
+  const m = Math.floor(s / 60); s %= 60;
+  return `${d}d ${h}h ${m}m ${s}s`;
+}
+
 export default function App() {
   const [tab, setTab] = useState("board");
   // 認領名單為靜態資料(src/draw.js),唯讀
@@ -96,20 +116,14 @@ export default function App() {
   const [knockout, setKnockout] = useState([]); // [{round,a,b,winner}]
   const [matches, setMatches] = useState([]); // [{time,a,b}] 台灣時間
   const [played, setPlayed] = useState([]); // ["MM-DD HH:mm|A|sa|sb|B"] 台灣時間
-  const [updatedAt, setUpdatedAt] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const [msg, setMsg] = useState("");
+  const [now, setNow] = useState(() => Date.now()); // 每秒更新,驅動開賽倒數
   const busyRef = useRef(false);
 
-  // ───────── 讀取靜態 data.json ─────────
-  const loadData = useCallback(async (showMsg, prevUpdatedAt) => {
+  // ───────── 讀取靜態 data.json(初次載入;每 2 小時由 GitHub Actions 重產) ─────────
+  const loadData = useCallback(async () => {
     if (busyRef.current) return;
     busyRef.current = true;
-    if (showMsg) {
-      setRefreshing(true);
-      setMsg("正在讀取最新資料⋯");
-    }
     try {
       // 加上時間參數避免瀏覽器/CDN 快取舊資料
       const resp = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: "no-store" });
@@ -119,33 +133,23 @@ export default function App() {
       setKnockout(data.knockout || []);
       setMatches(data.matches || []);
       setPlayed(data.played || []);
-      const nextUpdatedAt = data.updatedAt || null;
-      setUpdatedAt(nextUpdatedAt);
-      if (showMsg) {
-        // 比對重讀前後的時間戳:相同 = 後端這輪沒有新賽果
-        if (nextUpdatedAt && prevUpdatedAt && nextUpdatedAt === prevUpdatedAt) {
-          setMsg("資料已是最新(每 2 小時自動更新)");
-        } else if (nextUpdatedAt) {
-          setMsg(`已更新到 ${new Date(nextUpdatedAt).toLocaleString("zh-TW")}`);
-        } else {
-          setMsg("已載入最新資料");
-        }
-      }
     } catch (e) {
       console.error(e);
-      if (showMsg) setMsg(`讀取失敗:${e.message}。稍後再試一次。`);
     } finally {
       busyRef.current = false;
-      setRefreshing(false);
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    loadData(false);
+    loadData();
   }, [loadData]);
 
-  const refresh = () => loadData(true, updatedAt);
+  // 每秒推進 now,讓 header 開賽倒數隨時間跳動
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
 
   // ───────── 排行榜計算 ─────────
   const board = colleagues
@@ -177,6 +181,17 @@ export default function App() {
       playedByDate[idx[p.date]].list.push(p);
     }
   }
+
+  // header「下一場」:開賽時間 > 現在的最近一場;歸零後因 now 前進自動切下一筆
+  const nextMatch = matches
+    .map((m) => ({ ...m, ms: twTimeToMs(m.time) }))
+    .filter((m) => m.ms != null && m.ms > now)
+    .sort((a, b) => a.ms - b.ms)[0];
+
+  // header「上場」:已完賽中時間最新(剛結束)的一筆
+  const lastPlayed = playedParsed
+    .slice()
+    .sort((a, b) => (a.time < b.time ? 1 : a.time > b.time ? -1 : 0))[0];
 
   // 分組視圖:若已有分組資料就照 A–L,否則照洲別
   const hasGroups = Object.values(results).some((r) => r.group);
@@ -231,18 +246,31 @@ export default function App() {
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-6 relative">
           <div className="text-xs tracking-widest" style={{ color: C.gold }}>OFFICE SWEEPSTAKE · FIFA WORLD CUP 2026</div>
           <h1 className="display text-5xl font-extrabold leading-tight mt-1">公司世界盃<span style={{ color: C.gold }}>獎金戰</span></h1>
-          <div className="flex flex-wrap items-center gap-3 mt-4">
-            <button onClick={refresh} disabled={refreshing}
-              className="display px-5 py-2 rounded font-bold text-lg tracking-wide transition-opacity"
-              style={{ background: C.gold, color: "#1B1B12", opacity: refreshing ? 0.6 : 1 }}>
-              {refreshing ? "更新中⋯" : "⟳ 更新戰績"}
-            </button>
-            <span className="text-sm" style={{ color: C.chalkDim }}>
-              {updatedAt ? `上次更新:${new Date(updatedAt).toLocaleString("zh-TW")}` : "尚未抓取戰績"}
-              <span className="block text-xs">資料每 2 小時自動更新</span>
-            </span>
+          <div className="mt-4 space-y-1.5 text-sm leading-relaxed">
+            <div style={{ color: C.chalk }}>
+              {nextMatch ? (
+                <>
+                  <span style={{ color: C.gold }}>下一場:</span>
+                  {TEAM_BY_EN[nextMatch.a]?.flag} {TEAM_BY_EN[nextMatch.a]?.zh} vs {TEAM_BY_EN[nextMatch.b]?.flag} {TEAM_BY_EN[nextMatch.b]?.zh}
+                  　開賽倒數 <b className="display" style={{ color: C.gold }}>{fmtCountdown(nextMatch.ms - now)}</b>
+                </>
+              ) : (
+                <span style={{ color: C.chalkDim }}>賽程更新中</span>
+              )}
+            </div>
+            <div style={{ color: C.chalkDim }}>
+              {lastPlayed ? (
+                <>
+                  <span style={{ color: C.gold }}>上場:</span>
+                  {TEAM_BY_EN[lastPlayed.a]?.flag} {TEAM_BY_EN[lastPlayed.a]?.zh}
+                  {" "}<b style={{ color: C.chalk }}>{lastPlayed.sa} - {lastPlayed.sb}</b>{" "}
+                  {TEAM_BY_EN[lastPlayed.b]?.flag} {TEAM_BY_EN[lastPlayed.b]?.zh}({lastPlayed.time})
+                </>
+              ) : (
+                "尚無已完賽"
+              )}
+            </div>
           </div>
-          {msg && <div className="mt-2 text-sm" style={{ color: C.gold }}>{msg}</div>}
         </div>
       </header>
 
