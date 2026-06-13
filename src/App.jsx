@@ -73,7 +73,7 @@ const STAGE_ZH = {
   sf: "4強", final: "亞軍戰", champion: "冠軍", eliminated: "已淘汰",
 };
 
-// 靜態資料來源:GitHub Actions 每天產生的 public/data.json
+// 靜態資料來源:GitHub Actions 每 2 小時產生的 public/data.json
 // import.meta.env.BASE_URL = '/worldcup-sweepstake/'(production) 或 '/'(dev)
 const DATA_URL = `${import.meta.env.BASE_URL}data.json`;
 
@@ -103,7 +103,7 @@ export default function App() {
   const busyRef = useRef(false);
 
   // ───────── 讀取靜態 data.json ─────────
-  const loadData = useCallback(async (showMsg) => {
+  const loadData = useCallback(async (showMsg, prevUpdatedAt) => {
     if (busyRef.current) return;
     busyRef.current = true;
     if (showMsg) {
@@ -119,8 +119,18 @@ export default function App() {
       setKnockout(data.knockout || []);
       setMatches(data.matches || []);
       setPlayed(data.played || []);
-      setUpdatedAt(data.updatedAt || null);
-      if (showMsg) setMsg("已載入最新資料");
+      const nextUpdatedAt = data.updatedAt || null;
+      setUpdatedAt(nextUpdatedAt);
+      if (showMsg) {
+        // 比對重讀前後的時間戳:相同 = 後端這輪沒有新賽果
+        if (nextUpdatedAt && prevUpdatedAt && nextUpdatedAt === prevUpdatedAt) {
+          setMsg("資料已是最新(每 2 小時自動更新)");
+        } else if (nextUpdatedAt) {
+          setMsg(`已更新到 ${new Date(nextUpdatedAt).toLocaleString("zh-TW")}`);
+        } else {
+          setMsg("已載入最新資料");
+        }
+      }
     } catch (e) {
       console.error(e);
       if (showMsg) setMsg(`讀取失敗:${e.message}。稍後再試一次。`);
@@ -135,7 +145,7 @@ export default function App() {
     loadData(false);
   }, [loadData]);
 
-  const refresh = () => loadData(true);
+  const refresh = () => loadData(true, updatedAt);
 
   // ───────── 排行榜計算 ─────────
   const board = colleagues
@@ -229,7 +239,7 @@ export default function App() {
             </button>
             <span className="text-sm" style={{ color: C.chalkDim }}>
               {updatedAt ? `上次更新:${new Date(updatedAt).toLocaleString("zh-TW")}` : "尚未抓取戰績"}
-              <span className="block text-xs">資料每天台北時間 07:00 自動更新</span>
+              <span className="block text-xs">資料每 2 小時自動更新</span>
             </span>
           </div>
           {msg && <div className="mt-2 text-sm" style={{ color: C.gold }}>{msg}</div>}
@@ -580,7 +590,7 @@ export default function App() {
               <div className="text-sm leading-relaxed" style={{ color: C.chalkDim }}>
                 小組賽每勝 +3、每和 +1;晉級獎勵採累計制:進 32 強 +3、16 強 +6、8 強 +10、4 強 +15、打進決賽 +20、奪冠 +30。
                 被淘汰的隊伍保留已賺到的分數。同事總分 = 名下所有球隊分數加總。
-                戰績資料每天台北時間 07:00 由系統自動更新,所有人看到同一份結果;認領名單為抽籤定案,唯讀。
+                戰績資料每 2 小時由系統自動更新,所有人看到同一份結果;認領名單為抽籤定案,唯讀。
               </div>
             </section>
           </div>

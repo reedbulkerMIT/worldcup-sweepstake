@@ -1,9 +1,11 @@
 name: Update data.json
 
 on:
-  # cron 為 UTC;23:00 UTC = 台北時間 07:00
+  # cron 為 UTC;每 2 小時跑一次(跟著賽事走)。
+  # update_data.py 內建無變化保護:無新賽果時 data.json 位元組不變,
+  # 下方 commit 步驟會 git diff 判定無變更而跳過 → 不會重新部署。
   schedule:
-    - cron: "0 23 * * *"
+    - cron: "0 */2 * * *"
   # 讓你能從 GitHub Actions 頁(手機也可)手動觸發
   workflow_dispatch:
 
