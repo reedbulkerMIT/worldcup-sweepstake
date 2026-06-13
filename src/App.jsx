@@ -274,7 +274,7 @@ export default function App() {
                   <span style={{ color: C.gold }}>上一場：</span>
                   <TeamLabel en={lastPlayed.a} />
                   {" "}<b style={{ color: C.chalk }}>{lastPlayed.sa} - {lastPlayed.sb}</b>{" "}
-                  <TeamLabel en={lastPlayed.b} />{" "}{lastPlayed.time}
+                  <TeamLabel en={lastPlayed.b} />
                 </>
               ) : (
                 "尚無已完賽"
