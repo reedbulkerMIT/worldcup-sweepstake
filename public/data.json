@@ -2,21 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Brazil",
-      "b": "Morocco",
-      "time": "06-14 06:00"
-    },
-    {
-      "a": "Haiti",
-      "b": "Scotland",
-      "time": "06-14 09:00"
-    },
-    {
-      "a": "Australia",
-      "b": "Turkiye",
-      "time": "06-14 12:00"
-    },
-    {
       "a": "Germany",
       "b": "Curacao",
       "time": "06-15 01:00"
@@ -60,6 +45,21 @@
       "a": "France",
       "b": "Senegal",
       "time": "06-17 03:00"
+    },
+    {
+      "a": "Iraq",
+      "b": "Norway",
+      "time": "06-17 06:00"
+    },
+    {
+      "a": "Argentina",
+      "b": "Algeria",
+      "time": "06-17 09:00"
+    },
+    {
+      "a": "Austria",
+      "b": "Jordan",
+      "time": "06-17 12:00"
     }
   ],
   "played": [
@@ -67,7 +67,9 @@
     "06-12 10:00|South Korea|2|1|Czechia",
     "06-13 03:00|Canada|1|1|Bosnia and Herzegovina",
     "06-13 09:00|United States|4|1|Paraguay",
-    "06-14 03:00|Qatar|1|1|Switzerland"
+    "06-14 03:00|Qatar|1|1|Switzerland",
+    "06-14 06:00|Brazil|1|1|Morocco",
+    "06-14 09:00|Haiti|0|1|Scotland"
   ],
   "results": {
     "Algeria": {
@@ -92,7 +94,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Austria": {
       "d": 0,
@@ -119,7 +121,7 @@
       "w": 0
     },
     "Brazil": {
-      "d": 0,
+      "d": 1,
       "group": "C",
       "l": 0,
       "out": false,
@@ -241,7 +243,7 @@
     "Haiti": {
       "d": 0,
       "group": "C",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -287,7 +289,7 @@
       "w": 1
     },
     "Morocco": {
-      "d": 0,
+      "d": 1,
       "group": "C",
       "l": 0,
       "out": false,
@@ -364,7 +366,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Senegal": {
       "d": 0,
@@ -425,7 +427,7 @@
     "Turkiye": {
       "d": 0,
       "group": "D",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -455,5 +457,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-13T21:54:18.086413+00:00"
+  "updatedAt": "2026-06-14T05:03:05.235902+00:00"
 }
