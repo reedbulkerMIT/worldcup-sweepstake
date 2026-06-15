@@ -16,6 +16,12 @@ permissions:
   contents: write
   actions: write
 
+# 同一時間只跑一個 update-data,避免兩個 run 同時 push 造成 non-fast-forward 被拒。
+# cancel-in-progress: false → 後到的排隊等候,不打斷進行中的(避免 push 到一半被砍)。
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -33,19 +39,35 @@ jobs:
         run: python scripts/update_data.py
 
       - name: Commit data.json if changed
+        id: commit
+        env:
+          # 重試時要重新產生 data.json,故此步也需要 token(同樣只經環境變數)
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/data.json
-          if git diff --cached --quiet; then
-            echo "data.json 無變更,跳過 commit。"
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
+          branch="${GITHUB_REF_NAME:-main}"
+          changed=false
+          # 若 push 被拒(別的 run/人先推到同一分支),整合最新後重產再推,最多 5 次。
+          # 重產會以最新 data.json 做單調聯集,已完賽不會因競態而掉場。
+          for attempt in 1 2 3 4 5; do
+            git add public/data.json
+            if git diff --cached --quiet; then
+              echo "data.json 無變更,跳過 commit。"
+              break
+            fi
             git commit -m "chore: update data.json [skip ci]"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
-        id: commit
+            if git push origin "HEAD:$branch"; then
+              echo "已推送 (attempt $attempt)。"
+              changed=true
+              break
+            fi
+            echo "::warning::push 被拒(他人先推到 $branch),整合最新後重試 ($attempt/5)…"
+            git fetch origin "$branch"
+            git reset --hard "origin/$branch"   # 捨棄本地 commit,取得最新 data.json
+            python scripts/update_data.py        # 以最新內容重產(維持單調聯集)
+          done
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       # GITHUB_TOKEN 造成的 push 不會自動觸發 deploy.yml(GitHub 防遞迴),
       # 所以資料有變更時顯式 dispatch 一次部署(workflow_dispatch 是允許的例外)。
