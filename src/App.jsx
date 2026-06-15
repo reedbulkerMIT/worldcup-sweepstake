@@ -565,26 +565,30 @@ export default function App() {
                   const ta = TEAM_BY_EN[m.a], tb = TEAM_BY_EN[m.b];
                   const oa = owners[m.a], ob = owners[m.b];
                   return (
-                    <div key={idx} className="chalkline py-3 flex items-center gap-3">
-                      <div className="display text-lg font-bold w-24 shrink-0" style={{ color: C.gold }}>
-                        {m.time}
-                        {m.live && (
-                          <div className="text-xs font-bold leading-tight" style={{ color: C.red }}>● 進行中/賽果更新中</div>
-                        )}
-                      </div>
-                      <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0">
-                        <div className="min-w-0">
-                          <div className="text-sm font-medium truncate">{ta.zh}</div>
-                          {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
+                    <div key={idx} className="chalkline py-3">
+                      {m.live && (
+                        <div className="text-xs font-bold mb-1 whitespace-nowrap" style={{ color: C.red }}>
+                          ● 進行中／賽果更新中
                         </div>
-                        <Flag en={m.a} h={18} className="shrink-0" />
-                      </div>
-                      <span className="display font-bold shrink-0" style={{ color: C.chalkDim }}>vs</span>
-                      <div className="flex-1 flex items-center gap-2 min-w-0">
-                        <Flag en={m.b} h={18} className="shrink-0" />
-                        <div className="min-w-0">
-                          <div className="text-sm font-medium truncate">{tb.zh}</div>
-                          {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
+                      )}
+                      <div className="flex items-center gap-3">
+                        <div className="display text-lg font-bold w-24 shrink-0" style={{ color: C.gold }}>
+                          {m.time}
+                        </div>
+                        <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0">
+                          <div className="min-w-0">
+                            <div className="text-sm font-medium truncate">{ta.zh}</div>
+                            {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
+                          </div>
+                          <Flag en={m.a} h={18} className="shrink-0" />
+                        </div>
+                        <span className="display font-bold shrink-0" style={{ color: C.chalkDim }}>vs</span>
+                        <div className="flex-1 flex items-center gap-2 min-w-0">
+                          <Flag en={m.b} h={18} className="shrink-0" />
+                          <div className="min-w-0">
+                            <div className="text-sm font-medium truncate">{tb.zh}</div>
+                            {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
+                          </div>
                         </div>
                       </div>
                     </div>
