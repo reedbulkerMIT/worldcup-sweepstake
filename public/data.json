@@ -72,8 +72,7 @@
     "06-14 09:00|Haiti|0|1|Scotland",
     "06-14 12:00|Australia|2|0|Turkiye",
     "06-15 01:00|Germany|7|1|Curacao",
-    "06-15 04:00|Netherlands|2|2|Japan",
-    "06-15 07:00|Cote d'Ivoire|1|0|Ecuador"
+    "06-15 04:00|Netherlands|2|2|Japan"
   ],
   "results": {
     "Algeria": {
@@ -461,5 +460,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-15T03:49:14.151510+00:00"
+  "updatedAt": "2026-06-15T03:49:41.059078+00:00"
 }
