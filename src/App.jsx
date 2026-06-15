@@ -2,64 +2,120 @@ import { useState, useEffect, useCallback, useRef, Fragment } from "react";
 import { OWNERS, COLLEAGUES } from "./draw";
 
 // ───────────────────────── 48 隊名單 ─────────────────────────
+// code = ISO 3166-1 alpha-2(小寫),供 flagcdn.com/{code}.svg 使用;
+// 英格蘭/蘇格蘭等非主權隊用 flagcdn 的細分碼(gb-eng、gb-sct)。
 const TEAMS = [
   // AFC
-  { en: "Australia", zh: "澳洲", flag: "🇦🇺", conf: "亞足聯 AFC" },
-  { en: "Iran", zh: "伊朗", flag: "🇮🇷", conf: "亞足聯 AFC" },
-  { en: "Japan", zh: "日本", flag: "🇯🇵", conf: "亞足聯 AFC" },
-  { en: "Jordan", zh: "約旦", flag: "🇯🇴", conf: "亞足聯 AFC" },
-  { en: "South Korea", zh: "南韓", flag: "🇰🇷", conf: "亞足聯 AFC" },
-  { en: "Qatar", zh: "卡達", flag: "🇶🇦", conf: "亞足聯 AFC" },
-  { en: "Saudi Arabia", zh: "沙烏地阿拉伯", flag: "🇸🇦", conf: "亞足聯 AFC" },
-  { en: "Uzbekistan", zh: "烏茲別克", flag: "🇺🇿", conf: "亞足聯 AFC" },
-  { en: "Iraq", zh: "伊拉克", flag: "🇮🇶", conf: "亞足聯 AFC" },
+  { en: "Australia", zh: "澳洲", code: "au", conf: "亞足聯 AFC" },
+  { en: "Iran", zh: "伊朗", code: "ir", conf: "亞足聯 AFC" },
+  { en: "Japan", zh: "日本", code: "jp", conf: "亞足聯 AFC" },
+  { en: "Jordan", zh: "約旦", code: "jo", conf: "亞足聯 AFC" },
+  { en: "South Korea", zh: "南韓", code: "kr", conf: "亞足聯 AFC" },
+  { en: "Qatar", zh: "卡達", code: "qa", conf: "亞足聯 AFC" },
+  { en: "Saudi Arabia", zh: "沙烏地阿拉伯", code: "sa", conf: "亞足聯 AFC" },
+  { en: "Uzbekistan", zh: "烏茲別克", code: "uz", conf: "亞足聯 AFC" },
+  { en: "Iraq", zh: "伊拉克", code: "iq", conf: "亞足聯 AFC" },
   // CAF
-  { en: "Algeria", zh: "阿爾及利亞", flag: "🇩🇿", conf: "非足聯 CAF" },
-  { en: "Cabo Verde", zh: "維德角", flag: "🇨🇻", conf: "非足聯 CAF" },
-  { en: "Cote d'Ivoire", zh: "象牙海岸", flag: "🇨🇮", conf: "非足聯 CAF" },
-  { en: "Egypt", zh: "埃及", flag: "🇪🇬", conf: "非足聯 CAF" },
-  { en: "Ghana", zh: "迦納", flag: "🇬🇭", conf: "非足聯 CAF" },
-  { en: "Morocco", zh: "摩洛哥", flag: "🇲🇦", conf: "非足聯 CAF" },
-  { en: "Senegal", zh: "塞內加爾", flag: "🇸🇳", conf: "非足聯 CAF" },
-  { en: "South Africa", zh: "南非", flag: "🇿🇦", conf: "非足聯 CAF" },
-  { en: "Tunisia", zh: "突尼西亞", flag: "🇹🇳", conf: "非足聯 CAF" },
-  { en: "DR Congo", zh: "民主剛果", flag: "🇨🇩", conf: "非足聯 CAF" },
+  { en: "Algeria", zh: "阿爾及利亞", code: "dz", conf: "非足聯 CAF" },
+  { en: "Cabo Verde", zh: "維德角", code: "cv", conf: "非足聯 CAF" },
+  { en: "Cote d'Ivoire", zh: "象牙海岸", code: "ci", conf: "非足聯 CAF" },
+  { en: "Egypt", zh: "埃及", code: "eg", conf: "非足聯 CAF" },
+  { en: "Ghana", zh: "迦納", code: "gh", conf: "非足聯 CAF" },
+  { en: "Morocco", zh: "摩洛哥", code: "ma", conf: "非足聯 CAF" },
+  { en: "Senegal", zh: "塞內加爾", code: "sn", conf: "非足聯 CAF" },
+  { en: "South Africa", zh: "南非", code: "za", conf: "非足聯 CAF" },
+  { en: "Tunisia", zh: "突尼西亞", code: "tn", conf: "非足聯 CAF" },
+  { en: "DR Congo", zh: "民主剛果", code: "cd", conf: "非足聯 CAF" },
   // CONCACAF
-  { en: "United States", zh: "美國", flag: "🇺🇸", conf: "中北美 CONCACAF" },
-  { en: "Canada", zh: "加拿大", flag: "🇨🇦", conf: "中北美 CONCACAF" },
-  { en: "Mexico", zh: "墨西哥", flag: "🇲🇽", conf: "中北美 CONCACAF" },
-  { en: "Curacao", zh: "古拉索", flag: "🇨🇼", conf: "中北美 CONCACAF" },
-  { en: "Haiti", zh: "海地", flag: "🇭🇹", conf: "中北美 CONCACAF" },
-  { en: "Panama", zh: "巴拿馬", flag: "🇵🇦", conf: "中北美 CONCACAF" },
+  { en: "United States", zh: "美國", code: "us", conf: "中北美 CONCACAF" },
+  { en: "Canada", zh: "加拿大", code: "ca", conf: "中北美 CONCACAF" },
+  { en: "Mexico", zh: "墨西哥", code: "mx", conf: "中北美 CONCACAF" },
+  { en: "Curacao", zh: "古拉索", code: "cw", conf: "中北美 CONCACAF" },
+  { en: "Haiti", zh: "海地", code: "ht", conf: "中北美 CONCACAF" },
+  { en: "Panama", zh: "巴拿馬", code: "pa", conf: "中北美 CONCACAF" },
   // CONMEBOL
-  { en: "Argentina", zh: "阿根廷", flag: "🇦🇷", conf: "南美 CONMEBOL" },
-  { en: "Brazil", zh: "巴西", flag: "🇧🇷", conf: "南美 CONMEBOL" },
-  { en: "Colombia", zh: "哥倫比亞", flag: "🇨🇴", conf: "南美 CONMEBOL" },
-  { en: "Ecuador", zh: "厄瓜多", flag: "🇪🇨", conf: "南美 CONMEBOL" },
-  { en: "Paraguay", zh: "巴拉圭", flag: "🇵🇾", conf: "南美 CONMEBOL" },
-  { en: "Uruguay", zh: "烏拉圭", flag: "🇺🇾", conf: "南美 CONMEBOL" },
+  { en: "Argentina", zh: "阿根廷", code: "ar", conf: "南美 CONMEBOL" },
+  { en: "Brazil", zh: "巴西", code: "br", conf: "南美 CONMEBOL" },
+  { en: "Colombia", zh: "哥倫比亞", code: "co", conf: "南美 CONMEBOL" },
+  { en: "Ecuador", zh: "厄瓜多", code: "ec", conf: "南美 CONMEBOL" },
+  { en: "Paraguay", zh: "巴拉圭", code: "py", conf: "南美 CONMEBOL" },
+  { en: "Uruguay", zh: "烏拉圭", code: "uy", conf: "南美 CONMEBOL" },
   // OFC
-  { en: "New Zealand", zh: "紐西蘭", flag: "🇳🇿", conf: "大洋洲 OFC" },
+  { en: "New Zealand", zh: "紐西蘭", code: "nz", conf: "大洋洲 OFC" },
   // UEFA
-  { en: "England", zh: "英格蘭", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", conf: "歐足聯 UEFA" },
-  { en: "France", zh: "法國", flag: "🇫🇷", conf: "歐足聯 UEFA" },
-  { en: "Croatia", zh: "克羅埃西亞", flag: "🇭🇷", conf: "歐足聯 UEFA" },
-  { en: "Norway", zh: "挪威", flag: "🇳🇴", conf: "歐足聯 UEFA" },
-  { en: "Portugal", zh: "葡萄牙", flag: "🇵🇹", conf: "歐足聯 UEFA" },
-  { en: "Germany", zh: "德國", flag: "🇩🇪", conf: "歐足聯 UEFA" },
-  { en: "Netherlands", zh: "荷蘭", flag: "🇳🇱", conf: "歐足聯 UEFA" },
-  { en: "Austria", zh: "奧地利", flag: "🇦🇹", conf: "歐足聯 UEFA" },
-  { en: "Belgium", zh: "比利時", flag: "🇧🇪", conf: "歐足聯 UEFA" },
-  { en: "Scotland", zh: "蘇格蘭", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", conf: "歐足聯 UEFA" },
-  { en: "Spain", zh: "西班牙", flag: "🇪🇸", conf: "歐足聯 UEFA" },
-  { en: "Switzerland", zh: "瑞士", flag: "🇨🇭", conf: "歐足聯 UEFA" },
-  { en: "Sweden", zh: "瑞典", flag: "🇸🇪", conf: "歐足聯 UEFA" },
-  { en: "Turkiye", zh: "土耳其", flag: "🇹🇷", conf: "歐足聯 UEFA" },
-  { en: "Bosnia and Herzegovina", zh: "波赫", flag: "🇧🇦", conf: "歐足聯 UEFA" },
-  { en: "Czechia", zh: "捷克", flag: "🇨🇿", conf: "歐足聯 UEFA" },
+  { en: "England", zh: "英格蘭", code: "gb-eng", conf: "歐足聯 UEFA" },
+  { en: "France", zh: "法國", code: "fr", conf: "歐足聯 UEFA" },
+  { en: "Croatia", zh: "克羅埃西亞", code: "hr", conf: "歐足聯 UEFA" },
+  { en: "Norway", zh: "挪威", code: "no", conf: "歐足聯 UEFA" },
+  { en: "Portugal", zh: "葡萄牙", code: "pt", conf: "歐足聯 UEFA" },
+  { en: "Germany", zh: "德國", code: "de", conf: "歐足聯 UEFA" },
+  { en: "Netherlands", zh: "荷蘭", code: "nl", conf: "歐足聯 UEFA" },
+  { en: "Austria", zh: "奧地利", code: "at", conf: "歐足聯 UEFA" },
+  { en: "Belgium", zh: "比利時", code: "be", conf: "歐足聯 UEFA" },
+  { en: "Scotland", zh: "蘇格蘭", code: "gb-sct", conf: "歐足聯 UEFA" },
+  { en: "Spain", zh: "西班牙", code: "es", conf: "歐足聯 UEFA" },
+  { en: "Switzerland", zh: "瑞士", code: "ch", conf: "歐足聯 UEFA" },
+  { en: "Sweden", zh: "瑞典", code: "se", conf: "歐足聯 UEFA" },
+  { en: "Turkiye", zh: "土耳其", code: "tr", conf: "歐足聯 UEFA" },
+  { en: "Bosnia and Herzegovina", zh: "波赫", code: "ba", conf: "歐足聯 UEFA" },
+  { en: "Czechia", zh: "捷克", code: "cz", conf: "歐足聯 UEFA" },
 ];
 
 const TEAM_BY_EN = Object.fromEntries(TEAMS.map((t) => [t.en, t]));
+
+// ───────────────────────── 國旗 ─────────────────────────
+// Windows 沒有內建旗幟 emoji 字型(只會 fallback 成雙字母),改用 flagcdn.com
+// 的 SVG 國旗,跨平台一致。固定高度、alt=隊名;載入失敗時 fallback 顯示國碼
+// 文字(不破版)。在模組層定義,讓每個實例各自保有錯誤狀態。
+function Flag({ en, h = 16, className = "", style }) {
+  const t = TEAM_BY_EN[en];
+  const [failed, setFailed] = useState(false);
+  const code = t?.code;
+  if (!code) return null;
+  if (failed) {
+    return (
+      <span
+        className={className}
+        title={t?.zh || en}
+        style={{
+          display: "inline-block",
+          height: h,
+          lineHeight: `${h}px`,
+          fontSize: Math.round(h * 0.62),
+          padding: "0 4px",
+          borderRadius: 2,
+          background: "rgba(242,238,223,0.14)",
+          color: "rgba(242,238,223,0.9)",
+          fontWeight: 700,
+          letterSpacing: "0.04em",
+          verticalAlign: "middle",
+          whiteSpace: "nowrap",
+          ...style,
+        }}
+      >
+        {code.toUpperCase()}
+      </span>
+    );
+  }
+  return (
+    <img
+      src={`https://flagcdn.com/${code}.svg`}
+      alt={t?.zh || en}
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className={className}
+      style={{
+        height: h,
+        width: "auto",
+        display: "inline-block",
+        verticalAlign: "middle",
+        borderRadius: 2,
+        boxShadow: "0 0 0 1px rgba(0,0,0,0.25)",
+        ...style,
+      }}
+    />
+  );
+}
 
 // ───────────────────── 積分規則(累計制) ─────────────────────
 // 小組賽:勝 +3 / 和 +1;晉級獎勵為「到達該輪」的累計總分
@@ -226,7 +282,7 @@ export default function App() {
   // 隊名 + 旗幟,後面以半形空格標上認領同事(若有)
   const TeamLabel = ({ en }) => (
     <>
-      {TEAM_BY_EN[en]?.flag} {TEAM_BY_EN[en]?.zh}
+      <Flag en={en} h={14} style={{ marginRight: 4 }} />{TEAM_BY_EN[en]?.zh}
       {owners[en] && <span style={{ color: C.gold }}>{" "}{owners[en]}</span>}
     </>
   );
@@ -342,7 +398,7 @@ export default function App() {
                     <span className="display text-3xl font-extrabold w-10 text-right shrink-0" style={{ color: top ? C.gold : C.chalkDim }}>
                       {row.rank}
                     </span>
-                    <span className="text-2xl shrink-0">{row.flag}</span>
+                    <Flag en={row.en} h={22} className="shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="display text-2xl font-bold" style={{ textDecoration: row.rec?.out ? "line-through" : "none" }}>
                         {row.zh} {medal(row.rank - 1) && <span className="ml-1">{medal(row.rank - 1)}</span>}
@@ -409,7 +465,7 @@ export default function App() {
                                   borderBottom: i === 1 ? "2px dashed rgba(242,238,223,0.35)" : "none",
                                 }}>
                                 <span className="text-xs w-3 text-right" style={{ color: C.chalkDim }}>{i + 1}</span>
-                                <span>{t.flag}</span>
+                                <Flag en={t.en} h={14} className="shrink-0" />
                                 <span className="text-sm font-medium" style={{ textDecoration: rec.out ? "line-through" : "none" }}>
                                   {t.zh}
                                 </span>
@@ -452,7 +508,7 @@ export default function App() {
                                     background: won ? "rgba(227,184,79,0.12)" : "transparent",
                                     borderLeft: won ? `3px solid ${C.gold}` : "3px solid transparent",
                                   }}>
-                                  <span>{t.flag}</span>
+                                  <Flag en={teamEn} h={14} className="shrink-0" />
                                   <span className="text-sm font-medium flex-1" style={{ textDecoration: lost ? "line-through" : "none" }}>
                                     {t.zh}
                                   </span>
@@ -505,11 +561,11 @@ export default function App() {
                           <div className="text-sm font-medium truncate">{ta.zh}</div>
                           {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
                         </div>
-                        <span className="text-xl shrink-0">{ta.flag}</span>
+                        <Flag en={m.a} h={18} className="shrink-0" />
                       </div>
                       <span className="display font-bold shrink-0" style={{ color: C.chalkDim }}>vs</span>
                       <div className="flex-1 flex items-center gap-2 min-w-0">
-                        <span className="text-xl shrink-0">{tb.flag}</span>
+                        <Flag en={m.b} h={18} className="shrink-0" />
                         <div className="min-w-0">
                           <div className="text-sm font-medium truncate">{tb.zh}</div>
                           {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
@@ -554,14 +610,14 @@ export default function App() {
                             <div className="text-sm font-medium truncate" style={{ textDecoration: aLost ? "line-through" : "none" }}>{ta.zh}</div>
                             {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
                           </div>
-                          <span className="text-xl shrink-0">{ta.flag}</span>
+                          <Flag en={p.a} h={18} className="shrink-0" />
                         </div>
                         <span className="display text-lg font-extrabold shrink-0 w-16 text-center" style={{ color: C.gold }}>
                           {p.sa} - {p.sb}
                         </span>
                         <div className="flex-1 flex items-center gap-2 min-w-0"
                           style={{ opacity: bLost ? 0.45 : 1 }}>
-                          <span className="text-xl shrink-0">{tb.flag}</span>
+                          <Flag en={p.b} h={18} className="shrink-0" />
                           <div className="min-w-0">
                             <div className="text-sm font-medium truncate" style={{ textDecoration: bLost ? "line-through" : "none" }}>{tb.zh}</div>
                             {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
@@ -590,7 +646,7 @@ export default function App() {
                     return (
                       <div key={t.en} className="rounded p-3 flex items-center gap-3"
                         style={{ background: "rgba(0,0,0,0.25)", opacity: rec?.out ? 0.55 : 1 }}>
-                        <span className="text-2xl">{t.flag}</span>
+                        <Flag en={t.en} h={22} className="shrink-0" />
                         <div className="flex-1 min-w-0">
                           <div className="font-bold">{t.zh}<span className="text-xs ml-1" style={{ color: C.chalkDim }}>{t.en}</span></div>
                           <div className="text-xs mt-0.5" style={{ color: C.chalkDim }}>
@@ -643,7 +699,7 @@ export default function App() {
                 {TEAMS.map((t) => (
                   <div key={t.en} className="flex items-center gap-2 rounded px-3 py-2"
                     style={{ background: "rgba(0,0,0,0.25)" }}>
-                    <span className="text-xl">{t.flag}</span>
+                    <Flag en={t.en} h={18} className="shrink-0" />
                     <span className="flex-1 text-sm font-medium">{t.zh}</span>
                     <span className="text-sm px-2 py-1 rounded"
                       style={{ color: owners[t.en] ? C.gold : C.chalkDim }}>
