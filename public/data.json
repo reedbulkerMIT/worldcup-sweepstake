@@ -2,12 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Sweden",
-      "b": "Tunisia",
-      "live": true,
-      "time": "06-15 10:00"
-    },
-    {
       "a": "Spain",
       "b": "Cabo Verde",
       "time": "06-16 00:00"
@@ -61,6 +55,11 @@
       "a": "Ghana",
       "b": "Panama",
       "time": "06-18 07:00"
+    },
+    {
+      "a": "Uzbekistan",
+      "b": "Colombia",
+      "time": "06-18 10:00"
     }
   ],
   "played": [
@@ -74,7 +73,8 @@
     "06-14 12:00|Australia|2|0|Turkiye",
     "06-15 01:00|Germany|7|1|Curacao",
     "06-15 04:00|Netherlands|2|2|Japan",
-    "06-15 07:00|Cote d'Ivoire|1|0|Ecuador"
+    "06-15 07:00|Cote d'Ivoire|1|0|Ecuador",
+    "06-15 10:00|Sweden|5|1|Tunisia"
   ],
   "results": {
     "Algeria": {
@@ -462,5 +462,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-15T03:59:50.605306+00:00"
+  "updatedAt": "2026-06-15T05:13:31.881035+00:00"
 }
