@@ -142,7 +142,7 @@ const STAGE_ZH = {
   sf: "4強", final: "亞軍戰", champion: "冠軍", eliminated: "已淘汰",
 };
 
-// 靜態資料來源:GitHub Actions 每 2 小時產生的 public/data.json
+// 靜態資料來源:GitHub Actions 定期自動產生的 public/data.json
 // import.meta.env.BASE_URL = '/worldcup-sweepstake/'(production) 或 '/'(dev)
 const DATA_URL = `${import.meta.env.BASE_URL}data.json`;
 
@@ -189,7 +189,7 @@ export default function App() {
   const [now, setNow] = useState(() => Date.now()); // 每秒更新,驅動開賽倒數
   const busyRef = useRef(false);
 
-  // ───────── 讀取靜態 data.json(初次載入;每 2 小時由 GitHub Actions 重產) ─────────
+  // ───────── 讀取靜態 data.json(初次載入;由 GitHub Actions 定期重產) ─────────
   const loadData = useCallback(async () => {
     if (busyRef.current) return;
     busyRef.current = true;
@@ -728,7 +728,7 @@ export default function App() {
               <div className="text-sm leading-relaxed" style={{ color: C.chalkDim }}>
                 小組賽每勝 +3、每和 +1；晉級獎勵採累計制：進 32 強 +3、16 強 +6、8 強 +10、4 強 +15、打進決賽 +20、奪冠 +30。
                 被淘汰的隊伍保留已賺到的分數。排行榜以「國家」為單位排名、同分並列同名次，最後依國家名次發獎金；認領兩隊的人，兩隊各自計分、不加總（等於有兩次機會）。
-                戰績資料每 2 小時由系統自動更新，所有人看到同一份結果；認領名單為抽籤定案，唯讀。
+                戰績資料由系統定期自動更新，所有人看到同一份結果；認領名單為抽籤定案，唯讀。
               </div>
             </section>
           </div>
