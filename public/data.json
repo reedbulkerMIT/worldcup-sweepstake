@@ -2,16 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Cote d'Ivoire",
-      "b": "Ecuador",
-      "time": "06-15 07:00"
-    },
-    {
-      "a": "Sweden",
-      "b": "Tunisia",
-      "time": "06-15 10:00"
-    },
-    {
       "a": "Spain",
       "b": "Cabo Verde",
       "time": "06-16 00:00"
@@ -60,6 +50,16 @@
       "a": "England",
       "b": "Croatia",
       "time": "06-18 04:00"
+    },
+    {
+      "a": "Ghana",
+      "b": "Panama",
+      "time": "06-18 07:00"
+    },
+    {
+      "a": "Uzbekistan",
+      "b": "Colombia",
+      "time": "06-18 10:00"
     }
   ],
   "played": [
@@ -161,7 +161,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Croatia": {
       "d": 0,
@@ -198,7 +198,7 @@
     "Ecuador": {
       "d": 0,
       "group": "E",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -409,7 +409,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Switzerland": {
       "d": 1,
@@ -422,7 +422,7 @@
     "Tunisia": {
       "d": 0,
       "group": "F",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -460,5 +460,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-14T22:20:54.480635+00:00"
+  "updatedAt": "2026-06-15T03:31:39.758178+00:00"
 }
