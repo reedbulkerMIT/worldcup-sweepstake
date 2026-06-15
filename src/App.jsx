@@ -569,7 +569,7 @@ export default function App() {
                       <div className="display text-lg font-bold w-24 shrink-0" style={{ color: C.gold }}>
                         {m.time}
                         {m.live && (
-                          <div className="text-xs font-bold" style={{ color: C.red }}>● 進行中</div>
+                          <div className="text-xs font-bold leading-tight" style={{ color: C.red }}>● 進行中/賽果更新中</div>
                         )}
                       </div>
                       <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0">
