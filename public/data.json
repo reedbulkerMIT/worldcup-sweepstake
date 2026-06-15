@@ -65,7 +65,6 @@
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
-    "06-13 03:00|Canada|1|1|Bosnia and Herzegovina",
     "06-13 09:00|United States|4|1|Paraguay",
     "06-14 03:00|Qatar|1|1|Switzerland",
     "06-14 06:00|Brazil|1|1|Morocco",
@@ -461,5 +460,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-15T03:38:28.550986+00:00"
+  "updatedAt": "2026-06-15T03:46:53.754937+00:00"
 }
