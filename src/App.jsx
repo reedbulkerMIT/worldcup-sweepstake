@@ -65,32 +65,44 @@ const TEAM_BY_EN = Object.fromEntries(TEAMS.map((t) => [t.en, t]));
 
 // ───────────────────────── 國旗 ─────────────────────────
 // Windows 沒有內建旗幟 emoji 字型(只會 fallback 成雙字母),改用 flagcdn.com
-// 的 SVG 國旗,跨平台一致。固定高度、alt=隊名;載入失敗時 fallback 顯示國碼
-// 文字(不破版)。在模組層定義,讓每個實例各自保有錯誤狀態。
-function Flag({ en, h = 16, className = "", style }) {
+// 的 SVG 國旗,跨平台一致。各國長寬比不同,所以外層包一個「固定寬度」容器,
+// 旗子在盒內 object-fit:contain、置中、維持原始比例不變形;所有旗子容器等寬,
+// 後面的隊名/國碼才會切齊成一直線(瑞士方旗、卡達長旗都置中不破格)。
+// 載入失敗時 fallback 顯示國碼文字,且落在同一個固定寬度容器內維持對齊。
+// 在模組層定義,讓每個實例各自保有錯誤狀態。
+function Flag({ en, h = 16, w, className = "", style }) {
   const t = TEAM_BY_EN[en];
   const [failed, setFailed] = useState(false);
   const code = t?.code;
   if (!code) return null;
+  // 容器寬度:預設依高度取一個協調比例(h=22→32px,落在 28–32 區間;主流 3:2 旗
+  // 剛好填滿高度,方旗/長旗則置中留邊);可用 w 覆寫。
+  const boxW = w ?? Math.round(h * 1.45);
+  const box = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: boxW,
+    height: h,
+    flex: "0 0 auto",
+    verticalAlign: "middle",
+    ...style,
+  };
   if (failed) {
     return (
       <span
         className={className}
         title={t?.zh || en}
         style={{
-          display: "inline-block",
-          height: h,
-          lineHeight: `${h}px`,
-          fontSize: Math.round(h * 0.62),
-          padding: "0 4px",
+          ...box,
+          fontSize: Math.round(h * 0.6),
           borderRadius: 2,
           background: "rgba(242,238,223,0.14)",
           color: "rgba(242,238,223,0.9)",
           fontWeight: 700,
-          letterSpacing: "0.04em",
-          verticalAlign: "middle",
+          letterSpacing: "0.02em",
+          overflow: "hidden",
           whiteSpace: "nowrap",
-          ...style,
         }}
       >
         {code.toUpperCase()}
@@ -98,22 +110,23 @@ function Flag({ en, h = 16, className = "", style }) {
     );
   }
   return (
-    <img
-      src={`https://flagcdn.com/${code}.svg`}
-      alt={t?.zh || en}
-      loading="lazy"
-      onError={() => setFailed(true)}
-      className={className}
-      style={{
-        height: h,
-        width: "auto",
-        display: "inline-block",
-        verticalAlign: "middle",
-        borderRadius: 2,
-        boxShadow: "0 0 0 1px rgba(0,0,0,0.25)",
-        ...style,
-      }}
-    />
+    <span className={className} style={box}>
+      <img
+        src={`https://flagcdn.com/${code}.svg`}
+        alt={t?.zh || en}
+        loading="lazy"
+        onError={() => setFailed(true)}
+        style={{
+          height: h,
+          width: "auto",
+          maxWidth: "100%",
+          objectFit: "contain",
+          display: "block",
+          borderRadius: 2,
+          boxShadow: "0 0 0 1px rgba(0,0,0,0.25)",
+        }}
+      />
+    </span>
   );
 }
 
