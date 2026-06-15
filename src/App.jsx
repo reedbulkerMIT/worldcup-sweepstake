@@ -568,6 +568,9 @@ export default function App() {
                     <div key={idx} className="chalkline py-3 flex items-center gap-3">
                       <div className="display text-lg font-bold w-24 shrink-0" style={{ color: C.gold }}>
                         {m.time}
+                        {m.live && (
+                          <div className="text-xs font-bold" style={{ color: C.red }}>● 進行中</div>
+                        )}
                       </div>
                       <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0">
                         <div className="min-w-0">
@@ -588,7 +591,7 @@ export default function App() {
                   );
                 })}
                 <div className="text-xs mt-3" style={{ color: C.chalkDim }}>
-                  每次更新抓接下來 12 場；隊名下方為認領同事。
+                  顯示最近 12 場（含進行中）；隊名下方為認領同事。
                 </div>
               </div>
             )}

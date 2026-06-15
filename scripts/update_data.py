@@ -208,11 +208,12 @@ def build_knockout_and_progress(matches, results):
 
 
 def build_played(matches):
-    """所有 FINISHED 比賽 → "MM-DD HH:mm|TeamA|scoreA|scoreB|TeamB"(台灣時間)。"""
+    """所有已分出結果的比賽 → "MM-DD HH:mm|TeamA|scoreA|scoreB|TeamB"(台灣時間)。
+    FINISHED 與 AWARDED(判定賽果)都算已完賽。"""
     played = []
     finished = [
         m for m in matches.get("matches", [])
-        if m.get("status") == "FINISHED"
+        if m.get("status") in ("FINISHED", "AWARDED")
     ]
     finished.sort(key=lambda m: (m.get("utcDate") or "", m.get("id") or 0))
     for m in finished:
@@ -232,11 +233,22 @@ def build_played(matches):
     return played
 
 
-def build_upcoming(matches, limit=12):
+def build_upcoming(matches, played=None, limit=12):
+    """賽程:含未開打(TIMED/SCHEDULED)與進行中(IN_PLAY/PAUSED,標 live=True)。
+    進行中的場次也留在這裡,避免比賽中那段時間從「賽程」「已完賽」都消失。"""
+    LIVE = ("IN_PLAY", "PAUSED")
+    # 已在「已完賽」(黏著聯集)的場次,不重複出現在賽程
+    #(處理 API 快照跳動造成的假 IN_PLAY:某場已記為完賽卻又被回成進行中)
+    played_keys = set()
+    for e in (played or []):
+        p = e.split("|")
+        if len(p) == 5:
+            played_keys.add((p[0], p[1], p[4]))  # (time, a, b)
+
     upcoming = []
     pending = [
         m for m in matches.get("matches", [])
-        if m.get("status") in ("TIMED", "SCHEDULED")
+        if m.get("status") in ("TIMED", "SCHEDULED") or m.get("status") in LIVE
     ]
     pending.sort(key=lambda m: (m.get("utcDate") or "", m.get("id") or 0))
     for m in pending:
@@ -248,20 +260,61 @@ def build_upcoming(matches, limit=12):
         if not utc:
             continue
         dt = datetime.fromisoformat(utc.replace("Z", "+00:00")).astimezone(TAIPEI)
-        upcoming.append({"time": dt.strftime("%m-%d %H:%M"), "a": a, "b": b})
+        time_str = dt.strftime("%m-%d %H:%M")
+        if (time_str, a, b) in played_keys:
+            continue
+        entry = {"time": time_str, "a": a, "b": b}
+        if m.get("status") in LIVE:
+            entry["live"] = True  # 前端標「進行中」
+        upcoming.append(entry)
         if len(upcoming) >= limit:
             break
     return upcoming
+
+
+def merge_played(fresh, old_played):
+    """已完賽單調聯集:只增不減。任一場一旦被記為已完賽寫進 data.json,
+    之後即使某次 API 快照沒回傳它(快照跳動/不完整),仍保留不移除。
+
+    key=(time, a, b) 為場次身分(不含比分);若新快照同場有更新比分,以新的為準。
+    """
+    def key(entry):
+        p = entry.split("|")
+        return (p[0], p[1], p[4])
+
+    merged = {}
+    for e in (old_played or []):           # 先放舊的(保底,不讓任何已完賽掉)
+        if isinstance(e, str) and e.count("|") == 4:
+            merged[key(e)] = e
+    for e in fresh:                        # 新快照覆蓋同場(比分若更新以新的為準)
+        merged[key(e)] = e
+    return [merged[k] for k in sorted(merged)]  # 依 (time,a,b) 排序 = 時間序
 
 
 def main():
     standings = api_get(f"/competitions/{COMPETITION}/standings")
     matches = api_get(f"/competitions/{COMPETITION}/matches")
 
+    out_path = os.path.join(os.path.dirname(__file__), "..", "public", "data.json")
+    out_path = os.path.abspath(out_path)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+    # 讀舊檔。除了下方的無變化比對,也供「已完賽」做單調聯集
+    #(只增不減,避免 API 快照跳動把已完賽場次抽掉)。
+    old = None
+    if os.path.exists(out_path):
+        try:
+            with open(out_path, "r", encoding="utf-8") as f:
+                old = json.load(f)
+        except Exception:  # noqa: BLE001
+            old = None
+
     results = build_results(standings)
     knockout = build_knockout_and_progress(matches, results)
-    upcoming = build_upcoming(matches)
-    played = build_played(matches)
+    # 已完賽 = 本次快照 ∪ 舊 data.json 的 played(只增不減)
+    played = merge_played(build_played(matches), (old or {}).get("played"))
+    # 賽程排除已在已完賽的場次,避免跳動造成重複
+    upcoming = build_upcoming(matches, played)
 
     # 內容(不含 updatedAt)。只有內容真的有變,才蓋新的更新時間。
     content = {
@@ -271,18 +324,6 @@ def main():
         "played": played,
     }
 
-    out_path = os.path.join(os.path.dirname(__file__), "..", "public", "data.json")
-    out_path = os.path.abspath(out_path)
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
-
-    # 讀舊檔,比對內容
-    old = None
-    if os.path.exists(out_path):
-        try:
-            with open(out_path, "r", encoding="utf-8") as f:
-                old = json.load(f)
-        except Exception:  # noqa: BLE001
-            old = None
     old_content = {k: old.get(k) for k in content} if old else None
     unchanged = old_content == content and old and old.get("updatedAt")
 
