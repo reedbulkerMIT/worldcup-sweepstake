@@ -65,14 +65,14 @@
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
+    "06-13 03:00|Canada|1|1|Bosnia and Herzegovina",
     "06-13 09:00|United States|4|1|Paraguay",
     "06-14 03:00|Qatar|1|1|Switzerland",
     "06-14 06:00|Brazil|1|1|Morocco",
     "06-14 09:00|Haiti|0|1|Scotland",
     "06-14 12:00|Australia|2|0|Turkiye",
     "06-15 01:00|Germany|7|1|Curacao",
-    "06-15 04:00|Netherlands|2|2|Japan",
-    "06-15 07:00|Cote d'Ivoire|1|0|Ecuador"
+    "06-15 04:00|Netherlands|2|2|Japan"
   ],
   "results": {
     "Algeria": {
@@ -460,5 +460,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-15T03:46:53.754937+00:00"
+  "updatedAt": "2026-06-15T03:48:55.527031+00:00"
 }
