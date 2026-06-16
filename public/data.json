@@ -2,22 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Belgium",
-      "b": "Egypt",
-      "live": true,
-      "time": "06-16 03:00"
-    },
-    {
-      "a": "Saudi Arabia",
-      "b": "Uruguay",
-      "time": "06-16 06:00"
-    },
-    {
-      "a": "Iran",
-      "b": "New Zealand",
-      "time": "06-16 09:00"
-    },
-    {
       "a": "France",
       "b": "Senegal",
       "time": "06-17 03:00"
@@ -61,6 +45,21 @@
       "a": "Czechia",
       "b": "South Africa",
       "time": "06-19 00:00"
+    },
+    {
+      "a": "Switzerland",
+      "b": "Bosnia and Herzegovina",
+      "time": "06-19 03:00"
+    },
+    {
+      "a": "Canada",
+      "b": "Qatar",
+      "time": "06-19 06:00"
+    },
+    {
+      "a": "Mexico",
+      "b": "South Korea",
+      "time": "06-19 09:00"
     }
   ],
   "played": [
@@ -76,7 +75,10 @@
     "06-15 04:00|Netherlands|2|2|Japan",
     "06-15 07:00|Cote d'Ivoire|1|0|Ecuador",
     "06-15 10:00|Sweden|5|1|Tunisia",
-    "06-16 00:00|Spain|0|0|Cabo Verde"
+    "06-16 00:00|Spain|0|0|Cabo Verde",
+    "06-16 03:00|Belgium|1|1|Egypt",
+    "06-16 06:00|Saudi Arabia|1|1|Uruguay",
+    "06-16 09:00|Iran|2|2|New Zealand"
   ],
   "results": {
     "Algeria": {
@@ -256,7 +258,7 @@
       "w": 0
     },
     "Iran": {
-      "d": 0,
+      "d": 1,
       "group": "G",
       "l": 0,
       "out": false,
@@ -312,7 +314,7 @@
       "w": 0
     },
     "New Zealand": {
-      "d": 0,
+      "d": 1,
       "group": "G",
       "l": 0,
       "out": false,
@@ -360,7 +362,7 @@
       "w": 0
     },
     "Saudi Arabia": {
-      "d": 0,
+      "d": 1,
       "group": "H",
       "l": 0,
       "out": false,
@@ -448,7 +450,7 @@
       "w": 1
     },
     "Uruguay": {
-      "d": 0,
+      "d": 1,
       "group": "H",
       "l": 0,
       "out": false,
@@ -464,5 +466,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-15T19:10:07.277332+00:00"
+  "updatedAt": "2026-06-16T12:29:08.940536+00:00"
 }
