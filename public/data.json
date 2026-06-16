@@ -2,11 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "France",
-      "b": "Senegal",
-      "time": "06-17 03:00"
-    },
-    {
       "a": "Iraq",
       "b": "Norway",
       "time": "06-17 06:00"
@@ -60,6 +55,11 @@
       "a": "Mexico",
       "b": "South Korea",
       "time": "06-19 09:00"
+    },
+    {
+      "a": "United States",
+      "b": "Australia",
+      "time": "06-20 03:00"
     }
   ],
   "played": [
@@ -78,7 +78,8 @@
     "06-16 00:00|Spain|0|0|Cabo Verde",
     "06-16 03:00|Belgium|1|1|Egypt",
     "06-16 06:00|Saudi Arabia|1|1|Uruguay",
-    "06-16 09:00|Iran|2|2|New Zealand"
+    "06-16 09:00|Iran|2|2|New Zealand",
+    "06-17 03:00|France|3|1|Senegal"
   ],
   "results": {
     "Algeria": {
@@ -231,7 +232,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Germany": {
       "d": 0,
@@ -266,7 +267,7 @@
       "w": 0
     },
     "Iraq": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 0,
       "out": false,
@@ -322,7 +323,7 @@
       "w": 0
     },
     "Norway": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 0,
       "out": false,
@@ -380,7 +381,7 @@
     "Senegal": {
       "d": 0,
       "group": "I",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -466,5 +467,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-16T12:29:08.940536+00:00"
+  "updatedAt": "2026-06-16T22:03:22.344571+00:00"
 }
