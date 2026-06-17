@@ -2,11 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Portugal",
-      "b": "DR Congo",
-      "time": "06-18 01:00"
-    },
-    {
       "a": "England",
       "b": "Croatia",
       "time": "06-18 04:00"
@@ -60,6 +55,11 @@
       "a": "Turkiye",
       "b": "Paraguay",
       "time": "06-20 11:00"
+    },
+    {
+      "a": "Netherlands",
+      "b": "Sweden",
+      "time": "06-21 01:00"
     }
   ],
   "played": [
@@ -82,7 +82,8 @@
     "06-17 03:00|France|3|1|Senegal",
     "06-17 06:00|Iraq|1|4|Norway",
     "06-17 09:00|Argentina|3|0|Algeria",
-    "06-17 12:00|Austria|3|1|Jordan"
+    "06-17 12:00|Austria|3|1|Jordan",
+    "06-18 01:00|Portugal|1|1|DR Congo"
   ],
   "results": {
     "Algeria": {
@@ -198,7 +199,7 @@
       "w": 0
     },
     "DR Congo": {
-      "d": 0,
+      "d": 1,
       "group": "K",
       "l": 0,
       "out": false,
@@ -350,7 +351,7 @@
       "w": 0
     },
     "Portugal": {
-      "d": 0,
+      "d": 1,
       "group": "K",
       "l": 0,
       "out": false,
@@ -470,5 +471,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-17T12:57:38.832144+00:00"
+  "updatedAt": "2026-06-17T19:31:22.007615+00:00"
 }
