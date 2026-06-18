@@ -4,6 +4,7 @@
     {
       "a": "Czechia",
       "b": "South Africa",
+      "live": true,
       "time": "06-19 00:00"
     },
     {
@@ -199,7 +200,7 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "DR Congo": {
       "d": 1,
@@ -396,7 +397,7 @@
     "South Africa": {
       "d": 0,
       "group": "A",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -474,5 +475,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-18T05:05:49.361329+00:00"
+  "updatedAt": "2026-06-18T17:31:53.988832+00:00"
 }
