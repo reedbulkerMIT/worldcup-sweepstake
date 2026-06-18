@@ -2,14 +2,9 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Switzerland",
-      "b": "Bosnia and Herzegovina",
-      "live": true,
-      "time": "06-19 03:00"
-    },
-    {
       "a": "Canada",
       "b": "Qatar",
+      "live": true,
       "time": "06-19 06:00"
     },
     {
@@ -61,6 +56,11 @@
       "a": "Spain",
       "b": "Saudi Arabia",
       "time": "06-22 00:00"
+    },
+    {
+      "a": "Belgium",
+      "b": "Iran",
+      "time": "06-22 03:00"
     }
   ],
   "played": [
@@ -88,7 +88,8 @@
     "06-18 04:00|England|4|2|Croatia",
     "06-18 07:00|Ghana|1|0|Panama",
     "06-18 10:00|Uzbekistan|1|3|Colombia",
-    "06-19 00:00|Czechia|1|1|South Africa"
+    "06-19 00:00|Czechia|1|1|South Africa",
+    "06-19 03:00|Switzerland|4|1|Bosnia and Herzegovina"
   ],
   "results": {
     "Algeria": {
@@ -132,9 +133,9 @@
       "w": 0
     },
     "Bosnia and Herzegovina": {
-      "d": 2,
+      "d": 1,
       "group": "B",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -161,7 +162,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Colombia": {
       "d": 0,
@@ -366,7 +367,7 @@
     "Qatar": {
       "d": 1,
       "group": "B",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -428,12 +429,12 @@
       "w": 1
     },
     "Switzerland": {
-      "d": 2,
+      "d": 1,
       "group": "B",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Tunisia": {
       "d": 0,
@@ -476,5 +477,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-18T20:40:14.070227+00:00"
+  "updatedAt": "2026-06-18T23:11:37.315583+00:00"
 }
