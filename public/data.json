@@ -4,6 +4,7 @@
     {
       "a": "United States",
       "b": "Australia",
+      "live": true,
       "time": "06-20 03:00"
     },
     {
@@ -112,7 +113,7 @@
     "Australia": {
       "d": 0,
       "group": "D",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -459,7 +460,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Uruguay": {
       "d": 1,
@@ -478,5 +479,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-19T07:31:24.385273+00:00"
+  "updatedAt": "2026-06-19T20:05:08.158733+00:00"
 }
