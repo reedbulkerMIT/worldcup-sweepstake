@@ -2,12 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Mexico",
-      "b": "South Korea",
-      "live": true,
-      "time": "06-19 09:00"
-    },
-    {
       "a": "United States",
       "b": "Australia",
       "time": "06-20 03:00"
@@ -61,6 +55,11 @@
       "a": "Uruguay",
       "b": "Cabo Verde",
       "time": "06-22 06:00"
+    },
+    {
+      "a": "New Zealand",
+      "b": "Egypt",
+      "time": "06-22 09:00"
     }
   ],
   "played": [
@@ -90,7 +89,8 @@
     "06-18 10:00|Uzbekistan|1|3|Colombia",
     "06-19 00:00|Czechia|1|1|South Africa",
     "06-19 03:00|Switzerland|4|1|Bosnia and Herzegovina",
-    "06-19 06:00|Canada|6|0|Qatar"
+    "06-19 06:00|Canada|6|0|Qatar",
+    "06-19 09:00|Mexico|1|0|South Korea"
   ],
   "results": {
     "Algeria": {
@@ -302,12 +302,12 @@
       "w": 0
     },
     "Mexico": {
-      "d": 1,
+      "d": 0,
       "group": "A",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Morocco": {
       "d": 1,
@@ -406,9 +406,9 @@
       "w": 0
     },
     "South Korea": {
-      "d": 1,
+      "d": 0,
       "group": "A",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -478,5 +478,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-19T02:07:21.510630+00:00"
+  "updatedAt": "2026-06-19T07:31:24.385273+00:00"
 }
