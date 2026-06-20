@@ -2,17 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Brazil",
-      "b": "Haiti",
-      "live": true,
-      "time": "06-20 08:30"
-    },
-    {
-      "a": "Turkiye",
-      "b": "Paraguay",
-      "time": "06-20 11:00"
-    },
-    {
       "a": "Netherlands",
       "b": "Sweden",
       "time": "06-21 01:00"
@@ -61,6 +50,16 @@
       "a": "France",
       "b": "Iraq",
       "time": "06-23 05:00"
+    },
+    {
+      "a": "Norway",
+      "b": "Senegal",
+      "time": "06-23 08:00"
+    },
+    {
+      "a": "Jordan",
+      "b": "Algeria",
+      "time": "06-23 11:00"
     }
   ],
   "played": [
@@ -93,7 +92,9 @@
     "06-19 06:00|Canada|6|0|Qatar",
     "06-19 09:00|Mexico|1|0|South Korea",
     "06-20 03:00|United States|2|0|Australia",
-    "06-20 06:00|Scotland|0|1|Morocco"
+    "06-20 06:00|Scotland|0|1|Morocco",
+    "06-20 08:30|Brazil|3|0|Haiti",
+    "06-20 11:00|Turkiye|0|1|Paraguay"
   ],
   "results": {
     "Algeria": {
@@ -358,7 +359,7 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Portugal": {
       "d": 1,
@@ -451,7 +452,7 @@
     "Turkiye": {
       "d": 0,
       "group": "D",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -481,5 +482,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-20T01:33:46.507032+00:00"
+  "updatedAt": "2026-06-20T06:42:42.700540+00:00"
 }
