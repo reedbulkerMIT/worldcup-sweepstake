@@ -2,12 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Germany",
-      "b": "Cote d'Ivoire",
-      "live": true,
-      "time": "06-21 04:00"
-    },
-    {
       "a": "Ecuador",
       "b": "Curacao",
       "time": "06-21 08:00"
@@ -61,6 +55,11 @@
       "a": "Portugal",
       "b": "Uzbekistan",
       "time": "06-24 01:00"
+    },
+    {
+      "a": "England",
+      "b": "Ghana",
+      "time": "06-24 04:00"
     }
   ],
   "played": [
@@ -96,7 +95,8 @@
     "06-20 06:00|Scotland|0|1|Morocco",
     "06-20 08:30|Brazil|3|0|Haiti",
     "06-20 11:00|Turkiye|0|1|Paraguay",
-    "06-21 01:00|Netherlands|5|1|Sweden"
+    "06-21 01:00|Netherlands|5|1|Sweden",
+    "06-21 04:00|Germany|2|1|Cote d'Ivoire"
   ],
   "results": {
     "Algeria": {
@@ -180,9 +180,9 @@
       "w": 1
     },
     "Cote d'Ivoire": {
-      "d": 1,
+      "d": 0,
       "group": "E",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -252,12 +252,12 @@
       "w": 1
     },
     "Germany": {
-      "d": 1,
+      "d": 0,
       "group": "E",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Ghana": {
       "d": 0,
@@ -484,5 +484,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-20T20:42:52.056895+00:00"
+  "updatedAt": "2026-06-20T22:36:31.067599+00:00"
 }
