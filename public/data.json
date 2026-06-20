@@ -4,6 +4,7 @@
     {
       "a": "Netherlands",
       "b": "Sweden",
+      "live": true,
       "time": "06-21 01:00"
     },
     {
@@ -327,7 +328,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "New Zealand": {
       "d": 1,
@@ -428,7 +429,7 @@
     "Sweden": {
       "d": 0,
       "group": "F",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -482,5 +483,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-20T06:42:42.700540+00:00"
+  "updatedAt": "2026-06-20T18:48:48.706962+00:00"
 }
