@@ -2,14 +2,9 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Scotland",
-      "b": "Morocco",
-      "live": true,
-      "time": "06-20 06:00"
-    },
-    {
       "a": "Brazil",
       "b": "Haiti",
+      "live": true,
       "time": "06-20 08:30"
     },
     {
@@ -61,6 +56,11 @@
       "a": "Argentina",
       "b": "Austria",
       "time": "06-23 01:00"
+    },
+    {
+      "a": "France",
+      "b": "Iraq",
+      "time": "06-23 05:00"
     }
   ],
   "played": [
@@ -92,7 +92,8 @@
     "06-19 03:00|Switzerland|4|1|Bosnia and Herzegovina",
     "06-19 06:00|Canada|6|0|Qatar",
     "06-19 09:00|Mexico|1|0|South Korea",
-    "06-20 03:00|United States|2|0|Australia"
+    "06-20 03:00|United States|2|0|Australia",
+    "06-20 06:00|Scotland|0|1|Morocco"
   ],
   "results": {
     "Algeria": {
@@ -149,7 +150,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Cabo Verde": {
       "d": 1,
@@ -266,7 +267,7 @@
     "Haiti": {
       "d": 0,
       "group": "C",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -480,5 +481,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-19T23:16:56.701383+00:00"
+  "updatedAt": "2026-06-20T01:33:46.507032+00:00"
 }
