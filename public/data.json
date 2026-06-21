@@ -383,9 +383,9 @@
       "w": 0
     },
     "Saudi Arabia": {
-      "d": 2,
+      "d": 1,
       "group": "H",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -423,12 +423,12 @@
       "w": 1
     },
     "Spain": {
-      "d": 2,
+      "d": 1,
       "group": "H",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Sweden": {
       "d": 0,
@@ -487,5 +487,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-21T16:13:02.209634+00:00"
+  "updatedAt": "2026-06-21T17:55:31.988773+00:00"
 }
