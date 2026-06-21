@@ -2,17 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Ecuador",
-      "b": "Curacao",
-      "live": true,
-      "time": "06-21 08:00"
-    },
-    {
-      "a": "Tunisia",
-      "b": "Japan",
-      "time": "06-21 12:00"
-    },
-    {
       "a": "Spain",
       "b": "Saudi Arabia",
       "time": "06-22 00:00"
@@ -61,6 +50,16 @@
       "a": "England",
       "b": "Ghana",
       "time": "06-24 04:00"
+    },
+    {
+      "a": "Panama",
+      "b": "Croatia",
+      "time": "06-24 07:00"
+    },
+    {
+      "a": "Colombia",
+      "b": "DR Congo",
+      "time": "06-24 10:00"
     }
   ],
   "played": [
@@ -97,7 +96,9 @@
     "06-20 08:30|Brazil|3|0|Haiti",
     "06-20 11:00|Turkiye|0|1|Paraguay",
     "06-21 01:00|Netherlands|5|1|Sweden",
-    "06-21 04:00|Germany|2|1|Cote d'Ivoire"
+    "06-21 04:00|Germany|2|1|Cote d'Ivoire",
+    "06-21 08:00|Ecuador|0|0|Curacao",
+    "06-21 12:00|Tunisia|0|4|Japan"
   ],
   "results": {
     "Algeria": {
@@ -298,7 +299,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Jordan": {
       "d": 0,
@@ -447,7 +448,7 @@
     "Tunisia": {
       "d": 0,
       "group": "F",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -485,5 +486,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-21T01:41:22.349011+00:00"
+  "updatedAt": "2026-06-21T07:11:26.092039+00:00"
 }
