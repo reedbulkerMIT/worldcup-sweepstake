@@ -81,6 +81,11 @@ ROUND_RANK = {"group": 0, "r32": 1, "r16": 2, "qf": 3, "sf": 4, "final": 5, "cha
 
 TAIPEI = timezone(timedelta(hours=8))
 
+# 一場球(含延長賽+PK)合理時長約 2.5–3 小時。免費版 football-data 全場結束後
+# 仍可能數小時持續回 IN_PLAY/PAUSED(快照延遲),導致該場永遠掛在賽程標「進行中」。
+# 開賽超過此時數仍是 live,視為「過期 live」:有比分→當已完賽,無比分→標賽果待確認。
+STALE_LIVE_HOURS = 4
+
 # 對不上的名稱會收集到這裡,結尾印出來。
 UNMATCHED = []
 
@@ -207,13 +212,29 @@ def build_knockout_and_progress(matches, results):
     return knockout
 
 
-def build_played(matches):
+LIVE_STATUS = ("IN_PLAY", "PAUSED")
+
+
+def is_stale_live(m, now):
+    """進行中(IN_PLAY/PAUSED)但開賽已超過 STALE_LIVE_HOURS。
+    用來把上游 API 卡 live 不翻 FINISHED 的場次救出來,避免永遠標「進行中」。"""
+    if m.get("status") not in LIVE_STATUS:
+        return False
+    utc = m.get("utcDate")
+    if not utc:
+        return False
+    kickoff = datetime.fromisoformat(utc.replace("Z", "+00:00"))
+    return now - kickoff > timedelta(hours=STALE_LIVE_HOURS)
+
+
+def build_played(matches, now):
     """所有已分出結果的比賽 → "MM-DD HH:mm|TeamA|scoreA|scoreB|TeamB"(台灣時間)。
-    FINISHED 與 AWARDED(判定賽果)都算已完賽。"""
+    FINISHED 與 AWARDED(判定賽果)算已完賽;另含「過期 live」且已有比分的場次
+    (上游卡 live 不翻 FINISHED 的救援:沒比分的下方 None 檢查會擋掉,不會假裝有結果)。"""
     played = []
     finished = [
         m for m in matches.get("matches", [])
-        if m.get("status") in ("FINISHED", "AWARDED")
+        if m.get("status") in ("FINISHED", "AWARDED") or is_stale_live(m, now)
     ]
     finished.sort(key=lambda m: (m.get("utcDate") or "", m.get("id") or 0))
     for m in finished:
@@ -233,9 +254,11 @@ def build_played(matches):
     return played
 
 
-def build_upcoming(matches, played=None, limit=12):
+def build_upcoming(matches, played=None, now=None, limit=12):
     """賽程:含未開打(TIMED/SCHEDULED)與進行中(IN_PLAY/PAUSED,標 live=True)。
-    進行中的場次也留在這裡,避免比賽中那段時間從「賽程」「已完賽」都消失。"""
+    進行中的場次也留在這裡,避免比賽中那段時間從「賽程」「已完賽」都消失。
+    「過期 live 但無比分」的場次不標 live(避免永遠喊進行中),改標 pending=True
+    讓前端顯示灰字「賽果待確認」;有比分的過期 live 已被 build_played 收走、由下方去重移出。"""
     LIVE = ("IN_PLAY", "PAUSED")
     # 已在「已完賽」(黏著聯集)的場次,不重複出現在賽程
     #(處理 API 快照跳動造成的假 IN_PLAY:某場已記為完賽卻又被回成進行中)
@@ -265,7 +288,10 @@ def build_upcoming(matches, played=None, limit=12):
             continue
         entry = {"time": time_str, "a": a, "b": b}
         if m.get("status") in LIVE:
-            entry["live"] = True  # 前端標「進行中」
+            if now is not None and is_stale_live(m, now):
+                entry["pending"] = True  # 過期 live 且無比分 → 前端標「賽果待確認」
+            else:
+                entry["live"] = True  # 前端標「進行中」
         upcoming.append(entry)
         if len(upcoming) >= limit:
             break
@@ -309,12 +335,14 @@ def main():
         except Exception:  # noqa: BLE001
             old = None
 
+    now = datetime.now(timezone.utc)
+
     results = build_results(standings)
     knockout = build_knockout_and_progress(matches, results)
     # 已完賽 = 本次快照 ∪ 舊 data.json 的 played(只增不減)
-    played = merge_played(build_played(matches), (old or {}).get("played"))
+    played = merge_played(build_played(matches, now), (old or {}).get("played"))
     # 賽程排除已在已完賽的場次,避免跳動造成重複
-    upcoming = build_upcoming(matches, played)
+    upcoming = build_upcoming(matches, played, now)
 
     # 內容(不含 updatedAt)。只有內容真的有變,才蓋新的更新時間。
     content = {

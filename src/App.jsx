@@ -571,6 +571,11 @@ export default function App() {
                           ● 進行中／賽果更新中
                         </div>
                       )}
+                      {m.pending && !m.live && (
+                        <div className="text-xs font-bold mb-1 whitespace-nowrap" style={{ color: C.chalkDim }}>
+                          賽果待確認
+                        </div>
+                      )}
                       <div className="flex items-center gap-3">
                         <div className="display text-lg font-bold w-24 shrink-0" style={{ color: C.gold }}>
                           {m.time}
