@@ -2,11 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "England",
-      "b": "Ghana",
-      "time": "06-24 04:00"
-    },
-    {
       "a": "Panama",
       "b": "Croatia",
       "time": "06-24 07:00"
@@ -59,6 +54,11 @@
     {
       "a": "Tunisia",
       "b": "Netherlands",
+      "time": "06-26 07:00"
+    },
+    {
+      "a": "Japan",
+      "b": "Sweden",
       "time": "06-26 07:00"
     }
   ],
@@ -247,7 +247,7 @@
       "w": 1
     },
     "England": {
-      "d": 0,
+      "d": 1,
       "group": "L",
       "l": 0,
       "out": false,
@@ -271,7 +271,7 @@
       "w": 2
     },
     "Ghana": {
-      "d": 0,
+      "d": 1,
       "group": "L",
       "l": 0,
       "out": false,
@@ -495,5 +495,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-23T19:20:52.370976+00:00"
+  "updatedAt": "2026-06-23T21:52:10.271662+00:00"
 }
