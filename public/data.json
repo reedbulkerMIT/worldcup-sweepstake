@@ -4,11 +4,13 @@
     {
       "a": "Scotland",
       "b": "Brazil",
+      "live": true,
       "time": "06-25 06:00"
     },
     {
       "a": "Morocco",
       "b": "Haiti",
+      "live": true,
       "time": "06-25 06:00"
     },
     {
@@ -169,7 +171,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Cabo Verde": {
       "d": 2,
@@ -284,7 +286,7 @@
       "w": 1
     },
     "Haiti": {
-      "d": 0,
+      "d": 1,
       "group": "C",
       "l": 2,
       "out": false,
@@ -332,7 +334,7 @@
       "w": 2
     },
     "Morocco": {
-      "d": 1,
+      "d": 2,
       "group": "C",
       "l": 0,
       "out": false,
@@ -406,7 +408,7 @@
     "Scotland": {
       "d": 0,
       "group": "C",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 1
@@ -500,5 +502,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-24T21:48:25.055507+00:00"
+  "updatedAt": "2026-06-24T23:35:37.711055+00:00"
 }
