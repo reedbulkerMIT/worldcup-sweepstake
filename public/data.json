@@ -2,12 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Switzerland",
-      "b": "Canada",
-      "live": true,
-      "time": "06-25 03:00"
-    },
-    {
       "a": "Scotland",
       "b": "Brazil",
       "time": "06-25 06:00"
@@ -61,6 +55,11 @@
       "a": "Norway",
       "b": "France",
       "time": "06-27 03:00"
+    },
+    {
+      "a": "Senegal",
+      "b": "Iraq",
+      "time": "06-27 03:00"
     }
   ],
   "played": [
@@ -111,7 +110,9 @@
     "06-24 01:00|Portugal|5|0|Uzbekistan",
     "06-24 04:00|England|0|0|Ghana",
     "06-24 07:00|Panama|0|1|Croatia",
-    "06-24 10:00|Colombia|1|0|DR Congo"
+    "06-24 10:00|Colombia|1|0|DR Congo",
+    "06-25 03:00|Bosnia and Herzegovina|3|1|Qatar",
+    "06-25 03:00|Switzerland|2|1|Canada"
   ],
   "results": {
     "Algeria": {
@@ -179,9 +180,9 @@
       "w": 0
     },
     "Canada": {
-      "d": 2,
+      "d": 1,
       "group": "B",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -451,12 +452,12 @@
       "w": 1
     },
     "Switzerland": {
-      "d": 2,
+      "d": 1,
       "group": "B",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Tunisia": {
       "d": 0,
@@ -499,5 +500,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-24T20:12:18.699904+00:00"
+  "updatedAt": "2026-06-24T21:48:25.055507+00:00"
 }
