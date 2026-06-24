@@ -2,11 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Colombia",
-      "b": "DR Congo",
-      "time": "06-24 10:00"
-    },
-    {
       "a": "Switzerland",
       "b": "Canada",
       "time": "06-25 03:00"
@@ -60,6 +55,11 @@
       "a": "Turkiye",
       "b": "United States",
       "time": "06-26 10:00"
+    },
+    {
+      "a": "Paraguay",
+      "b": "Australia",
+      "time": "06-26 10:00"
     }
   ],
   "played": [
@@ -108,7 +108,9 @@
     "06-23 08:00|Norway|3|2|Senegal",
     "06-23 11:00|Jordan|1|2|Algeria",
     "06-24 01:00|Portugal|5|0|Uzbekistan",
-    "06-24 04:00|England|0|0|Ghana"
+    "06-24 04:00|England|0|0|Ghana",
+    "06-24 07:00|Panama|0|1|Croatia",
+    "06-24 10:00|Colombia|1|0|DR Congo"
   ],
   "results": {
     "Algeria": {
@@ -189,7 +191,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Cote d'Ivoire": {
       "d": 0,
@@ -200,12 +202,12 @@
       "w": 1
     },
     "Croatia": {
-      "d": 1,
+      "d": 0,
       "group": "L",
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Curacao": {
       "d": 1,
@@ -226,7 +228,7 @@
     "DR Congo": {
       "d": 1,
       "group": "K",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 0
@@ -360,9 +362,9 @@
       "w": 2
     },
     "Panama": {
-      "d": 1,
+      "d": 0,
       "group": "L",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -496,5 +498,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-23T23:32:08.434843+00:00"
+  "updatedAt": "2026-06-24T04:39:09.463158+00:00"
 }
