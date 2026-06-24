@@ -4,11 +4,7 @@
     {
       "a": "Switzerland",
       "b": "Canada",
-      "time": "06-25 03:00"
-    },
-    {
-      "a": "Bosnia and Herzegovina",
-      "b": "Qatar",
+      "live": true,
       "time": "06-25 03:00"
     },
     {
@@ -60,6 +56,11 @@
       "a": "Paraguay",
       "b": "Australia",
       "time": "06-26 10:00"
+    },
+    {
+      "a": "Norway",
+      "b": "France",
+      "time": "06-27 03:00"
     }
   ],
   "played": [
@@ -159,7 +160,7 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Brazil": {
       "d": 1,
@@ -178,7 +179,7 @@
       "w": 0
     },
     "Canada": {
-      "d": 1,
+      "d": 2,
       "group": "B",
       "l": 0,
       "out": false,
@@ -388,7 +389,7 @@
     "Qatar": {
       "d": 1,
       "group": "B",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -450,7 +451,7 @@
       "w": 1
     },
     "Switzerland": {
-      "d": 1,
+      "d": 2,
       "group": "B",
       "l": 0,
       "out": false,
@@ -498,5 +499,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-24T04:39:09.463158+00:00"
+  "updatedAt": "2026-06-24T20:12:18.699904+00:00"
 }
