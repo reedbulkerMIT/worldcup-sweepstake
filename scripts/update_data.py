@@ -81,10 +81,12 @@ ROUND_RANK = {"group": 0, "r32": 1, "r16": 2, "qf": 3, "sf": 4, "final": 5, "cha
 
 TAIPEI = timezone(timedelta(hours=8))
 
-# 一場球(含延長賽+PK)合理時長約 2.5–3 小時。免費版 football-data 全場結束後
+# 一場球(含延長賽+PK)牆鐘時長極少超過 ~2h45m。免費版 football-data 全場結束後
 # 仍可能數小時持續回 IN_PLAY/PAUSED(快照延遲),導致該場永遠掛在賽程標「進行中」。
 # 開賽超過此時數仍是 live,視為「過期 live」:有比分→當已完賽,無比分→標賽果待確認。
-STALE_LIVE_HOURS = 4
+# 門檻設 3h(> 最長合理時長,仍要求有 fullTime 比分才收進已完賽,不會誤抓進行中的中途比分),
+# 讓「積分已動但 /matches 仍卡 live」的場次更快脫離賽程、進入已完賽。
+STALE_LIVE_HOURS = 3
 
 # 對不上的名稱會收集到這裡,結尾印出來。
 UNMATCHED = []
