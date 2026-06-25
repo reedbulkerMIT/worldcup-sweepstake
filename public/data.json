@@ -2,28 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Scotland",
-      "b": "Brazil",
-      "live": true,
-      "time": "06-25 06:00"
-    },
-    {
-      "a": "Morocco",
-      "b": "Haiti",
-      "live": true,
-      "time": "06-25 06:00"
-    },
-    {
-      "a": "Czechia",
-      "b": "Mexico",
-      "time": "06-25 09:00"
-    },
-    {
-      "a": "South Africa",
-      "b": "South Korea",
-      "time": "06-25 09:00"
-    },
-    {
       "a": "Ecuador",
       "b": "Germany",
       "time": "06-26 04:00"
@@ -62,6 +40,26 @@
       "a": "Senegal",
       "b": "Iraq",
       "time": "06-27 03:00"
+    },
+    {
+      "a": "Uruguay",
+      "b": "Spain",
+      "time": "06-27 08:00"
+    },
+    {
+      "a": "Cabo Verde",
+      "b": "Saudi Arabia",
+      "time": "06-27 08:00"
+    },
+    {
+      "a": "New Zealand",
+      "b": "Belgium",
+      "time": "06-27 11:00"
+    },
+    {
+      "a": "Egypt",
+      "b": "Iran",
+      "time": "06-27 11:00"
     }
   ],
   "played": [
@@ -114,7 +112,11 @@
     "06-24 07:00|Panama|0|1|Croatia",
     "06-24 10:00|Colombia|1|0|DR Congo",
     "06-25 03:00|Bosnia and Herzegovina|3|1|Qatar",
-    "06-25 03:00|Switzerland|2|1|Canada"
+    "06-25 03:00|Switzerland|2|1|Canada",
+    "06-25 06:00|Morocco|4|2|Haiti",
+    "06-25 06:00|Scotland|0|3|Brazil",
+    "06-25 09:00|Czechia|0|3|Mexico",
+    "06-25 09:00|South Africa|1|0|South Korea"
   ],
   "results": {
     "Algeria": {
@@ -224,7 +226,7 @@
     "Czechia": {
       "d": 1,
       "group": "A",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -286,9 +288,9 @@
       "w": 1
     },
     "Haiti": {
-      "d": 1,
+      "d": 0,
       "group": "C",
-      "l": 2,
+      "l": 3,
       "out": false,
       "reached": "group",
       "w": 0
@@ -331,15 +333,15 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 2
+      "w": 3
     },
     "Morocco": {
-      "d": 2,
+      "d": 1,
       "group": "C",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Netherlands": {
       "d": 1,
@@ -427,12 +429,12 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "South Korea": {
       "d": 0,
       "group": "A",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 1
@@ -502,5 +504,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-24T23:35:37.711055+00:00"
+  "updatedAt": "2026-06-25T04:36:02.135666+00:00"
 }
