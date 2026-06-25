@@ -4,11 +4,13 @@
     {
       "a": "Ecuador",
       "b": "Germany",
+      "live": true,
       "time": "06-26 04:00"
     },
     {
       "a": "Curacao",
       "b": "Cote d'Ivoire",
+      "live": true,
       "time": "06-26 04:00"
     },
     {
@@ -205,7 +207,7 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Croatia": {
       "d": 0,
@@ -218,7 +220,7 @@
     "Curacao": {
       "d": 1,
       "group": "E",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -240,7 +242,7 @@
       "w": 0
     },
     "Ecuador": {
-      "d": 1,
+      "d": 2,
       "group": "E",
       "l": 1,
       "out": false,
@@ -272,7 +274,7 @@
       "w": 2
     },
     "Germany": {
-      "d": 0,
+      "d": 1,
       "group": "E",
       "l": 0,
       "out": false,
@@ -504,5 +506,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-25T04:36:02.135666+00:00"
+  "updatedAt": "2026-06-25T21:03:30.228746+00:00"
 }
