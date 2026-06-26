@@ -1,14 +1,35 @@
 {
-  "knockout": [],
-  "matches": [
+  "knockout": [
     {
-      "a": "Norway",
-      "b": "France",
-      "time": "06-27 03:00"
+      "a": "South Africa",
+      "b": "Canada",
+      "round": "r32",
+      "winner": ""
     },
+    {
+      "a": "Brazil",
+      "b": "Japan",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Netherlands",
+      "b": "Morocco",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "United States",
+      "b": "Bosnia and Herzegovina",
+      "round": "r32",
+      "winner": ""
+    }
+  ],
+  "matches": [
     {
       "a": "Senegal",
       "b": "Iraq",
+      "live": true,
       "time": "06-27 03:00"
     },
     {
@@ -60,6 +81,11 @@
       "a": "Algeria",
       "b": "Austria",
       "time": "06-28 10:00"
+    },
+    {
+      "a": "South Africa",
+      "b": "Canada",
+      "time": "06-29 03:00"
     }
   ],
   "played": [
@@ -170,7 +196,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Brazil": {
@@ -178,7 +204,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Cabo Verde": {
@@ -194,7 +220,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Colombia": {
@@ -270,7 +296,7 @@
       "w": 1
     },
     "France": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 0,
       "out": false,
@@ -310,7 +336,7 @@
       "w": 0
     },
     "Iraq": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 2,
       "out": false,
@@ -322,7 +348,7 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Jordan": {
@@ -346,7 +372,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Netherlands": {
@@ -354,7 +380,7 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "New Zealand": {
@@ -366,7 +392,7 @@
       "w": 0
     },
     "Norway": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 0,
       "out": false,
@@ -422,7 +448,7 @@
       "w": 1
     },
     "Senegal": {
-      "d": 0,
+      "d": 1,
       "group": "I",
       "l": 2,
       "out": false,
@@ -434,7 +460,7 @@
       "group": "A",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "South Korea": {
@@ -490,7 +516,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Uruguay": {
@@ -510,5 +536,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-26T16:29:24.104068+00:00"
+  "updatedAt": "2026-06-26T19:06:39.057570+00:00"
 }
