@@ -2,16 +2,6 @@
   "knockout": [],
   "matches": [
     {
-      "a": "Tunisia",
-      "b": "Netherlands",
-      "time": "06-26 07:00"
-    },
-    {
-      "a": "Japan",
-      "b": "Sweden",
-      "time": "06-26 07:00"
-    },
-    {
       "a": "Turkiye",
       "b": "United States",
       "time": "06-26 10:00"
@@ -60,6 +50,16 @@
       "a": "Croatia",
       "b": "Ghana",
       "time": "06-28 05:00"
+    },
+    {
+      "a": "Colombia",
+      "b": "Portugal",
+      "time": "06-28 07:30"
+    },
+    {
+      "a": "DR Congo",
+      "b": "Uzbekistan",
+      "time": "06-28 07:30"
     }
   ],
   "played": [
@@ -118,7 +118,9 @@
     "06-25 09:00|Czechia|0|3|Mexico",
     "06-25 09:00|South Africa|1|0|South Korea",
     "06-26 04:00|Curacao|0|2|Cote d'Ivoire",
-    "06-26 04:00|Ecuador|2|1|Germany"
+    "06-26 04:00|Ecuador|2|1|Germany",
+    "06-26 07:00|Japan|1|1|Sweden",
+    "06-26 07:00|Tunisia|1|3|Netherlands"
   ],
   "results": {
     "Algeria": {
@@ -314,7 +316,7 @@
       "w": 0
     },
     "Japan": {
-      "d": 1,
+      "d": 2,
       "group": "F",
       "l": 0,
       "out": false,
@@ -351,7 +353,7 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "New Zealand": {
       "d": 1,
@@ -450,7 +452,7 @@
       "w": 1
     },
     "Sweden": {
-      "d": 0,
+      "d": 1,
       "group": "F",
       "l": 1,
       "out": false,
@@ -468,7 +470,7 @@
     "Tunisia": {
       "d": 0,
       "group": "F",
-      "l": 2,
+      "l": 3,
       "out": false,
       "reached": "group",
       "w": 0
@@ -506,5 +508,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-25T22:48:30.757056+00:00"
+  "updatedAt": "2026-06-26T01:31:44.804655+00:00"
 }
