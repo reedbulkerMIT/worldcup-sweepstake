@@ -566,7 +566,7 @@ export default function App() {
                                     {t.zh}
                                   </span>
                                   {owners[teamEn] && (
-                                    <span className="text-xs" style={{ color: won ? C.gold : C.chalkDim }}>
+                                    <span className="text-xs" style={{ color: C.gold }}>
                                       {owners[teamEn]}
                                     </span>
                                   )}
@@ -623,7 +623,7 @@ export default function App() {
                         <div className="flex-1 flex items-center justify-end gap-2 text-right min-w-0">
                           <div className="min-w-0">
                             <div className="text-sm font-medium truncate">{ta.zh}</div>
-                            {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
+                            {oa && <div className="text-xs" style={{ color: C.gold }}>{oa}</div>}
                           </div>
                           <Flag en={m.a} h={18} className="shrink-0" />
                         </div>
@@ -632,7 +632,7 @@ export default function App() {
                           <Flag en={m.b} h={18} className="shrink-0" />
                           <div className="min-w-0">
                             <div className="text-sm font-medium truncate">{tb.zh}</div>
-                            {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
+                            {ob && <div className="text-xs" style={{ color: C.gold }}>{ob}</div>}
                           </div>
                         </div>
                       </div>
@@ -673,7 +673,7 @@ export default function App() {
                           style={{ opacity: aLost ? 0.45 : 1 }}>
                           <div className="min-w-0">
                             <div className="text-sm font-medium truncate" style={{ textDecoration: aLost ? "line-through" : "none" }}>{ta.zh}</div>
-                            {oa && <div className="text-xs" style={{ color: C.chalkDim }}>{oa}</div>}
+                            {oa && <div className="text-xs" style={{ color: C.gold }}>{oa}</div>}
                           </div>
                           <Flag en={p.a} h={18} className="shrink-0" />
                         </div>
@@ -685,7 +685,7 @@ export default function App() {
                           <Flag en={p.b} h={18} className="shrink-0" />
                           <div className="min-w-0">
                             <div className="text-sm font-medium truncate" style={{ textDecoration: bLost ? "line-through" : "none" }}>{tb.zh}</div>
-                            {ob && <div className="text-xs" style={{ color: C.chalkDim }}>{ob}</div>}
+                            {ob && <div className="text-xs" style={{ color: C.gold }}>{ob}</div>}
                           </div>
                         </div>
                       </div>
@@ -715,7 +715,7 @@ export default function App() {
                         <div className="flex-1 min-w-0">
                           <div className="font-bold">{t.zh}<span className="text-xs ml-1" style={{ color: C.chalkDim }}>{t.en}</span></div>
                           <div className="text-xs mt-0.5" style={{ color: C.chalkDim }}>
-                            {owners[t.en] ? `👤 ${owners[t.en]}` : "無人認領"}
+                            {owners[t.en] ? <span style={{ color: C.gold }}>👤 {owners[t.en]}</span> : "無人認領"}
                             {rec && ` · ${rec.w}勝 ${rec.d}和 ${rec.l}負`}
                           </div>
                         </div>
