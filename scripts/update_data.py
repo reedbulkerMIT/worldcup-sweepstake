@@ -156,8 +156,6 @@ def build_results(standings):
 
 def build_knockout_and_progress(matches, results):
     knockout = []
-    ko_appearances = set()        # en 出現在任何 KO 對戰(兩隊都 resolve)
-    r32_bracket_ready = False     # 是否已有成形的 32 強對戰
     lost_ko = set()               # 在已結束 KO 場輸球的 en
     reached = {}                  # en -> 最遠輪次(rank)
 
@@ -179,10 +177,6 @@ def build_knockout_and_progress(matches, results):
         b = resolve(m.get("awayTeam", {}))
         if not a or not b:
             continue  # placeholder 對戰(對手未定)— 略過
-        if round_key == "r32":
-            r32_bracket_ready = True
-        ko_appearances.add(a)
-        ko_appearances.add(b)
         bump(a, round_key)
         bump(b, round_key)
 
@@ -201,15 +195,14 @@ def build_knockout_and_progress(matches, results):
 
         knockout.append({"round": round_key, "a": a, "b": b, "winner": winner})
 
-    # 把 reached / out 寫回 results
+    # 把 reached / out 寫回 results。out 只認「在淘汰賽實際輸球」(lost_ko):
+    # 不主動把「沒進 32 強」的隊打叉——否則 API 逐步填 r32 籤表、只成形一半時,
+    # 會把已晉級但對戰還沒成形的隊誤標淘汰。晉級與否由 reached / 排名 / 樹狀圖呈現即可。
     rank_to_round = {v: k for k, v in ROUND_RANK.items()}
     for en, rec in results.items():
         if en in reached:
             rec["reached"] = rank_to_round[reached[en]]
-        out = en in lost_ko
-        if r32_bracket_ready and en not in ko_appearances:
-            out = True  # 小組賽出局(未進 32 強)
-        rec["out"] = out
+        rec["out"] = en in lost_ko
 
     return knockout
 
