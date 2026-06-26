@@ -1,16 +1,31 @@
 {
-  "knockout": [],
+  "knockout": [
+    {
+      "a": "South Africa",
+      "b": "Canada",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Brazil",
+      "b": "Japan",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Netherlands",
+      "b": "Morocco",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "United States",
+      "b": "Bosnia and Herzegovina",
+      "round": "r32",
+      "winner": ""
+    }
+  ],
   "matches": [
-    {
-      "a": "Turkiye",
-      "b": "United States",
-      "time": "06-26 10:00"
-    },
-    {
-      "a": "Paraguay",
-      "b": "Australia",
-      "time": "06-26 10:00"
-    },
     {
       "a": "Norway",
       "b": "France",
@@ -60,6 +75,16 @@
       "a": "DR Congo",
       "b": "Uzbekistan",
       "time": "06-28 07:30"
+    },
+    {
+      "a": "Jordan",
+      "b": "Argentina",
+      "time": "06-28 10:00"
+    },
+    {
+      "a": "Algeria",
+      "b": "Austria",
+      "time": "06-28 10:00"
     }
   ],
   "played": [
@@ -120,14 +145,16 @@
     "06-26 04:00|Curacao|0|2|Cote d'Ivoire",
     "06-26 04:00|Ecuador|2|1|Germany",
     "06-26 07:00|Japan|1|1|Sweden",
-    "06-26 07:00|Tunisia|1|3|Netherlands"
+    "06-26 07:00|Tunisia|1|3|Netherlands",
+    "06-26 10:00|Paraguay|0|0|Australia",
+    "06-26 10:00|Turkiye|3|2|United States"
   ],
   "results": {
     "Algeria": {
       "d": 0,
       "group": "J",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -135,15 +162,15 @@
       "d": 0,
       "group": "J",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
     "Australia": {
-      "d": 0,
+      "d": 1,
       "group": "D",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -151,7 +178,7 @@
       "d": 0,
       "group": "J",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -159,7 +186,7 @@
       "d": 2,
       "group": "G",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -168,7 +195,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Brazil": {
@@ -176,14 +203,14 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Cabo Verde": {
       "d": 2,
       "group": "H",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -192,14 +219,14 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Colombia": {
       "d": 0,
       "group": "K",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -207,7 +234,7 @@
       "d": 0,
       "group": "E",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -215,7 +242,7 @@
       "d": 0,
       "group": "L",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -223,7 +250,7 @@
       "d": 1,
       "group": "E",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -231,7 +258,7 @@
       "d": 1,
       "group": "A",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -239,7 +266,7 @@
       "d": 1,
       "group": "K",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -247,7 +274,7 @@
       "d": 1,
       "group": "E",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -255,7 +282,7 @@
       "d": 1,
       "group": "G",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -263,7 +290,7 @@
       "d": 1,
       "group": "L",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -271,7 +298,7 @@
       "d": 0,
       "group": "I",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -279,7 +306,7 @@
       "d": 0,
       "group": "E",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -287,7 +314,7 @@
       "d": 1,
       "group": "L",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -295,7 +322,7 @@
       "d": 0,
       "group": "C",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -303,7 +330,7 @@
       "d": 2,
       "group": "G",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -311,7 +338,7 @@
       "d": 0,
       "group": "I",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -320,14 +347,14 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Jordan": {
       "d": 0,
       "group": "J",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -335,7 +362,7 @@
       "d": 0,
       "group": "A",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 3
     },
@@ -344,7 +371,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Netherlands": {
@@ -352,14 +379,14 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "New Zealand": {
       "d": 1,
       "group": "G",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -367,7 +394,7 @@
       "d": 0,
       "group": "I",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -375,15 +402,15 @@
       "d": 0,
       "group": "L",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
     "Paraguay": {
-      "d": 0,
+      "d": 1,
       "group": "D",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -391,7 +418,7 @@
       "d": 1,
       "group": "K",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -399,7 +426,7 @@
       "d": 1,
       "group": "B",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -407,7 +434,7 @@
       "d": 1,
       "group": "H",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -415,7 +442,7 @@
       "d": 0,
       "group": "C",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -423,7 +450,7 @@
       "d": 0,
       "group": "I",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -432,14 +459,14 @@
       "group": "A",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "South Korea": {
       "d": 0,
       "group": "A",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -447,7 +474,7 @@
       "d": 1,
       "group": "H",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -455,7 +482,7 @@
       "d": 1,
       "group": "F",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -463,7 +490,7 @@
       "d": 1,
       "group": "B",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 2
     },
@@ -471,7 +498,7 @@
       "d": 0,
       "group": "F",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -479,23 +506,23 @@
       "d": 0,
       "group": "D",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "United States": {
       "d": 0,
       "group": "D",
-      "l": 0,
+      "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Uruguay": {
       "d": 2,
       "group": "H",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -503,10 +530,10 @@
       "d": 0,
       "group": "K",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     }
   },
-  "updatedAt": "2026-06-26T01:31:44.804655+00:00"
+  "updatedAt": "2026-06-26T06:30:27.079582+00:00"
 }
