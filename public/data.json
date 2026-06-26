@@ -27,6 +27,12 @@
   ],
   "matches": [
     {
+      "a": "Norway",
+      "b": "France",
+      "live": true,
+      "time": "06-27 03:00"
+    },
+    {
       "a": "Senegal",
       "b": "Iraq",
       "live": true,
@@ -81,11 +87,6 @@
       "a": "Algeria",
       "b": "Austria",
       "time": "06-28 10:00"
-    },
-    {
-      "a": "South Africa",
-      "b": "Canada",
-      "time": "06-29 03:00"
     }
   ],
   "played": [
@@ -296,12 +297,12 @@
       "w": 1
     },
     "France": {
-      "d": 1,
+      "d": 0,
       "group": "I",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 2
+      "w": 3
     },
     "Germany": {
       "d": 0,
@@ -336,9 +337,9 @@
       "w": 0
     },
     "Iraq": {
-      "d": 1,
+      "d": 0,
       "group": "I",
-      "l": 2,
+      "l": 3,
       "out": false,
       "reached": "group",
       "w": 0
@@ -392,9 +393,9 @@
       "w": 0
     },
     "Norway": {
-      "d": 1,
+      "d": 0,
       "group": "I",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 2
@@ -448,12 +449,12 @@
       "w": 1
     },
     "Senegal": {
-      "d": 1,
+      "d": 0,
       "group": "I",
       "l": 2,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "South Africa": {
       "d": 1,
@@ -536,5 +537,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-26T19:06:39.057570+00:00"
+  "updatedAt": "2026-06-26T20:57:04.903212+00:00"
 }
