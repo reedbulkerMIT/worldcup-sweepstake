@@ -188,6 +188,21 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [now, setNow] = useState(() => Date.now()); // 每秒更新,驅動開賽倒數
   const busyRef = useRef(false);
+  const bracketScrollRef = useRef(null); // 樹狀圖橫向捲動容器
+  const frontColRef = useRef(null); // 戰線最前緣那一欄,供自動定位
+
+  // 樹狀圖「戰線最前緣」:只看確定資料(對戰是否成形 + winner 是否填滿),
+  // 不碰 IN_PLAY/PAUSED 那種會抖的即時狀態。
+  // 從最右輪往左找第一個「有對戰、且該輪還有 winner 未定」的輪;
+  // 若所有已成形的輪都分完勝負,前緣落在最右(最深)那一輪。
+  // 註:宣告必須在下方 auto-scroll useEffect 之前(effect 依賴陣列會讀到它)。
+  const activeKoRounds = ROUND_SEQ.filter((r) => knockout.some((m) => m.round === r));
+  let frontRound = null;
+  for (let i = activeKoRounds.length - 1; i >= 0; i--) {
+    const r = activeKoRounds[i];
+    if (knockout.some((m) => m.round === r && !m.winner)) { frontRound = r; break; }
+  }
+  if (!frontRound && activeKoRounds.length) frontRound = activeKoRounds[activeKoRounds.length - 1];
 
   // ───────── 讀取靜態 data.json(初次載入;由 GitHub Actions 定期重產) ─────────
   const loadData = useCallback(async () => {
@@ -219,6 +234,24 @@ export default function App() {
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // 進入樹狀圖頁時,自動橫向定位到「戰線最前緣」那一欄(置中)。
+  // 只在內容溢出(放不下、通常是手機)時捲動;能完整顯示就不動,
+  // 也不影響使用者之後自己左右滑動。欄寬固定,版面不受國旗延遲載入影響。
+  useEffect(() => {
+    if (tab !== "bracket" || loading) return;
+    const container = bracketScrollRef.current;
+    const col = frontColRef.current;
+    if (!container || !col) return;
+    const raf = requestAnimationFrame(() => {
+      if (container.scrollWidth <= container.clientWidth) return; // 放得下,不需捲動
+      const cRect = container.getBoundingClientRect();
+      const colRect = col.getBoundingClientRect();
+      const delta = (colRect.left - cRect.left) - (container.clientWidth - col.offsetWidth) / 2;
+      container.scrollLeft = Math.max(0, container.scrollLeft + delta);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [tab, loading, knockout, frontRound]);
 
   // ───────── 排行榜計算(按國家;只列已認領的隊,分數不跨隊加總) ─────────
   // 進入淘汰賽(knockout 有資料)後,改成上下兩段:上段「晉級中」、下段「已淘汰」,
@@ -499,12 +532,19 @@ export default function App() {
                 </div>
               )
             ) : (
-              <div className="overflow-x-auto pb-4">
+              <div className="overflow-x-auto pb-4" ref={bracketScrollRef}>
                 <div className="flex gap-4" style={{ minWidth: "max-content" }}>
-                  {ROUND_SEQ.filter((r) => knockout.some((m) => m.round === r)).map((r) => (
-                    <div key={r} className="flex flex-col justify-around" style={{ width: 210 }}>
-                      <h3 className="display text-lg font-bold tracking-widest mb-2 text-center" style={{ color: C.gold }}>
+                  {activeKoRounds.map((r) => (
+                    <div key={r} ref={r === frontRound ? frontColRef : null} className="flex flex-col justify-around" style={{ width: 210 }}>
+                      <h3 className="display text-lg font-bold tracking-widest mb-2 text-center flex items-center justify-center gap-1.5" style={{ color: C.gold }}>
                         {ROUND_ZH[r]}
+                        {r === frontRound && (
+                          <span title="目前戰線" aria-label="目前戰線" style={{
+                            width: 7, height: 7, borderRadius: "50%",
+                            background: C.gold, boxShadow: `0 0 6px ${C.gold}`,
+                            display: "inline-block", flex: "0 0 auto",
+                          }} />
+                        )}
                       </h3>
                       <div className="flex flex-col justify-around flex-1 gap-3">
                         {knockout.filter((m) => m.round === r).map((m, idx) => (
