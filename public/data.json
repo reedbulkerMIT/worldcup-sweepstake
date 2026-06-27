@@ -1,53 +1,6 @@
 {
-  "knockout": [
-    {
-      "a": "South Africa",
-      "b": "Canada",
-      "round": "r32",
-      "winner": ""
-    },
-    {
-      "a": "Brazil",
-      "b": "Japan",
-      "round": "r32",
-      "winner": ""
-    },
-    {
-      "a": "Netherlands",
-      "b": "Morocco",
-      "round": "r32",
-      "winner": ""
-    },
-    {
-      "a": "United States",
-      "b": "Bosnia and Herzegovina",
-      "round": "r32",
-      "winner": ""
-    }
-  ],
+  "knockout": [],
   "matches": [
-    {
-      "a": "Uruguay",
-      "b": "Spain",
-      "live": true,
-      "time": "06-27 08:00"
-    },
-    {
-      "a": "Cabo Verde",
-      "b": "Saudi Arabia",
-      "live": true,
-      "time": "06-27 08:00"
-    },
-    {
-      "a": "New Zealand",
-      "b": "Belgium",
-      "time": "06-27 11:00"
-    },
-    {
-      "a": "Egypt",
-      "b": "Iran",
-      "time": "06-27 11:00"
-    },
     {
       "a": "Panama",
       "b": "England",
@@ -77,16 +30,6 @@
       "a": "Algeria",
       "b": "Austria",
       "time": "06-28 10:00"
-    },
-    {
-      "a": "South Africa",
-      "b": "Canada",
-      "time": "06-29 03:00"
-    },
-    {
-      "a": "Brazil",
-      "b": "Japan",
-      "time": "06-30 01:00"
     }
   ],
   "played": [
@@ -151,7 +94,11 @@
     "06-26 10:00|Paraguay|0|0|Australia",
     "06-26 10:00|Turkiye|3|2|United States",
     "06-27 03:00|Norway|1|4|France",
-    "06-27 03:00|Senegal|5|0|Iraq"
+    "06-27 03:00|Senegal|5|0|Iraq",
+    "06-27 08:00|Cabo Verde|0|0|Saudi Arabia",
+    "06-27 08:00|Uruguay|0|1|Spain",
+    "06-27 11:00|Egypt|1|1|Iran",
+    "06-27 11:00|New Zealand|1|5|Belgium"
   ],
   "results": {
     "Algeria": {
@@ -192,14 +139,14 @@
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     },
     "Bosnia and Herzegovina": {
       "d": 1,
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 1
     },
     "Brazil": {
@@ -207,7 +154,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 2
     },
     "Cabo Verde": {
@@ -223,7 +170,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 1
     },
     "Colombia": {
@@ -283,7 +230,7 @@
       "w": 1
     },
     "Egypt": {
-      "d": 1,
+      "d": 2,
       "group": "G",
       "l": 0,
       "out": false,
@@ -331,7 +278,7 @@
       "w": 0
     },
     "Iran": {
-      "d": 2,
+      "d": 3,
       "group": "G",
       "l": 0,
       "out": false,
@@ -351,7 +298,7 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 1
     },
     "Jordan": {
@@ -375,7 +322,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 2
     },
     "Netherlands": {
@@ -383,13 +330,13 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 2
     },
     "New Zealand": {
       "d": 1,
       "group": "G",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -463,7 +410,7 @@
       "group": "A",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 1
     },
     "South Korea": {
@@ -519,7 +466,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "group",
       "w": 2
     },
     "Uruguay": {
@@ -539,5 +486,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-27T01:24:20.398171+00:00"
+  "updatedAt": "2026-06-27T06:03:37.630449+00:00"
 }
