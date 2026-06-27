@@ -29,11 +29,13 @@
     {
       "a": "Panama",
       "b": "England",
+      "live": true,
       "time": "06-28 05:00"
     },
     {
       "a": "Croatia",
       "b": "Ghana",
+      "live": true,
       "time": "06-28 05:00"
     },
     {
@@ -240,7 +242,7 @@
       "l": 1,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "Curacao": {
       "d": 1,
@@ -283,7 +285,7 @@
       "w": 1
     },
     "England": {
-      "d": 1,
+      "d": 2,
       "group": "L",
       "l": 0,
       "out": false,
@@ -309,7 +311,7 @@
     "Ghana": {
       "d": 1,
       "group": "L",
-      "l": 0,
+      "l": 1,
       "out": false,
       "reached": "group",
       "w": 1
@@ -395,7 +397,7 @@
       "w": 2
     },
     "Panama": {
-      "d": 0,
+      "d": 1,
       "group": "L",
       "l": 2,
       "out": false,
@@ -531,5 +533,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-27T18:36:45.122313+00:00"
+  "updatedAt": "2026-06-27T22:17:49.995189+00:00"
 }
