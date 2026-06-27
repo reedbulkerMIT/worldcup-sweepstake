@@ -1,5 +1,30 @@
 {
-  "knockout": [],
+  "knockout": [
+    {
+      "a": "South Africa",
+      "b": "Canada",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Brazil",
+      "b": "Japan",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Netherlands",
+      "b": "Morocco",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "United States",
+      "b": "Bosnia and Herzegovina",
+      "round": "r32",
+      "winner": ""
+    }
+  ],
   "matches": [
     {
       "a": "Panama",
@@ -30,6 +55,26 @@
       "a": "Algeria",
       "b": "Austria",
       "time": "06-28 10:00"
+    },
+    {
+      "a": "South Africa",
+      "b": "Canada",
+      "time": "06-29 03:00"
+    },
+    {
+      "a": "Brazil",
+      "b": "Japan",
+      "time": "06-30 01:00"
+    },
+    {
+      "a": "Netherlands",
+      "b": "Morocco",
+      "time": "06-30 09:00"
+    },
+    {
+      "a": "United States",
+      "b": "Bosnia and Herzegovina",
+      "time": "07-02 08:00"
     }
   ],
   "played": [
@@ -146,7 +191,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Brazil": {
@@ -154,7 +199,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Cabo Verde": {
@@ -170,7 +215,7 @@
       "group": "B",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Colombia": {
@@ -298,7 +343,7 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Jordan": {
@@ -322,7 +367,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Netherlands": {
@@ -330,7 +375,7 @@
       "group": "F",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "New Zealand": {
@@ -410,7 +455,7 @@
       "group": "A",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "South Korea": {
@@ -466,7 +511,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Uruguay": {
@@ -486,5 +531,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-27T09:06:52.158346+00:00"
+  "updatedAt": "2026-06-27T11:05:19.388355+00:00"
 }
