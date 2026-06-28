@@ -27,28 +27,6 @@
   ],
   "matches": [
     {
-      "a": "Panama",
-      "b": "England",
-      "live": true,
-      "time": "06-28 05:00"
-    },
-    {
-      "a": "Croatia",
-      "b": "Ghana",
-      "live": true,
-      "time": "06-28 05:00"
-    },
-    {
-      "a": "Colombia",
-      "b": "Portugal",
-      "time": "06-28 07:30"
-    },
-    {
-      "a": "DR Congo",
-      "b": "Uzbekistan",
-      "time": "06-28 07:30"
-    },
-    {
       "a": "Jordan",
       "b": "Argentina",
       "time": "06-28 10:00"
@@ -145,7 +123,9 @@
     "06-27 08:00|Cabo Verde|0|0|Saudi Arabia",
     "06-27 08:00|Uruguay|0|1|Spain",
     "06-27 11:00|Egypt|1|1|Iran",
-    "06-27 11:00|New Zealand|1|5|Belgium"
+    "06-27 11:00|New Zealand|1|5|Belgium",
+    "06-28 05:00|Croatia|2|1|Ghana",
+    "06-28 05:00|Panama|0|2|England"
   ],
   "results": {
     "Algeria": {
@@ -221,7 +201,7 @@
       "w": 1
     },
     "Colombia": {
-      "d": 0,
+      "d": 1,
       "group": "K",
       "l": 0,
       "out": false,
@@ -263,7 +243,7 @@
     "DR Congo": {
       "d": 1,
       "group": "K",
-      "l": 1,
+      "l": 2,
       "out": false,
       "reached": "group",
       "w": 0
@@ -285,12 +265,12 @@
       "w": 1
     },
     "England": {
-      "d": 2,
+      "d": 1,
       "group": "L",
       "l": 0,
       "out": false,
       "reached": "group",
-      "w": 1
+      "w": 2
     },
     "France": {
       "d": 0,
@@ -397,9 +377,9 @@
       "w": 2
     },
     "Panama": {
-      "d": 1,
+      "d": 0,
       "group": "L",
-      "l": 2,
+      "l": 3,
       "out": false,
       "reached": "group",
       "w": 0
@@ -413,7 +393,7 @@
       "w": 1
     },
     "Portugal": {
-      "d": 1,
+      "d": 2,
       "group": "K",
       "l": 0,
       "out": false,
@@ -530,8 +510,8 @@
       "l": 2,
       "out": false,
       "reached": "group",
-      "w": 0
+      "w": 1
     }
   },
-  "updatedAt": "2026-06-27T22:17:49.995189+00:00"
+  "updatedAt": "2026-06-28T00:16:23.540686+00:00"
 }
