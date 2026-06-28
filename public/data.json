@@ -13,14 +13,86 @@
       "winner": ""
     },
     {
+      "a": "Germany",
+      "b": "Paraguay",
+      "round": "r32",
+      "winner": ""
+    },
+    {
       "a": "Netherlands",
       "b": "Morocco",
       "round": "r32",
       "winner": ""
     },
     {
+      "a": "Cote d'Ivoire",
+      "b": "Norway",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "France",
+      "b": "Sweden",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Mexico",
+      "b": "Ecuador",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "England",
+      "b": "DR Congo",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Belgium",
+      "b": "Senegal",
+      "round": "r32",
+      "winner": ""
+    },
+    {
       "a": "United States",
       "b": "Bosnia and Herzegovina",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Spain",
+      "b": "Austria",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Portugal",
+      "b": "Croatia",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Switzerland",
+      "b": "Algeria",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Australia",
+      "b": "Egypt",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Argentina",
+      "b": "Cabo Verde",
+      "round": "r32",
+      "winner": ""
+    },
+    {
+      "a": "Colombia",
+      "b": "Ghana",
       "round": "r32",
       "winner": ""
     }
@@ -37,14 +109,54 @@
       "time": "06-30 01:00"
     },
     {
+      "a": "Germany",
+      "b": "Paraguay",
+      "time": "06-30 04:30"
+    },
+    {
       "a": "Netherlands",
       "b": "Morocco",
       "time": "06-30 09:00"
     },
     {
+      "a": "Cote d'Ivoire",
+      "b": "Norway",
+      "time": "07-01 01:00"
+    },
+    {
+      "a": "France",
+      "b": "Sweden",
+      "time": "07-01 05:00"
+    },
+    {
+      "a": "Mexico",
+      "b": "Ecuador",
+      "time": "07-01 09:00"
+    },
+    {
+      "a": "England",
+      "b": "DR Congo",
+      "time": "07-02 00:00"
+    },
+    {
+      "a": "Belgium",
+      "b": "Senegal",
+      "time": "07-02 04:00"
+    },
+    {
       "a": "United States",
       "b": "Bosnia and Herzegovina",
       "time": "07-02 08:00"
+    },
+    {
+      "a": "Spain",
+      "b": "Austria",
+      "time": "07-03 03:00"
+    },
+    {
+      "a": "Portugal",
+      "b": "Croatia",
+      "time": "07-03 07:00"
     }
   ],
   "played": [
@@ -127,7 +239,7 @@
       "group": "J",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Argentina": {
@@ -135,7 +247,7 @@
       "group": "J",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 3
     },
     "Australia": {
@@ -143,7 +255,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Austria": {
@@ -151,7 +263,7 @@
       "group": "J",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Belgium": {
@@ -159,7 +271,7 @@
       "group": "G",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Bosnia and Herzegovina": {
@@ -183,7 +295,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 0
     },
     "Canada": {
@@ -199,7 +311,7 @@
       "group": "K",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Cote d'Ivoire": {
@@ -207,7 +319,7 @@
       "group": "E",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Croatia": {
@@ -215,7 +327,7 @@
       "group": "L",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Curacao": {
@@ -239,7 +351,7 @@
       "group": "K",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Ecuador": {
@@ -247,7 +359,7 @@
       "group": "E",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Egypt": {
@@ -255,7 +367,7 @@
       "group": "G",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "England": {
@@ -263,7 +375,7 @@
       "group": "L",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "France": {
@@ -271,7 +383,7 @@
       "group": "I",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 3
     },
     "Germany": {
@@ -279,7 +391,7 @@
       "group": "E",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Ghana": {
@@ -287,7 +399,7 @@
       "group": "L",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Haiti": {
@@ -335,7 +447,7 @@
       "group": "A",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 3
     },
     "Morocco": {
@@ -367,7 +479,7 @@
       "group": "I",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Panama": {
@@ -383,7 +495,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Portugal": {
@@ -391,7 +503,7 @@
       "group": "K",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Qatar": {
@@ -423,7 +535,7 @@
       "group": "I",
       "l": 2,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "South Africa": {
@@ -447,7 +559,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Sweden": {
@@ -455,7 +567,7 @@
       "group": "F",
       "l": 1,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 1
     },
     "Switzerland": {
@@ -463,7 +575,7 @@
       "group": "B",
       "l": 0,
       "out": false,
-      "reached": "group",
+      "reached": "r32",
       "w": 2
     },
     "Tunisia": {
@@ -507,5 +619,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-28T04:56:20.615087+00:00"
+  "updatedAt": "2026-06-28T08:29:41.782594+00:00"
 }
