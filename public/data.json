@@ -3,97 +3,132 @@
     {
       "a": "South Africa",
       "b": "Canada",
+      "kickoff": "06-29 03:00",
       "round": "r32",
+      "score": {
+        "a": 0,
+        "b": 1
+      },
       "winner": "Canada"
     },
     {
       "a": "Brazil",
       "b": "Japan",
+      "kickoff": "06-30 01:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Germany",
       "b": "Paraguay",
+      "kickoff": "06-30 04:30",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Netherlands",
       "b": "Morocco",
+      "kickoff": "06-30 09:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Cote d'Ivoire",
       "b": "Norway",
+      "kickoff": "07-01 01:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "France",
       "b": "Sweden",
+      "kickoff": "07-01 05:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Mexico",
       "b": "Ecuador",
+      "kickoff": "07-01 09:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "England",
       "b": "DR Congo",
+      "kickoff": "07-02 00:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Belgium",
       "b": "Senegal",
+      "kickoff": "07-02 04:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "United States",
       "b": "Bosnia and Herzegovina",
+      "kickoff": "07-02 08:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Spain",
       "b": "Austria",
+      "kickoff": "07-03 03:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Portugal",
       "b": "Croatia",
+      "kickoff": "07-03 07:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Switzerland",
       "b": "Algeria",
+      "kickoff": "07-03 11:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Australia",
       "b": "Egypt",
+      "kickoff": "07-04 02:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Argentina",
       "b": "Cabo Verde",
+      "kickoff": "07-04 06:00",
       "round": "r32",
+      "score": null,
       "winner": ""
     },
     {
       "a": "Colombia",
       "b": "Ghana",
+      "kickoff": "07-04 09:30",
       "round": "r32",
+      "score": null,
       "winner": ""
     }
   ],
@@ -620,5 +655,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-28T22:16:55.096418+00:00"
+  "updatedAt": "2026-06-29T02:07:12.069949+00:00"
 }
