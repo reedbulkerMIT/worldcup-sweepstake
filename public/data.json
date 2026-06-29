@@ -16,8 +16,11 @@
       "b": "Japan",
       "kickoff": "06-30 01:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 0,
+        "b": 1
+      },
+      "winner": "Japan"
     },
     {
       "a": "Germany",
@@ -136,6 +139,7 @@
     {
       "a": "Brazil",
       "b": "Japan",
+      "live": true,
       "time": "06-30 01:00"
     },
     {
@@ -655,5 +659,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-29T02:07:12.069949+00:00"
+  "updatedAt": "2026-06-29T17:49:04.060766+00:00"
 }
