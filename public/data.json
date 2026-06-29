@@ -17,10 +17,10 @@
       "kickoff": "06-30 01:00",
       "round": "r32",
       "score": {
-        "a": 0,
+        "a": 2,
         "b": 1
       },
-      "winner": "Japan"
+      "winner": "Brazil"
     },
     {
       "a": "Germany",
@@ -137,12 +137,6 @@
   ],
   "matches": [
     {
-      "a": "Brazil",
-      "b": "Japan",
-      "live": true,
-      "time": "06-30 01:00"
-    },
-    {
       "a": "Germany",
       "b": "Paraguay",
       "time": "06-30 04:30"
@@ -196,6 +190,11 @@
       "a": "Switzerland",
       "b": "Algeria",
       "time": "07-03 11:00"
+    },
+    {
+      "a": "Australia",
+      "b": "Egypt",
+      "time": "07-04 02:00"
     }
   ],
   "played": [
@@ -271,7 +270,8 @@
     "06-28 07:30|DR Congo|3|1|Uzbekistan",
     "06-28 10:00|Algeria|3|3|Austria",
     "06-28 10:00|Jordan|1|3|Argentina",
-    "06-29 03:00|South Africa|0|1|Canada"
+    "06-29 03:00|South Africa|0|1|Canada",
+    "06-30 01:00|Brazil|2|1|Japan"
   ],
   "results": {
     "Algeria": {
@@ -470,7 +470,7 @@
       "d": 2,
       "group": "F",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -659,5 +659,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-29T17:49:04.060766+00:00"
+  "updatedAt": "2026-06-29T20:17:16.868281+00:00"
 }
