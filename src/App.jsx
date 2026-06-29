@@ -177,7 +177,7 @@ function fmtCountdown(ms) {
 }
 
 export default function App() {
-  const [tab, setTab] = useState("board");
+  const [tab, setTab] = useState("bracket");
   // 認領名單為靜態資料(src/draw.js),唯讀
   const colleagues = COLLEAGUES;
   const owners = OWNERS; // teamEn -> colleague
@@ -573,6 +573,28 @@ export default function App() {
                                 </div>
                               );
                             })}
+                            {(() => {
+                              const hasScore = m.score && m.score.a != null && m.score.b != null;
+                              // 有 winner → 比分(金色);無 winner 但有 kickoff → 開賽時間(淡字);否則不顯示。
+                              // 放卡片底部跨整張卡,不擠進「旗+隊名+認領」那兩列。
+                              if (m.winner && hasScore) {
+                                return (
+                                  <div className="display text-sm font-bold text-center py-1"
+                                    style={{ color: C.gold, borderTop: `1px solid ${C.line}` }}>
+                                    {m.score.a}-{m.score.b}
+                                  </div>
+                                );
+                              }
+                              if (!m.winner && m.kickoff) {
+                                return (
+                                  <div className="text-xs text-center py-1"
+                                    style={{ color: C.chalkDim, borderTop: `1px solid ${C.line}` }}>
+                                    {m.kickoff}
+                                  </div>
+                                );
+                              }
+                              return null;
+                            })()}
                           </div>
                         ))}
                       </div>

@@ -5,7 +5,8 @@
 前端(src/App.jsx)只讀這個 data.json,格式:
   {
     "results":  { "<teamEn>": {"group","w","d","l","reached","out"} },
-    "knockout": [ {"round","a","b","winner"} ],
+    "knockout": [ {"round","a","b","winner","kickoff","score"} ],
+                 # kickoff: 台灣時間 "MM-DD HH:mm";score: {"a","b"} 對齊 a/b,未比為 null
     "matches":  [ {"time","a","b"} ],   # 接下來 12 場,time 為台灣時間 "MM-DD HH:mm"
     "updatedAt": "<ISO-8601 UTC>"
   }
@@ -154,7 +155,28 @@ def build_results(standings):
     return results
 
 
-def build_knockout_and_progress(matches, results):
+def merge_knockout(fresh, old_knockout):
+    """淘汰賽對戰單調聯集:已成形的對戰只增不減。某輪某場一旦寫進 data.json,
+    之後即使某次 API 快照回不完整(該場暫時消失),仍保留不移除,避免 API 抽風
+    時樹狀圖整欄塌掉。
+
+    key=(round, a, b) 為對戰身分(不含 winner/score);新快照同場有更新
+    (填上 winner / 比分 / 開賽時間)以新的為準。
+    """
+    def key(entry):
+        return (entry.get("round"), entry.get("a"), entry.get("b"))
+
+    merged = {}
+    for e in (old_knockout or []):          # 先放舊的(保底,不讓任何已成形對戰掉)
+        if isinstance(e, dict) and e.get("a") and e.get("b") and e.get("round"):
+            merged[key(e)] = e
+    for e in fresh:                         # 新快照覆蓋同場(winner/score/kickoff 以新的為準)
+        merged[key(e)] = e
+    # 依輪次序、再依該輪內既有順序輸出(維持括號順序)
+    return sorted(merged.values(), key=lambda e: ROUND_RANK.get(e.get("round"), 99))
+
+
+def build_knockout_and_progress(matches, results, old=None):
     knockout = []
     lost_ko = set()               # 在已結束 KO 場輸球的 en
     reached = {}                  # en -> 最遠輪次(rank)
@@ -193,7 +215,33 @@ def build_knockout_and_progress(matches, results):
             if round_key == "final":
                 bump(winner, "champion")
 
-        knockout.append({"round": round_key, "a": a, "b": b, "winner": winner})
+        # 開賽時間(台灣時間,格式同賽程頁);源頭 match 物件本來就有 utcDate。
+        utc = m.get("utcDate")
+        kickoff = ""
+        if utc:
+            kickoff = datetime.fromisoformat(
+                utc.replace("Z", "+00:00")
+            ).astimezone(TAIPEI).strftime("%m-%d %H:%M")
+
+        # 比分對齊 a/b = API home/away;未比為 null。延長賽/PK 已含在 fullTime。
+        ft = (m.get("score", {}) or {}).get("fullTime", {}) or {}
+        sa, sb = ft.get("home"), ft.get("away")
+        score = {"a": sa, "b": sb} if sa is not None and sb is not None else None
+
+        knockout.append({
+            "round": round_key, "a": a, "b": b, "winner": winner,
+            "kickoff": kickoff, "score": score,
+        })
+
+    # 已成形對戰單調聯集:本次快照 ∪ 舊 data.json 的 knockout(只增不減)。
+    knockout = merge_knockout(knockout, (old or {}).get("knockout"))
+
+    # reached 單調保護:比照已完賽「只增不減」。把舊 data.json 已記的 reached
+    # 灌進 reached 起點,確保本次 API 回不完整快照時,既有晉級標籤不被覆蓋回 group。
+    for en, rec in (old or {}).get("results", {}).items():
+        prev = ROUND_RANK.get(rec.get("reached"), 0)
+        if en in results and prev > reached.get(en, 0):
+            reached[en] = prev
 
     # 把 reached / out 寫回 results。out 只認「在淘汰賽實際輸球」(lost_ko):
     # 不主動把「沒進 32 強」的隊打叉——否則 API 逐步填 r32 籤表、只成形一半時,
@@ -333,7 +381,9 @@ def main():
     now = datetime.now(timezone.utc)
 
     results = build_results(standings)
-    knockout = build_knockout_and_progress(matches, results)
+    # 傳入舊檔:knockout 已成形對戰 + reached 晉級標籤都做「只增不減」單調保護,
+    # 避免 API 快照不完整時樹狀圖對戰塌掉、晉級標籤被覆蓋回 group。
+    knockout = build_knockout_and_progress(matches, results, old)
     # 已完賽 = 本次快照 ∪ 舊 data.json 的 played(只增不減)
     played = merge_played(build_played(matches, now), (old or {}).get("played"))
     # 賽程排除已在已完賽的場次,避免跳動造成重複
