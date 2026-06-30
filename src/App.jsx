@@ -575,9 +575,11 @@ export default function App() {
                             })}
                             {(() => {
                               const hasScore = m.score && m.score.a != null && m.score.b != null;
-                              // 有 winner → 比分(金色);無 winner 但有 kickoff → 開賽時間(淡字);否則不顯示。
+                              // 有比分 → 顯示比分(金色),不綁 winner:上游賽後仍卡 IN_PLAY 時
+                              //   score 已回填、winner 卻還空,綁 winner 會把已知比分藏起來。
+                              // 無比分但有 kickoff → 開賽時間(淡字);否則不顯示。
                               // 放卡片底部跨整張卡,不擠進「旗+隊名+認領」那兩列。
-                              if (m.winner && hasScore) {
+                              if (hasScore) {
                                 return (
                                   <div className="display text-sm font-bold text-center py-1"
                                     style={{ color: C.gold, borderTop: `1px solid ${C.line}` }}>
@@ -585,7 +587,7 @@ export default function App() {
                                   </div>
                                 );
                               }
-                              if (!m.winner && m.kickoff) {
+                              if (m.kickoff) {
                                 return (
                                   <div className="text-xs text-center py-1"
                                     style={{ color: C.chalkDim, borderTop: `1px solid ${C.line}` }}>
