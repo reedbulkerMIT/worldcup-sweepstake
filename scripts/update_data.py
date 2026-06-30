@@ -217,8 +217,6 @@ def build_knockout_and_progress(matches, results, old=None, now=None):
 
         # 勝方:正式完賽(FINISHED/AWARDED)才採信 API 的 score.winner;比賽進行中
         # (含上游卡 live)即使 score.winner 暫時有值也不採,避免還在踢就標出勝負。
-        # 過期 live(>3h 仍卡 live、score.winner 拿不到)但比分已分高下 → 用比分推回
-        # 勝方,讓樹狀圖能把被淘汰方劃掉、調暗。
         winner_code = (m.get("score", {}) or {}).get("winner")
         winner = ""
         if status in ("FINISHED", "AWARDED"):
@@ -226,7 +224,11 @@ def build_knockout_and_progress(matches, results, old=None, now=None):
                 winner = a
             elif winner_code == "AWAY_TEAM":
                 winner = b
-        elif stale and has_score and sa != sb:
+        # 已結束(正式完賽或過期 live)但 API 沒給明確 winner、而比分已分高下 → 用比分
+        # 推回勝方,讓樹狀圖能把被淘汰方劃掉、調暗。涵蓋兩種上游缺陷:
+        #   (1) 上游卡 live 不翻 FINISHED;(2) FINISHED 卻沒回 score.winner(免費層常見)。
+        # 比分決勝時高分方即勝方(REGULAR/延長賽皆然;PK 折進 fullTime 後勝方總分仍較高)。
+        if not winner and settled and has_score and sa != sb:
             winner = a if sa > sb else b
 
         if winner:
