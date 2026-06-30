@@ -580,17 +580,16 @@ export default function App() {
                               // 無比分但有 kickoff → 開賽時間(淡字);否則不顯示。
                               // 放卡片底部跨整張卡,不擠進「旗+隊名+認領」那兩列。
                               if (hasScore) {
-                                // PK 收場正名:顯示「正規比分(PK 勝-負)」,PK 勝方數字標金色。
-                                // score.pk / score.reg 對齊 a/b;勝方在前。正規比分(PK 場必平手)維持 a-b 序。
+                                // PK 收場正名:顯示「正規比分(PK a-b)」,PK 數字照卡片上下排列
+                                // (a=上列、b=下列),與正規比分同序。金色標在「實際贏 PK 的那隊」數字上
+                                // ——贏家在下列(b)時金色就落在後面那個數字。
                                 const pk = m.score.pk, reg = m.score.reg;
                                 if (pk && reg && m.winner) {
                                   const aWon = m.winner === m.a;
-                                  const pkWin = aWon ? pk.a : pk.b;
-                                  const pkLose = aWon ? pk.b : pk.a;
                                   return (
                                     <div className="display text-sm font-bold text-center py-1"
                                       style={{ color: C.chalk, borderTop: `1px solid ${C.line}` }}>
-                                      {reg.a}-{reg.b}（PK <span style={{ color: C.gold }}>{pkWin}</span>-{pkLose}）
+                                      {reg.a}-{reg.b}（PK <span style={aWon ? { color: C.gold } : undefined}>{pk.a}</span>-<span style={aWon ? undefined : { color: C.gold }}>{pk.b}</span>）
                                     </div>
                                   );
                                 }
