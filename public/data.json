@@ -31,7 +31,7 @@
         "a": 4,
         "b": 5
       },
-      "winner": ""
+      "winner": "Paraguay"
     },
     {
       "a": "Netherlands",
@@ -435,7 +435,7 @@
       "d": 0,
       "group": "E",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 2
     },
@@ -664,5 +664,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-30T03:46:19.985975+00:00"
+  "updatedAt": "2026-06-30T03:48:38.208520+00:00"
 }
