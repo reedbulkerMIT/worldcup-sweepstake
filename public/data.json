@@ -38,11 +38,8 @@
       "b": "Morocco",
       "kickoff": "06-30 09:00",
       "round": "r32",
-      "score": {
-        "a": 1,
-        "b": 0
-      },
-      "winner": "Netherlands"
+      "score": null,
+      "winner": ""
     },
     {
       "a": "Cote d'Ivoire",
@@ -667,5 +664,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-30T02:42:39.818545+00:00"
+  "updatedAt": "2026-06-30T03:46:19.985975+00:00"
 }
