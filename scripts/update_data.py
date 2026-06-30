@@ -176,7 +176,7 @@ def merge_knockout(fresh, old_knockout):
     return sorted(merged.values(), key=lambda e: ROUND_RANK.get(e.get("round"), 99))
 
 
-def build_knockout_and_progress(matches, results, old=None):
+def build_knockout_and_progress(matches, results, old=None, now=None):
     knockout = []
     lost_ko = set()               # 在已結束 KO 場輸球的 en
     reached = {}                  # en -> 最遠輪次(rank)
@@ -202,14 +202,34 @@ def build_knockout_and_progress(matches, results, old=None):
         bump(a, round_key)
         bump(b, round_key)
 
+        status = m.get("status")
+        stale = is_stale_live(m, now) if now is not None else False
+        # 「已結束」判定與 build_played 一致:正式完賽(FINISHED/AWARDED)或過期 live。
+        settled = status in ("FINISHED", "AWARDED") or stale
+
+        # 比分對齊 a/b = API home/away。fullTime 在 IN_PLAY 時是「跑動比分」(開踢即設 0、
+        # 隨進球更新),所以只在「已結束」才掛上;否則樹狀圖會在比賽還在踢時就顯示即時
+        # 比分。未結束為 null。延長賽/PK 已含在 fullTime。
+        ft = (m.get("score", {}) or {}).get("fullTime", {}) or {}
+        sa, sb = ft.get("home"), ft.get("away")
+        has_score = sa is not None and sb is not None
+        score = {"a": sa, "b": sb} if settled and has_score else None
+
+        # 勝方:正式完賽(FINISHED/AWARDED)才採信 API 的 score.winner;比賽進行中
+        # (含上游卡 live)即使 score.winner 暫時有值也不採,避免還在踢就標出勝負。
+        # 過期 live(>3h 仍卡 live、score.winner 拿不到)但比分已分高下 → 用比分推回
+        # 勝方,讓樹狀圖能把被淘汰方劃掉、調暗。
         winner_code = (m.get("score", {}) or {}).get("winner")
         winner = ""
-        if winner_code == "HOME_TEAM":
-            winner = a
-        elif winner_code == "AWAY_TEAM":
-            winner = b
+        if status in ("FINISHED", "AWARDED"):
+            if winner_code == "HOME_TEAM":
+                winner = a
+            elif winner_code == "AWAY_TEAM":
+                winner = b
+        elif stale and has_score and sa != sb:
+            winner = a if sa > sb else b
 
-        if m.get("status") == "FINISHED" and winner:
+        if winner:
             loser = b if winner == a else a
             lost_ko.add(loser)
             if round_key == "final":
@@ -222,11 +242,6 @@ def build_knockout_and_progress(matches, results, old=None):
             kickoff = datetime.fromisoformat(
                 utc.replace("Z", "+00:00")
             ).astimezone(TAIPEI).strftime("%m-%d %H:%M")
-
-        # 比分對齊 a/b = API home/away;未比為 null。延長賽/PK 已含在 fullTime。
-        ft = (m.get("score", {}) or {}).get("fullTime", {}) or {}
-        sa, sb = ft.get("home"), ft.get("away")
-        score = {"a": sa, "b": sb} if sa is not None and sb is not None else None
 
         knockout.append({
             "round": round_key, "a": a, "b": b, "winner": winner,
@@ -383,7 +398,7 @@ def main():
     results = build_results(standings)
     # 傳入舊檔:knockout 已成形對戰 + reached 晉級標籤都做「只增不減」單調保護,
     # 避免 API 快照不完整時樹狀圖對戰塌掉、晉級標籤被覆蓋回 group。
-    knockout = build_knockout_and_progress(matches, results, old)
+    knockout = build_knockout_and_progress(matches, results, old, now)
     # 已完賽 = 本次快照 ∪ 舊 data.json 的 played(只增不減)
     played = merge_played(build_played(matches, now), (old or {}).get("played"))
     # 賽程排除已在已完賽的場次,避免跳動造成重複
