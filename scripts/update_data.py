@@ -210,10 +210,29 @@ def build_knockout_and_progress(matches, results, old=None, now=None):
         # 比分對齊 a/b = API home/away。fullTime 在 IN_PLAY 時是「跑動比分」(開踢即設 0、
         # 隨進球更新),所以只在「已結束」才掛上;否則樹狀圖會在比賽還在踢時就顯示即時
         # 比分。未結束為 null。延長賽/PK 已含在 fullTime。
-        ft = (m.get("score", {}) or {}).get("fullTime", {}) or {}
+        sc = m.get("score", {}) or {}
+        ft = sc.get("fullTime", {}) or {}
         sa, sb = ft.get("home"), ft.get("away")
         has_score = sa is not None and sb is not None
         score = {"a": sa, "b": sb} if settled and has_score else None
+
+        # PK 比分正名:只有 PK 收場(duration==PENALTY_SHOOTOUT)才加註。
+        # fullTime 已把 PK 折進總分,API 的 score.penalties 欄位在此資料源不可信
+        # (值會是平手如 4-4,且與 fullTime 對不上),故 PK 比分一律用
+        #   PK = fullTime − regularTime − extraTime  反推(全程對齊 a/b = home/away)。
+        # 正規比分顯示「延長後」結果:reg = regularTime + extraTime。
+        if score is not None and sc.get("duration") == "PENALTY_SHOOTOUT":
+            rt = sc.get("regularTime", {}) or {}
+            et = sc.get("extraTime", {}) or {}
+            rha, rhb = rt.get("home"), rt.get("away")
+            if rha is not None and rhb is not None:
+                ra = rha + (et.get("home") or 0)   # a=home 正規含延長
+                rb = rhb + (et.get("away") or 0)   # b=away 正規含延長
+                pa, pb = sa - ra, sb - rb          # PK,對齊 a/b
+                # 防呆:PK 數需非負且非全 0,且反推後總分對得上,才採用。
+                if pa >= 0 and pb >= 0 and (pa or pb):
+                    score["reg"] = {"a": ra, "b": rb}
+                    score["pk"] = {"a": pa, "b": pb}
 
         # 勝方:正式完賽(FINISHED/AWARDED)才採信 API 的 score.winner;比賽進行中
         # (含上游卡 live)即使 score.winner 暫時有值也不採,避免還在踢就標出勝負。
