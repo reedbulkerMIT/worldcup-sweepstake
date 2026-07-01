@@ -76,8 +76,11 @@
       "b": "Sweden",
       "kickoff": "07-01 05:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 3,
+        "b": 0
+      },
+      "winner": "France"
     },
     {
       "a": "Mexico",
@@ -170,14 +173,9 @@
   ],
   "matches": [
     {
-      "a": "France",
-      "b": "Sweden",
-      "live": true,
-      "time": "07-01 05:00"
-    },
-    {
       "a": "Mexico",
       "b": "Ecuador",
+      "live": true,
       "time": "07-01 09:00"
     },
     {
@@ -308,7 +306,8 @@
     "06-30 01:00|Brazil|2|1|Japan",
     "06-30 04:30|Germany|4|5|Paraguay",
     "06-30 09:00|Netherlands|3|4|Morocco",
-    "07-01 01:00|Cote d'Ivoire|1|2|Norway"
+    "07-01 01:00|Cote d'Ivoire|1|2|Norway",
+    "07-01 05:00|France|3|0|Sweden"
   ],
   "results": {
     "Algeria": {
@@ -643,7 +642,7 @@
       "d": 1,
       "group": "F",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -696,5 +695,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-06-30T22:42:06.960237+00:00"
+  "updatedAt": "2026-07-01T01:33:38.893939+00:00"
 }
