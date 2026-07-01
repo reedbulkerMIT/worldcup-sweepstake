@@ -87,8 +87,11 @@
       "b": "Ecuador",
       "kickoff": "07-01 09:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 0
+      },
+      "winner": "Mexico"
     },
     {
       "a": "England",
@@ -169,15 +172,25 @@
       "round": "r16",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Paraguay",
+      "b": "France",
+      "kickoff": "07-05 05:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
+    },
+    {
+      "a": "Brazil",
+      "b": "Norway",
+      "kickoff": "07-06 04:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
-    {
-      "a": "Mexico",
-      "b": "Ecuador",
-      "live": true,
-      "time": "07-01 09:00"
-    },
     {
       "a": "England",
       "b": "DR Congo",
@@ -227,6 +240,16 @@
       "a": "Canada",
       "b": "Morocco",
       "time": "07-05 01:00"
+    },
+    {
+      "a": "Paraguay",
+      "b": "France",
+      "time": "07-05 05:00"
+    },
+    {
+      "a": "Brazil",
+      "b": "Norway",
+      "time": "07-06 04:00"
     }
   ],
   "played": [
@@ -307,7 +330,8 @@
     "06-30 04:30|Germany|4|5|Paraguay",
     "06-30 09:00|Netherlands|3|4|Morocco",
     "07-01 01:00|Cote d'Ivoire|1|2|Norway",
-    "07-01 05:00|France|3|0|Sweden"
+    "07-01 05:00|France|3|0|Sweden",
+    "07-01 09:00|Mexico|2|0|Ecuador"
   ],
   "results": {
     "Algeria": {
@@ -363,7 +387,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Cabo Verde": {
@@ -434,7 +458,7 @@
       "d": 1,
       "group": "E",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -459,7 +483,7 @@
       "group": "I",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 3
     },
     "Germany": {
@@ -555,7 +579,7 @@
       "group": "I",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Panama": {
@@ -571,7 +595,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 1
     },
     "Portugal": {
@@ -695,5 +719,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-01T01:33:38.893939+00:00"
+  "updatedAt": "2026-07-01T06:46:28.869001+00:00"
 }
