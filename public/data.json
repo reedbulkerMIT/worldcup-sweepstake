@@ -98,8 +98,11 @@
       "b": "DR Congo",
       "kickoff": "07-02 00:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 1
+      },
+      "winner": "England"
     },
     {
       "a": "Belgium",
@@ -326,7 +329,8 @@
     "06-30 09:00|Netherlands|3|4|Morocco",
     "07-01 01:00|Cote d'Ivoire|1|2|Norway",
     "07-01 05:00|France|3|0|Sweden",
-    "07-01 09:00|Mexico|2|0|Ecuador"
+    "07-01 09:00|Mexico|2|0|Ecuador",
+    "07-02 00:00|England|2|1|DR Congo"
   ],
   "results": {
     "Algeria": {
@@ -445,7 +449,7 @@
       "d": 1,
       "group": "K",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -714,5 +718,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-01T16:41:08.789974+00:00"
+  "updatedAt": "2026-07-01T19:13:02.186676+00:00"
 }
