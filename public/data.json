@@ -197,6 +197,22 @@
       "round": "r16",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Mexico",
+      "b": "England",
+      "kickoff": "07-06 08:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
+    },
+    {
+      "a": "United States",
+      "b": "Belgium",
+      "kickoff": "07-07 08:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -244,6 +260,16 @@
       "a": "Brazil",
       "b": "Norway",
       "time": "07-06 04:00"
+    },
+    {
+      "a": "Mexico",
+      "b": "England",
+      "time": "07-06 08:00"
+    },
+    {
+      "a": "United States",
+      "b": "Belgium",
+      "time": "07-07 08:00"
     }
   ],
   "played": [
@@ -369,7 +395,7 @@
       "group": "G",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 1
     },
     "Bosnia and Herzegovina": {
@@ -473,7 +499,7 @@
       "group": "L",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "France": {
@@ -545,7 +571,7 @@
       "group": "A",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 3
     },
     "Morocco": {
@@ -697,7 +723,7 @@
       "group": "D",
       "l": 1,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Uruguay": {
@@ -717,5 +743,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-02T05:34:07.350824+00:00"
+  "updatedAt": "2026-07-02T06:11:28.528200+00:00"
 }
