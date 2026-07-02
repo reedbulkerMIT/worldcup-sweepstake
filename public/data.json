@@ -85,7 +85,7 @@
     {
       "a": "Mexico",
       "b": "Ecuador",
-      "kickoff": "07-01 09:00",
+      "kickoff": "07-01 10:00",
       "round": "r32",
       "score": {
         "a": 2,
@@ -120,8 +120,11 @@
       "b": "Bosnia and Herzegovina",
       "kickoff": "07-02 08:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 0
+      },
+      "winner": "United States"
     },
     {
       "a": "Spain",
@@ -197,12 +200,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "United States",
-      "b": "Bosnia and Herzegovina",
-      "live": true,
-      "time": "07-02 08:00"
-    },
     {
       "a": "Spain",
       "b": "Austria",
@@ -329,8 +326,10 @@
     "07-01 01:00|Cote d'Ivoire|1|2|Norway",
     "07-01 05:00|France|3|0|Sweden",
     "07-01 09:00|Mexico|2|0|Ecuador",
+    "07-01 10:00|Mexico|2|0|Ecuador",
     "07-02 00:00|England|2|1|DR Congo",
-    "07-02 04:00|Belgium|3|2|Senegal"
+    "07-02 04:00|Belgium|3|2|Senegal",
+    "07-02 08:00|United States|2|0|Bosnia and Herzegovina"
   ],
   "results": {
     "Algeria": {
@@ -377,7 +376,7 @@
       "d": 1,
       "group": "B",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -718,5 +717,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-02T01:26:16.211926+00:00"
+  "updatedAt": "2026-07-02T05:34:07.350824+00:00"
 }
