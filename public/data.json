@@ -131,8 +131,11 @@
       "b": "Austria",
       "kickoff": "07-03 03:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 3,
+        "b": 0
+      },
+      "winner": "Spain"
     },
     {
       "a": "Portugal",
@@ -216,11 +219,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Spain",
-      "b": "Austria",
-      "time": "07-03 03:00"
-    },
     {
       "a": "Portugal",
       "b": "Croatia",
@@ -355,7 +353,8 @@
     "07-01 10:00|Mexico|2|0|Ecuador",
     "07-02 00:00|England|2|1|DR Congo",
     "07-02 04:00|Belgium|3|2|Senegal",
-    "07-02 08:00|United States|2|0|Bosnia and Herzegovina"
+    "07-02 08:00|United States|2|0|Bosnia and Herzegovina",
+    "07-03 03:00|Spain|3|0|Austria"
   ],
   "results": {
     "Algeria": {
@@ -386,7 +385,7 @@
       "d": 1,
       "group": "J",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -743,5 +742,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-02T06:11:28.528200+00:00"
+  "updatedAt": "2026-07-02T21:34:54.050745+00:00"
 }
