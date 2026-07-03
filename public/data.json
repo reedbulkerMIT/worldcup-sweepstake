@@ -164,8 +164,19 @@
       "b": "Egypt",
       "kickoff": "07-04 02:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 3,
+        "b": 5,
+        "pk": {
+          "a": 2,
+          "b": 4
+        },
+        "reg": {
+          "a": 1,
+          "b": 1
+        }
+      },
+      "winner": "Egypt"
     },
     {
       "a": "Argentina",
@@ -225,12 +236,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Australia",
-      "b": "Egypt",
-      "live": true,
-      "time": "07-04 02:00"
-    },
     {
       "a": "Argentina",
       "b": "Cabo Verde",
@@ -353,7 +358,8 @@
     "07-02 08:00|United States|2|0|Bosnia and Herzegovina",
     "07-03 03:00|Spain|3|0|Austria",
     "07-03 07:00|Portugal|2|1|Croatia",
-    "07-03 11:00|Switzerland|2|0|Algeria"
+    "07-03 11:00|Switzerland|2|0|Algeria",
+    "07-04 02:00|Australia|3|5|Egypt"
   ],
   "results": {
     "Algeria": {
@@ -376,7 +382,7 @@
       "d": 1,
       "group": "D",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -741,5 +747,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-03T19:52:03.081919+00:00"
+  "updatedAt": "2026-07-03T21:33:59.353435+00:00"
 }
