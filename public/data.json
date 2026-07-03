@@ -153,8 +153,11 @@
       "b": "Algeria",
       "kickoff": "07-03 11:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 0
+      },
+      "winner": "Switzerland"
     },
     {
       "a": "Australia",
@@ -348,14 +351,15 @@
     "07-02 04:00|Belgium|3|2|Senegal",
     "07-02 08:00|United States|2|0|Bosnia and Herzegovina",
     "07-03 03:00|Spain|3|0|Austria",
-    "07-03 07:00|Portugal|2|1|Croatia"
+    "07-03 07:00|Portugal|2|1|Croatia",
+    "07-03 11:00|Switzerland|2|0|Algeria"
   ],
   "results": {
     "Algeria": {
       "d": 1,
       "group": "J",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -736,5 +740,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-03T04:11:24.952424+00:00"
+  "updatedAt": "2026-07-03T05:45:37.954589+00:00"
 }
