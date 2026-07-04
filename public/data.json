@@ -239,6 +239,30 @@
       "round": "r16",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Portugal",
+      "b": "Spain",
+      "kickoff": "07-07 03:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
+    },
+    {
+      "a": "Argentina",
+      "b": "Egypt",
+      "kickoff": "07-08 00:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
+    },
+    {
+      "a": "Switzerland",
+      "b": "Colombia",
+      "kickoff": "07-08 04:00",
+      "round": "r16",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -263,9 +287,24 @@
       "time": "07-06 08:00"
     },
     {
+      "a": "Portugal",
+      "b": "Spain",
+      "time": "07-07 03:00"
+    },
+    {
       "a": "United States",
       "b": "Belgium",
       "time": "07-07 08:00"
+    },
+    {
+      "a": "Argentina",
+      "b": "Egypt",
+      "time": "07-08 00:00"
+    },
+    {
+      "a": "Switzerland",
+      "b": "Colombia",
+      "time": "07-08 04:00"
     }
   ],
   "played": [
@@ -373,7 +412,7 @@
       "group": "J",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 3
     },
     "Australia": {
@@ -437,7 +476,7 @@
       "group": "K",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Cote d'Ivoire": {
@@ -493,7 +532,7 @@
       "group": "G",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 1
     },
     "England": {
@@ -629,7 +668,7 @@
       "group": "K",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 1
     },
     "Qatar": {
@@ -685,7 +724,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Sweden": {
@@ -701,7 +740,7 @@
       "group": "B",
       "l": 0,
       "out": false,
-      "reached": "r32",
+      "reached": "r16",
       "w": 2
     },
     "Tunisia": {
@@ -745,5 +784,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-04T04:04:36.066107+00:00"
+  "updatedAt": "2026-07-04T07:16:32.560306+00:00"
 }
