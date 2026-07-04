@@ -205,8 +205,11 @@
       "b": "Morocco",
       "kickoff": "07-05 01:00",
       "round": "r16",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 0,
+        "b": 3
+      },
+      "winner": "Morocco"
     },
     {
       "a": "Paraguay",
@@ -266,12 +269,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Canada",
-      "b": "Morocco",
-      "live": true,
-      "time": "07-05 01:00"
-    },
     {
       "a": "Paraguay",
       "b": "France",
@@ -397,7 +394,8 @@
     "07-03 11:00|Switzerland|2|0|Algeria",
     "07-04 02:00|Australia|3|5|Egypt",
     "07-04 06:00|Argentina|3|2|Cabo Verde",
-    "07-04 09:30|Colombia|1|0|Ghana"
+    "07-04 09:30|Colombia|1|0|Ghana",
+    "07-05 01:00|Canada|0|3|Morocco"
   ],
   "results": {
     "Algeria": {
@@ -468,7 +466,7 @@
       "d": 1,
       "group": "B",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r16",
       "w": 1
     },
@@ -785,5 +783,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-04T17:29:08.171733+00:00"
+  "updatedAt": "2026-07-04T19:39:26.999533+00:00"
 }
