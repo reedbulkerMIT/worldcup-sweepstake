@@ -183,16 +183,22 @@
       "b": "Cabo Verde",
       "kickoff": "07-04 06:00",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 3,
+        "b": 2
+      },
+      "winner": "Argentina"
     },
     {
       "a": "Colombia",
       "b": "Ghana",
       "kickoff": "07-04 09:30",
       "round": "r32",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 1,
+        "b": 0
+      },
+      "winner": "Colombia"
     },
     {
       "a": "Canada",
@@ -236,17 +242,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Argentina",
-      "b": "Cabo Verde",
-      "live": true,
-      "time": "07-04 06:00"
-    },
-    {
-      "a": "Colombia",
-      "b": "Ghana",
-      "time": "07-04 09:30"
-    },
     {
       "a": "Canada",
       "b": "Morocco",
@@ -360,7 +355,9 @@
     "07-03 03:00|Spain|3|0|Austria",
     "07-03 07:00|Portugal|2|1|Croatia",
     "07-03 11:00|Switzerland|2|0|Algeria",
-    "07-04 02:00|Australia|3|5|Egypt"
+    "07-04 02:00|Australia|3|5|Egypt",
+    "07-04 06:00|Argentina|3|2|Cabo Verde",
+    "07-04 09:30|Colombia|1|0|Ghana"
   ],
   "results": {
     "Algeria": {
@@ -423,7 +420,7 @@
       "d": 3,
       "group": "H",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 0
     },
@@ -527,7 +524,7 @@
       "d": 1,
       "group": "L",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "r32",
       "w": 1
     },
@@ -748,5 +745,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-03T23:29:03.113754+00:00"
+  "updatedAt": "2026-07-04T04:04:36.066107+00:00"
 }
