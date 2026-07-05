@@ -236,7 +236,7 @@
     {
       "a": "Mexico",
       "b": "England",
-      "kickoff": "07-06 08:00",
+      "kickoff": "07-06 09:00",
       "round": "r16",
       "score": null,
       "winner": ""
@@ -283,11 +283,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Mexico",
-      "b": "England",
-      "time": "07-06 08:00"
-    },
     {
       "a": "Portugal",
       "b": "Spain",
@@ -794,5 +789,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-05T22:14:54.640970+00:00"
+  "updatedAt": "2026-07-05T23:31:24.278132+00:00"
 }
