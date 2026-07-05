@@ -269,6 +269,14 @@
       "round": "r16",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "France",
+      "b": "Morocco",
+      "kickoff": "07-10 04:00",
+      "round": "qf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -301,6 +309,11 @@
       "a": "Switzerland",
       "b": "Colombia",
       "time": "07-08 04:00"
+    },
+    {
+      "a": "France",
+      "b": "Morocco",
+      "time": "07-10 04:00"
     }
   ],
   "played": [
@@ -546,7 +559,7 @@
       "group": "I",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 3
     },
     "Germany": {
@@ -618,7 +631,7 @@
       "group": "C",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 2
     },
     "Netherlands": {
@@ -782,5 +795,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-04T23:16:48.960863+00:00"
+  "updatedAt": "2026-07-05T08:19:42.004489+00:00"
 }
