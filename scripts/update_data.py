@@ -396,7 +396,36 @@ def merge_played(fresh, old_played):
     return [merged[k] for k in sorted(merged)]  # 依 (time,a,b) 排序 = 時間序
 
 
+def dump_ko(matches):
+    """唯讀診斷:印出 API /matches 的所有 KO 段對戰原始樣貌,不寫任何檔案。
+    每列:round | status | home(tla/name) | away(tla/name)。
+    用來確認 API 是否已把「單邊勝方」填進下一輪對戰(另一邊為 placeholder)。"""
+    ko = [m for m in matches.get("matches", []) if m.get("stage") in KO_STAGE_TO_ROUND]
+    ko.sort(key=lambda m: (m.get("utcDate") or "", m.get("id") or 0))
+    print(f"=== DUMP-KO: {len(ko)} 場 KO 段對戰(stage/status/home/away)===")
+    for m in ko:
+        rnd = KO_STAGE_TO_ROUND.get(m.get("stage"), m.get("stage"))
+        ht = m.get("homeTeam") or {}
+        at = m.get("awayTeam") or {}
+
+        def show(t):
+            tla, name = t.get("tla"), t.get("name")
+            if not tla and not name:
+                return "<placeholder 空>"
+            return f"{tla or '?'}/{name or '?'}"
+
+        print(f"  {rnd:5} | {m.get('status'):9} | {m.get('utcDate')} "
+              f"| home={show(ht)} | away={show(at)}")
+    print("=== END DUMP-KO(未寫入任何檔案)===")
+
+
 def main():
+    if "--dump-ko" in sys.argv:
+        # 唯讀診斷模式:只抓 /matches、印 KO 段、不寫檔、不動 data.json。
+        matches = api_get(f"/competitions/{COMPETITION}/matches")
+        dump_ko(matches)
+        return
+
     standings = api_get(f"/competitions/{COMPETITION}/standings")
     matches = api_get(f"/competitions/{COMPETITION}/matches")
 
