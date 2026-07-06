@@ -238,8 +238,11 @@
       "b": "England",
       "kickoff": "07-06 09:00",
       "round": "r16",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 3
+      },
+      "winner": "England"
     },
     {
       "a": "United States",
@@ -401,7 +404,8 @@
     "07-04 09:30|Colombia|1|0|Ghana",
     "07-05 01:00|Canada|0|3|Morocco",
     "07-05 05:00|Paraguay|0|1|France",
-    "07-06 04:00|Brazil|1|2|Norway"
+    "07-06 04:00|Brazil|1|2|Norway",
+    "07-06 09:00|Mexico|2|3|England"
   ],
   "results": {
     "Algeria": {
@@ -616,7 +620,7 @@
       "d": 0,
       "group": "A",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "r16",
       "w": 3
     },
@@ -789,5 +793,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-05T23:31:24.278132+00:00"
+  "updatedAt": "2026-07-06T03:46:59.984347+00:00"
 }
