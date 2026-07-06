@@ -283,6 +283,14 @@
       "round": "qf",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Norway",
+      "b": "England",
+      "kickoff": "07-12 05:00",
+      "round": "qf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -310,6 +318,11 @@
       "a": "France",
       "b": "Morocco",
       "time": "07-10 04:00"
+    },
+    {
+      "a": "Norway",
+      "b": "England",
+      "time": "07-12 05:00"
     }
   ],
   "played": [
@@ -549,7 +562,7 @@
       "group": "L",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 2
     },
     "France": {
@@ -653,7 +666,7 @@
       "group": "I",
       "l": 1,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 2
     },
     "Panama": {
@@ -793,5 +806,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-06T03:46:59.984347+00:00"
+  "updatedAt": "2026-07-06T09:11:42.666676+00:00"
 }
