@@ -297,6 +297,14 @@
       "round": "qf",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Spain",
+      "b": "Belgium",
+      "kickoff": "07-11 03:00",
+      "round": "qf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -314,6 +322,11 @@
       "a": "France",
       "b": "Morocco",
       "time": "07-10 04:00"
+    },
+    {
+      "a": "Spain",
+      "b": "Belgium",
+      "time": "07-11 03:00"
     },
     {
       "a": "Norway",
@@ -456,7 +469,7 @@
       "group": "G",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 1
     },
     "Bosnia and Herzegovina": {
@@ -744,7 +757,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 2
     },
     "Sweden": {
@@ -804,5 +817,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-07T03:24:28.810710+00:00"
+  "updatedAt": "2026-07-07T08:45:17.106055+00:00"
 }
