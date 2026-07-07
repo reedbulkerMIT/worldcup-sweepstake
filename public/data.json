@@ -271,8 +271,11 @@
       "b": "Egypt",
       "kickoff": "07-08 00:00",
       "round": "r16",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 3,
+        "b": 2
+      },
+      "winner": "Argentina"
     },
     {
       "a": "Switzerland",
@@ -308,11 +311,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Argentina",
-      "b": "Egypt",
-      "time": "07-08 00:00"
-    },
     {
       "a": "Switzerland",
       "b": "Colombia",
@@ -429,7 +427,8 @@
     "07-06 04:00|Brazil|1|2|Norway",
     "07-06 09:00|Mexico|2|3|England",
     "07-07 03:00|Portugal|0|1|Spain",
-    "07-07 08:00|United States|1|4|Belgium"
+    "07-07 08:00|United States|1|4|Belgium",
+    "07-08 00:00|Argentina|3|2|Egypt"
   ],
   "results": {
     "Algeria": {
@@ -564,7 +563,7 @@
       "d": 2,
       "group": "G",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "r16",
       "w": 1
     },
@@ -817,5 +816,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-07T08:45:17.106055+00:00"
+  "updatedAt": "2026-07-07T18:22:10.677536+00:00"
 }
