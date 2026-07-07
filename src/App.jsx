@@ -535,7 +535,7 @@ export default function App() {
               <div className="overflow-x-auto pb-4" ref={bracketScrollRef}>
                 <div className="flex gap-4" style={{ minWidth: "max-content" }}>
                   {activeKoRounds.map((r) => (
-                    <div key={r} ref={r === frontRound ? frontColRef : null} className="flex flex-col justify-around" style={{ width: 210 }}>
+                    <div key={r} ref={r === frontRound ? frontColRef : null} className="flex flex-col" style={{ width: 210 }}>
                       <h3 className="display text-lg font-bold tracking-widest mb-2 text-center flex items-center justify-center gap-1.5" style={{ color: C.gold }}>
                         {ROUND_ZH[r]}
                         {r === frontRound && (
@@ -546,7 +546,7 @@ export default function App() {
                           }} />
                         )}
                       </h3>
-                      <div className="flex flex-col justify-around flex-1 gap-3">
+                      <div className="flex flex-col gap-2">
                         {knockout.filter((m) => m.round === r).map((m, idx) => (
                           <div key={`${r}-${idx}`} className="rounded overflow-hidden"
                             style={{ background: "rgba(0,0,0,0.3)", border: `1px solid ${C.line}` }}>
