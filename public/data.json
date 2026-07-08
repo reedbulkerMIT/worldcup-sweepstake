@@ -319,6 +319,14 @@
       "round": "qf",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "Argentina",
+      "b": "Switzerland",
+      "kickoff": "07-12 09:00",
+      "round": "qf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -336,6 +344,11 @@
       "a": "Norway",
       "b": "England",
       "time": "07-12 05:00"
+    },
+    {
+      "a": "Argentina",
+      "b": "Switzerland",
+      "time": "07-12 09:00"
     }
   ],
   "played": [
@@ -451,7 +464,7 @@
       "group": "J",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 3
     },
     "Australia": {
@@ -779,7 +792,7 @@
       "group": "B",
       "l": 0,
       "out": false,
-      "reached": "r16",
+      "reached": "qf",
       "w": 2
     },
     "Tunisia": {
@@ -823,5 +836,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-08T00:13:28.494210+00:00"
+  "updatedAt": "2026-07-08T06:39:53.115171+00:00"
 }
