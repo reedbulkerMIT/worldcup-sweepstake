@@ -29,7 +29,7 @@ export const OWNERS = {
   Norway: "KRES",
   Brazil: "LEO",
   Morocco: "LEON",
-  France: "LILLIAN",
+  France: "LUCAS",
   Senegal: "LUCAS",
   Czechia: "MAEGAN",
   Turkiye: "MAXINE",
