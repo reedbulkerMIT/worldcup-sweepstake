@@ -45,6 +45,6 @@ export const OWNERS = {
 export const COLLEAGUES = [
   "ANN", "ANNALISE", "APPLE", "BEN", "BECKY", "CHRISSY", "CLAIR", "EILEEN",
   "EMILY", "EVA", "FARISA", "FRED", "GARY", "HEDY", "HOWARD", "JILL",
-  "JOYCE", "JASON", "KRES", "LEO", "LEON", "LILLIAN", "LUCAS", "MAEGAN",
+  "JOYCE", "JASON", "KRES", "LEO", "LEON", "LUCAS", "MAEGAN",
   "MAXINE", "MIKE", "PETERSON", "PHOEBE", "REED", "SARAH", "SUSAN", "TIMOTHY",
 ];
