@@ -279,14 +279,26 @@ def build_knockout_and_progress(matches, results, old=None, now=None):
         if en in results and prev > reached.get(en, 0):
             reached[en] = prev
 
-    # 把 reached / out 寫回 results。out 只認「在淘汰賽實際輸球」(lost_ko):
-    # 不主動把「沒進 32 強」的隊打叉——否則 API 逐步填 r32 籤表、只成形一半時,
-    # 會把已晉級但對戰還沒成形的隊誤標淘汰。晉級與否由 reached / 排名 / 樹狀圖呈現即可。
+    # 把 reached / out 寫回 results。
+    #
+    # 「已淘汰」= 已經出局,用兩個「不依賴當前輪次」的確定依據涵蓋(任一成立即淘汰):
+    #   (1) lost_ko:在任何一輪淘汰賽輸過球。8 強輸、16 強輸、32 強輸都算,
+    #       也不管現在打到第幾輪——一旦輸球就永久標記。
+    #   (2) 小組賽出局:小組賽踢滿 3 場、最遠只到 group(從未進任何淘汰賽對戰)。
+    # 刻意不用「不在當前最高輪次(如現在的 8 強)就算淘汰」這種規則——那只在
+    # 今天成立,等 8 強打完剩 4 強時,輸掉 8 強的隊會漏標。用「輸過球 / 沒晉級」
+    # 這種永遠成立的判斷。晉級還在比的隊(reached 是目前最高輪、還沒輸)照原樣顯示該輪。
+    #
+    # (2) 以 ko_active 為前提:淘汰賽尚未成形前(純小組賽階段,或剛踢完小組賽、
+    # 籤表還沒填)所有隊都還沒進 KO 對戰,此時不能把即將晉級的隊誤標淘汰。
     rank_to_round = {v: k for k, v in ROUND_RANK.items()}
+    ko_active = len(knockout) > 0
     for en, rec in results.items():
         if en in reached:
             rec["reached"] = rank_to_round[reached[en]]
-        rec["out"] = en in lost_ko
+        played = (rec.get("w") or 0) + (rec.get("d") or 0) + (rec.get("l") or 0)
+        group_out = ko_active and rec["reached"] == "group" and played >= 3
+        rec["out"] = (en in lost_ko) or group_out
 
     return knockout
 
