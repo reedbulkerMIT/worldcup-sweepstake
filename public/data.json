@@ -551,7 +551,7 @@
       "d": 1,
       "group": "E",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -559,7 +559,7 @@
       "d": 1,
       "group": "A",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -623,7 +623,7 @@
       "d": 0,
       "group": "C",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -631,7 +631,7 @@
       "d": 3,
       "group": "G",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -639,7 +639,7 @@
       "d": 0,
       "group": "I",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -655,7 +655,7 @@
       "d": 0,
       "group": "J",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -687,7 +687,7 @@
       "d": 1,
       "group": "G",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -703,7 +703,7 @@
       "d": 0,
       "group": "L",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -727,7 +727,7 @@
       "d": 1,
       "group": "B",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -735,7 +735,7 @@
       "d": 2,
       "group": "H",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -743,7 +743,7 @@
       "d": 0,
       "group": "C",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -767,7 +767,7 @@
       "d": 0,
       "group": "A",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -799,7 +799,7 @@
       "d": 0,
       "group": "F",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -807,7 +807,7 @@
       "d": 0,
       "group": "D",
       "l": 2,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 1
     },
@@ -823,7 +823,7 @@
       "d": 2,
       "group": "H",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     },
@@ -831,10 +831,10 @@
       "d": 0,
       "group": "K",
       "l": 3,
-      "out": false,
+      "out": true,
       "reached": "group",
       "w": 0
     }
   },
-  "updatedAt": "2026-07-08T06:39:53.115171+00:00"
+  "updatedAt": "2026-07-09T06:31:54.301242+00:00"
 }
