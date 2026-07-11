@@ -238,11 +238,8 @@
       "b": "England",
       "kickoff": "07-06 09:00",
       "round": "r16",
-      "score": {
-        "a": 2,
-        "b": 3
-      },
-      "winner": "England"
+      "score": null,
+      "winner": ""
     },
     {
       "a": "United States",
@@ -675,7 +672,7 @@
       "d": 0,
       "group": "A",
       "l": 0,
-      "out": true,
+      "out": false,
       "reached": "r16",
       "w": 3
     },
@@ -848,5 +845,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-11T21:08:49.267934+00:00"
+  "updatedAt": "2026-07-11T22:09:30.630111+00:00"
 }
