@@ -333,6 +333,14 @@
       "round": "qf",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "France",
+      "b": "Spain",
+      "kickoff": "07-15 03:00",
+      "round": "sf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -345,6 +353,11 @@
       "a": "Argentina",
       "b": "Switzerland",
       "time": "07-12 09:00"
+    },
+    {
+      "a": "France",
+      "b": "Spain",
+      "time": "07-15 03:00"
     }
   ],
   "played": [
@@ -598,7 +611,7 @@
       "group": "I",
       "l": 0,
       "out": false,
-      "reached": "qf",
+      "reached": "sf",
       "w": 3
     },
     "Germany": {
@@ -774,7 +787,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "qf",
+      "reached": "sf",
       "w": 2
     },
     "Sweden": {
@@ -834,5 +847,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-10T22:18:23.984602+00:00"
+  "updatedAt": "2026-07-11T06:27:56.408137+00:00"
 }
