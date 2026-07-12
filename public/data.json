@@ -238,8 +238,11 @@
       "b": "England",
       "kickoff": "07-06 09:00",
       "round": "r16",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 2,
+        "b": 3
+      },
+      "winner": "England"
     },
     {
       "a": "United States",
@@ -344,6 +347,14 @@
       "round": "sf",
       "score": null,
       "winner": ""
+    },
+    {
+      "a": "England",
+      "b": "Argentina",
+      "kickoff": "07-16 03:00",
+      "round": "sf",
+      "score": null,
+      "winner": ""
     }
   ],
   "matches": [
@@ -351,6 +362,11 @@
       "a": "France",
       "b": "Spain",
       "time": "07-15 03:00"
+    },
+    {
+      "a": "England",
+      "b": "Argentina",
+      "time": "07-16 03:00"
     }
   ],
   "played": [
@@ -470,7 +486,7 @@
       "group": "J",
       "l": 0,
       "out": false,
-      "reached": "qf",
+      "reached": "sf",
       "w": 3
     },
     "Australia": {
@@ -598,7 +614,7 @@
       "group": "L",
       "l": 0,
       "out": false,
-      "reached": "qf",
+      "reached": "sf",
       "w": 2
     },
     "France": {
@@ -669,7 +685,7 @@
       "d": 0,
       "group": "A",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "r16",
       "w": 3
     },
@@ -842,5 +858,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-12T04:01:38.651298+00:00"
+  "updatedAt": "2026-07-12T06:47:46.027038+00:00"
 }
