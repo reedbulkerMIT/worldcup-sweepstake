@@ -309,8 +309,11 @@
       "b": "England",
       "kickoff": "07-12 05:00",
       "round": "qf",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 1,
+        "b": 2
+      },
+      "winner": "England"
     },
     {
       "a": "Spain",
@@ -341,12 +344,6 @@
     }
   ],
   "matches": [
-    {
-      "a": "Norway",
-      "b": "England",
-      "live": true,
-      "time": "07-12 05:00"
-    },
     {
       "a": "Argentina",
       "b": "Switzerland",
@@ -457,7 +454,8 @@
     "07-08 00:00|Argentina|3|2|Egypt",
     "07-08 04:00|Switzerland|4|3|Colombia",
     "07-10 04:00|France|2|0|Morocco",
-    "07-11 03:00|Spain|2|1|Belgium"
+    "07-11 03:00|Spain|2|1|Belgium",
+    "07-12 05:00|Norway|1|2|England"
   ],
   "results": {
     "Algeria": {
@@ -704,7 +702,7 @@
       "d": 0,
       "group": "I",
       "l": 1,
-      "out": false,
+      "out": true,
       "reached": "qf",
       "w": 2
     },
@@ -845,5 +843,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-11T22:09:30.630111+00:00"
+  "updatedAt": "2026-07-12T00:13:03.710752+00:00"
 }
