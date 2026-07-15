@@ -356,18 +356,14 @@
       "b": "Argentina",
       "kickoff": "07-16 03:00",
       "round": "sf",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 1,
+        "b": 2
+      },
+      "winner": "Argentina"
     }
   ],
-  "matches": [
-    {
-      "a": "England",
-      "b": "Argentina",
-      "live": true,
-      "time": "07-16 03:00"
-    }
-  ],
+  "matches": [],
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
@@ -470,7 +466,8 @@
     "07-11 03:00|Spain|2|1|Belgium",
     "07-12 05:00|Norway|1|2|England",
     "07-12 09:00|Argentina|3|1|Switzerland",
-    "07-15 03:00|France|0|2|Spain"
+    "07-15 03:00|France|0|2|Spain",
+    "07-16 03:00|England|1|2|Argentina"
   ],
   "results": {
     "Algeria": {
@@ -613,7 +610,7 @@
       "d": 1,
       "group": "L",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "sf",
       "w": 2
     },
@@ -858,5 +855,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-15T19:38:04.202955+00:00"
+  "updatedAt": "2026-07-15T21:16:24.409977+00:00"
 }
