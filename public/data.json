@@ -361,9 +361,28 @@
         "b": 2
       },
       "winner": "Argentina"
+    },
+    {
+      "a": "Spain",
+      "b": "Argentina",
+      "kickoff": "07-20 03:00",
+      "round": "final",
+      "score": null,
+      "winner": ""
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "a": "France",
+      "b": "England",
+      "time": "07-19 05:00"
+    },
+    {
+      "a": "Spain",
+      "b": "Argentina",
+      "time": "07-20 03:00"
+    }
+  ],
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
@@ -483,7 +502,7 @@
       "group": "J",
       "l": 0,
       "out": false,
-      "reached": "sf",
+      "reached": "final",
       "w": 3
     },
     "Australia": {
@@ -795,7 +814,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "sf",
+      "reached": "final",
       "w": 2
     },
     "Sweden": {
@@ -855,5 +874,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-15T21:16:24.409977+00:00"
+  "updatedAt": "2026-07-16T06:33:12.114660+00:00"
 }
