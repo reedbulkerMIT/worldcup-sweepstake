@@ -373,12 +373,6 @@
   ],
   "matches": [
     {
-      "a": "France",
-      "b": "England",
-      "live": true,
-      "time": "07-19 05:00"
-    },
-    {
       "a": "Spain",
       "b": "Argentina",
       "time": "07-20 03:00"
@@ -487,7 +481,8 @@
     "07-12 05:00|Norway|1|2|England",
     "07-12 09:00|Argentina|3|1|Switzerland",
     "07-15 03:00|France|0|2|Spain",
-    "07-16 03:00|England|1|2|Argentina"
+    "07-16 03:00|England|1|2|Argentina",
+    "07-19 05:00|France|4|6|England"
   ],
   "results": {
     "Algeria": {
@@ -875,5 +870,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-18T21:07:51.370323+00:00"
+  "updatedAt": "2026-07-18T23:12:38.635730+00:00"
 }
