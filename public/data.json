@@ -371,7 +371,14 @@
       "winner": ""
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "a": "Spain",
+      "b": "Argentina",
+      "live": true,
+      "time": "07-20 03:00"
+    }
+  ],
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
@@ -864,5 +871,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-19T19:34:37.657563+00:00"
+  "updatedAt": "2026-07-19T21:09:01.260483+00:00"
 }
