@@ -367,18 +367,14 @@
       "b": "Argentina",
       "kickoff": "07-20 03:00",
       "round": "final",
-      "score": null,
-      "winner": ""
+      "score": {
+        "a": 1,
+        "b": 0
+      },
+      "winner": "Spain"
     }
   ],
-  "matches": [
-    {
-      "a": "Spain",
-      "b": "Argentina",
-      "live": true,
-      "time": "07-20 03:00"
-    }
-  ],
+  "matches": [],
   "played": [
     "06-12 03:00|Mexico|2|0|South Africa",
     "06-12 10:00|South Korea|2|1|Czechia",
@@ -483,7 +479,8 @@
     "07-12 09:00|Argentina|3|1|Switzerland",
     "07-15 03:00|France|0|2|Spain",
     "07-16 03:00|England|1|2|Argentina",
-    "07-19 05:00|France|4|6|England"
+    "07-19 05:00|France|4|6|England",
+    "07-20 03:00|Spain|1|0|Argentina"
   ],
   "results": {
     "Algeria": {
@@ -498,7 +495,7 @@
       "d": 0,
       "group": "J",
       "l": 0,
-      "out": false,
+      "out": true,
       "reached": "final",
       "w": 3
     },
@@ -811,7 +808,7 @@
       "group": "H",
       "l": 0,
       "out": false,
-      "reached": "final",
+      "reached": "champion",
       "w": 2
     },
     "Sweden": {
@@ -871,5 +868,5 @@
       "w": 0
     }
   },
-  "updatedAt": "2026-07-19T21:09:01.260483+00:00"
+  "updatedAt": "2026-07-19T22:10:48.295079+00:00"
 }
